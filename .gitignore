@@ -1,0 +1,13 @@
+*.asv
+*.pdf
+aux
+*.aux
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.thm
+*.bbl
+*.blg
+*.fdb_latexmk
+.DS_Store
