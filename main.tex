@@ -136,14 +136,17 @@ a_{-n}(t) &= a_{n}(t) && \qquad n = 1, \dots, m/2 \\
 \theta_{m/2}(t) &= 0.
 \end{aligned}
 \end{equation}
-We verify in \cref{app:symm} that these symmetry conditions are consistent. WRITE all of the $a_n$ and $\theta_n$ as asymptotic series in powers of $k$. 
+We verify in \cref{app:symm} that these symmetry conditions are consistent, and we will look for a solution with these symmetries. 
+
+We will find a leading order approximation for a solution to \cref{eq:st2} by assuming that the amplitudes $a_n$ and phases $\theta_n$ have power series expansions in the coupling parameter $k$. Furthermore, we will assume that these terms have the following orders of magnitude in $k$:
 \begin{equation}\label{eq:basicseries}
 \begin{aligned}
 a_0(t) &= \psi(t) + \mathcal{O}(k) \\
-a_n(t) &= \mathcal{O}(k) && n = 1, \dots, m/2 \\
+a_n(t) &= \mathcal{O}(k^n) && n = 1, \dots, m/2 \\
 \theta_n(t) &= n \phi + \mathcal{O}(k) && n = 1, \dots, m/2-1
 \end{aligned}
 \end{equation}
+Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n_1})$, which suggests the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that $\theta_n - \theta_{n-1} = \mathcal{O}(k)$.
 
 Since we are looking for a solution which is close to the NLS soliton in node 1 and close to 0 in the other nodes, our initial perturbation ansatz for the amplitudes is of the the form
 \begin{align*}
@@ -246,7 +249,7 @@ We verify that the symmetry relations in \cref{eq:symm} are consistent. First, f
 &+ k\left(a_{n-1}e^{i[(\theta_n - \theta_{n-1}) - \phi]} + a_{n+1}e^{-i[(\theta_{n+1} - \theta_{n}) - \phi]} \right)+a_n^3 - \omega a_n = 0,
 \end{aligned}
 \end{equation*}	
-which is the complex conjugate of \cref{eq:st2} for $n$. For $n = 0$, we take equation \cref{eq:st2} for $0$, substitute the symmetries for $a_n$ and $\theta_n$ from \cref{eq:symm}, and simplify, to obtain 
+which is the complex conjugate of \cref{eq:st2} for $n$. For $n = 0$, we take equation \cref{eq:st2} for $n=0$, substitute the symmetries for $a_n$ and $\theta_n$ from \cref{eq:symm}, and simplify, to obtain 
 \begin{equation*}
 \begin{aligned}
 (\ddot a_0 &- a_0 (\dot \theta_0)^2) 
@@ -258,7 +261,7 @@ The imaginary part is
 \begin{equation}\label{eq:n0imagpart}
 a_0 \ddot\theta_0 + 2 \dot a_0 \dot \theta_0 = 2 k a_1 \cos(\theta_1 - \phi) \sin \theta_0,
 \end{equation}
-for which $\theta_0(t) = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the condition $\theta_{m/2}(t) = 0$ is consistent.
+for which $\theta_0(t) = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the $\theta_{m/2} = 0$ is a solution to the imaginary part of \cref{eq:st2} for $n=m/2$, thus this condition is consistent as well.
 
 \section{Asymptotics}
 
@@ -326,42 +329,66 @@ a_1(t) = k a_1^{(1)}(t) + \mathcal{O}(k^2).
 \]
 From \cref{eq:basicseries}, we have
 \[
-a_2(t) = \mathcal{O}(k), \qquad \theta_1(t) = \phi + \mathcal{O}(k), \qquad \theta_2(t) = 2 \phi + \mathcal{O}(k),
+a_2(t) = \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k), \qquad \theta_2(t) = 2 \phi + \mathcal{O}(k),
 \]
 and we note that $\dot \theta_1(t) = \mathcal{O}(k)$. Substituting these together with the expression \cref{eq:a0eq} for $a_0(t)$ into the $n=1$ equation of \cref{eq:st2real}, expanding the cosine terms in Taylor series, collecting powers of $k$, and simplifying, we obtain the equation
 \[
 k\left(\ddot a_1^{(1)} - \omega a_1^{(1)} + \psi\right) + \mathcal{O}(k^2) = 0.
 \]
-% We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. 
-We use the $\mathcal{O}(k)$ term to solve for $a_1^{(1)}$ to get 
+We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $a_1^{(1)}$ to get 
 \begin{equation}\label{eq:a11}
-a_1^{(1)}(t) = (\omega - \partial_t^2) \psi(t),
+a_1^{(1)}(t) = (\omega - \partial_t^2)^{-1} \psi(t),
 \end{equation}
 which has a solution since $\Lw$ is invertible. This gives us
 \begin{equation}\label{eq:a1eq}
-a_1(t) = k a_1^{(1)}(t) + \mathcal{O}(k^2) = k (\omega - \partial_t^2) \psi(t) + \mathcal{O}(k^2).
+a_1(t) = k (\omega - \partial_t^2) \psi(t) + \mathcal{O}(k^2).
 \end{equation}
-We continue this process iteratively. For $n = 2$, we take the power series ansatz 
+
+We continue this process iteratively from $n=2$ to $n=m/2-1$. We take the power series ansatz 
 \[
-a_2(t) = k a_2^{(1)}(t) + k^2 a_2^{(2)}(t) + \mathcal{O}(k^3),
+a_n(t) = k^n a_n^{(n)}(t) + \mathcal{O}(k^{n+1}),
 \]
 and use
-\[
-a_3(t) = \mathcal{O}(k), \qquad \theta_2(t) = 2 \phi + \mathcal{O}(k), \qquad \theta_3(t) = 3 \phi + \mathcal{O}(k)
-\]
-from \cref{eq:basicseries}. Substituting these together with the expression \cref{eq:a1eq} for $a_1(t)$ into the $n=2$ equation of \cref{eq:st2real} and following what we did above, we obtain the equation
 \begin{align*}
-k\left(\ddot a_2^{(1)} - \omega a_2^{(1)}\right) + 
-k\left(\ddot a_2^{(2)} - \omega a_2^{(2)} + a_1^{(1)} + a_3^{(1)}\right) +\mathcal{O}(k^3) = 0.
+&a_{n-1}(t) = k^{n-1} a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{n}), &&a_{n+1}(t) = \mathcal{O}(k^{n+1}), \\
+&\theta_{n-1}(t) = (n-1) \phi + \mathcal{O}(k), &&\theta_{n+1}(t) = (n+1) \phi + \mathcal{O}(k),
 \end{align*}
-From the $\mathcal{O}(k)$ term, $\Lw a_2^{(1)} = 0$, thus since the kernel of $\Lw$ is $\{ 0\}$, we must have $a_2^{(1)} = 0$. We then use the $\mathcal{O}(k^2)$ term to solve for $a_2^{(2)}$ to get 
-\begin{equation}\label{eq:a22}
-a_2^{(2)}(t) = (\omega - \partial_t^2)\left(a_1^{(1)} + a_3^{(1)}\right),
+where the expression for $a_{n-1}(t)$ was found in the previous step. Substituting these into \cref{eq:st2real} and following the same procedure as above, we obtain the equation
+\begin{align*}
+k^n\left(\ddot a_n^{(n)} - \omega a_n^{(n)} + a_{n-1}^{(n-1)}\right) +\mathcal{O}(k^{n+1}) = 0.
+\end{align*}
+We use the $\mathcal{O}(k^n)$ term to solve for $a_n^{(n)}$ to get 
+\begin{equation}\label{eq:ann}
+a_n^{(n)} = (\omega - \partial_t^2)^{-1}a_{n-1}^{(n-1)},
 \end{equation}
-where we found $a_1^{(1)}$ in the previous step. In the next step, we will determine that $a_3^{(1)} = 0$. Since $\Lw$ is invertible. This gives us
-\begin{equation}\label{eq:a2eq}
-a_1(t) = k^2 a_2^{(2)}(t) + \mathcal{O}(k^3) = k^2 (\omega - \partial_t^2) \left(a_1^{(1)} + a_3^{(1)}\right) + \mathcal{O}(k^3).
+which gives us
+\begin{equation}\label{eq:aneq}
+a_n(t) = k^n (\omega - \partial_t^2)^{-1}a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{n+1}).
 \end{equation}
+We note that the ansatz $\theta_n = n \phi + \mathcal{O}(k)$ is essential, since it follow from this that $\cos[(\theta_n - \theta_{n-1}) - \phi] = 1 + \mathcal{O}(k^2)$ for all $n$, i.e. all the cosine terms are 1 to leading order. 
+
+For $n=m/2$, we take $\theta_{m/2}(t) = 0$ in the real part of \cref{eq:st2} for $n = m/2$, use the symmetry relations for $a_{m/2-1}$ and $\theta_{m/2-1}$ from \cref{eq:symm}, and simplify to get
+\[
+\ddot a_{m/2} - a_{m/2} (\dot \theta_{m/2})^2 + 
+2 k a_{m/2-1}\cos( \theta_{m/2-1} + \phi) + a_{m/2}^3 - \omega a_{m/2} = 0.
+\]
+Using the power series ansatz
+\[
+a_{m/2}(t) = k^{m/2} a_{m/2}^{({m/2})}(t) + \mathcal{O}(k^{m/2+1})
+\]
+and the formula $a_{m/2-1}(t) = k^{m/2-1}a_{m/2-1}^{(m/2+1)}(t) + \mathcal{O}(k^{m/2})$ from the previous step, we obtain the expression
+\begin{equation}\label{eq:am2}
+a_{m/2}^{({m/2})} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{m/2-1} + \phi) a_{m/2-1}^{(m/2-1)},
+\end{equation}
+which gives us
+\begin{equation}\label{eq:am2eq1}
+a_{m/2}(t) = k^{m/2} (\omega - \partial_t^2)^{-1} \cos( \theta_{m/2-1}(t) + \phi)a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{m/2}+1).
+\end{equation}
+It is important to note that since $\theta_{m/2} = 0$, the cosine term in \cref{eq:am2eq1} is not a higher order term. Substituting the ansatz $\theta_{m/2-1}(t) = (m/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2eq1} becomes
+\begin{equation}\label{eq:am2eq}
+a_{m/2}(t) = 2 k^{m/2} \cos\left( m \phi / 2\right) (\omega - \partial_t^2)^{-1} a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{m/2}+1).
+\end{equation}
+
 
 
 
