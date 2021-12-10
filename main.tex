@@ -23,6 +23,11 @@
 \usepackage{makecell}
 \usepackage{array}
 
+\usepackage{subcaption}
+\captionsetup{font={small},skip=0.25\baselineskip}
+\captionsetup{justification=raggedright}
+\captionsetup[subfigure]{font={small}, skip=1pt, singlelinecheck=false}
+
 \usepackage[capitalize,nameinlink]{cleveref}
 % Per SIAM Style Manual, "section" should be lowercase
 \crefname{section}{section}{sections}
@@ -77,6 +82,8 @@
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
 \newtheorem{hypothesis}{Hypothesis}
+
+\graphicspath{ {images/} }
 
 \title{Spatiotemporal dynamics of a twisted waveguide array}
 
@@ -237,6 +244,48 @@ Substituting this into the equation for $\tilde{\theta}_{M-1}(t)$, we get
 \end{align*}
 When $\phi = \pi/m$, we have $\tilde{\theta}_{M-1}(t) = \mathcal{O}(k^2)$, which eliminates the lowest order remainder term in the expression for $\theta_{M-1}(t)$. Using the recursive formulas above, this eliminates the lowest remainder term for all of the angles $\theta_n(t)$.
 
+\section{Numerical results}\label{sec:numerics}
+
+First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$) in Matlab. To start the continuation, we take $c_0(t) = \psi(t)$ and $c_n(t) = 0$ for $n \neq 0$, i.e. we start with an NLS soliton in node 0, and 0 everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions. Results for $m=6$ sites are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposte site in the ring (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the lowest order remainder term $\tilde{\phi}_n(t)$ is 0 for the phases $\phi_n(t)$.
+
+% figure: amplitudes/phases for m=6
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:m6025amp}
+        \includegraphics[width=5cm]{m6phi025amp.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:m6025amp}
+        \includegraphics[width=5cm]{m6phi025logamp.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:m6025phase}
+        \includegraphics[width=5cm]{m6phi025phase.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:m6pi6amp}
+        \includegraphics[width=5cm]{m6phipi6amp.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:m6pi6logamp}
+        \includegraphics[width=5cm]{m6phipi6logamp.eps}
+    \end{subfigure}
+        \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:m6pi6phase}
+        \includegraphics[width=5cm]{m6phipi6phase.eps}
+    \end{subfigure}
+    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $m=6$ waveguides. Twist parameter $\phi = 0.25$ (top), $\phi = \pi/6$ (bottom). Left and middle are amplitude and log amplitude of solution at first four sites. Right plots $\theta_n(t) - n \phi$ for sites 1 and 2, where $\theta_n(t)$ is the phase. $k=0.25$, $\omega=1$, time domain $[-30,30]$, $N=256$ Fourier nodes.}
+    \label{fig:m6sol}
+\end{figure}
+
+
 \appendix
 
 \section{Symmetries}\label{app:symm}
@@ -323,6 +372,7 @@ a_0(t) = \psi(t) + k^2 a_0^{(2)}(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}(k
 \end{equation}
 
 \subsection{Amplitudes}
+
 We can now determine the leading order terms for the amplitudes $a_n$, for $n = 1, \dots, m/2$, using the real parts \cref{eq:st2real} of the equations \cref{eq:st2}. The phases $\theta_n$ will be determined in the next step. For $n=1$, we take the power series ansatz 
 \[
 a_1(t) = k a_1^{(1)}(t) + \mathcal{O}(k^2).
@@ -389,10 +439,9 @@ It is important to note that since $\theta_{m/2} = 0$, the cosine term in \cref{
 a_{m/2}(t) = 2 k^{m/2} \cos\left( m \phi / 2\right) (\omega - \partial_t^2)^{-1} a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{m/2}+1).
 \end{equation}
 
+\subsection{Phases}
 
-
-
-
+Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. To do this, we will use the imaginary parts \cref{eq:st2} of the equations \cref{eq:st2}, this time working backwards from $n = m/2-1$ to $m=1$. (Equations\cref{eq:st2} have already been satisfied for $n=m/2$ and $n=0$ by taking $\theta_{m/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For 
 
 
 \end{document}
