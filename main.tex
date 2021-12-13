@@ -171,7 +171,7 @@ For $n = 1, \dots, m/2$, $\tilde{a}_n(t)$ is defined recursively as
 \end{aligned}
 \end{equation}
 which we can write in terms of the NLS soliton $\psi(t)$ as
-\begin{equation}
+\begin{equation}\label{eq:tildeanpsi}
 \begin{aligned}
 \tilde{a}_n(t) &= (\omega - \partial_t^2)^{-n} \psi(t) && n = 1, \dots, m/2-1 \\
 \tilde{a}_{m/2}(t) &= 2 \cos( m\phi/2)(\omega - \partial_t^2)^{-m/2} \psi(t).
@@ -184,101 +184,28 @@ Note that $\tilde{a}_n(t)$ does not depend on $\phi$, except for when $n=m/2$. T
 \end{equation}
 with the condition that $\tilde{a}_0(t) \perp \dot \psi(t)$.
 
-For the angles, 
+For the angles, we obtain the following recursive formulas for the products $\tilde{a}_n \tilde{\theta}$:
+\begin{equation}\label{eq:tildeantn}
+\begin{aligned}
+\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} &= -\sin(m \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{m/2} \\
+\tilde{a}_n \tilde{\theta}_n &= (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{n+1} \tilde{\theta}_{n+1} \right) && n = 1, \dots, m/2-2
+\end{aligned}
+\end{equation}
+Note that these involve the terms $\tilde{a}_n$, which were computed above. For $n = 1, \dots, m/2-2$, we can write the expression for $\tilde{a}_n \tilde{\theta}_n$ in terms of $\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1}$ as
+\begin{align*}
+\tilde{a}_n \tilde{\theta}_n &= (\omega - \partial_t^2)^{-(m/2-n-1)} \left( \tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} \right) && n = 1, \dots, m/2-2.
+\end{align*}
+Substituting \cref{eq:tildeanpsi} for the $\tilde{a}_n$ and simplifying, we can write everything in terms of $\psi(t)$.
+\begin{equation}\label{eq:tildeantnpsi}
+\begin{aligned}
+\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} &= -\sin(m \phi) (\omega - \partial_t^2)^{-(m/2+1)} \psi(t)  \\
+\tilde{a}_n \tilde{\theta}_n &= -\sin(m \phi) (\omega - \partial_t^2)^{-(m-n)} \psi(t) && n = 1, \dots, m/2-2.
+\end{aligned}
+\end{equation}
+We can solve for $\tilde{\theta}_n(t)$ by dividing by $\tilde{a}_n(t)$, although we note that we have to be careful since $\tilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
 
+When $\phi = \pi/m$, it follows from \cref{eq:tildeanpsi} that $\tilde{a}_{m/2}(t) = 0$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{m/2}(t)$, which is $\mathcal{O}(m/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (i.e. terms of order $\mathcal{O}(k^{m/2+1}$ and higher) in the expansion for $a_{m/2}(t)$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\tilde{a}_n(t) \tilde{\theta}_n(t) = 0$ for all $n$ when $\phi = \pi/m$, which zeros out the leading order term in the expansion for $\theta_n(t)$. These findings are confirmed numerically in the next section.
 
-
-Since we are looking for a solution which is close to the NLS soliton in node 1 and close to 0 in the other nodes, our initial perturbation ansatz for the amplitudes is of the the form
-\begin{align*}
-a_1(t) &= \psi(t) + \mathcal{O}(k) \\
-a_n(t) &= \mathcal{O}(k) && n = 2, \dots, M,
-\end{align*}
-where $\mathcal{O}(k)$ represents a power series in $k$ that I didn't write out. We do something similar for the angles. Plugging all of this in and equating like powers of $k$, we obtain the following asymptotic expansions for the amplitudes:
-\begin{align*}
-a_1(t) &= \psi(t) + k^2 \tilde{a}_1(t) + \mathcal{O}(k^3) \\
-a_2(t) &= k \tilde{a}_2(t) + \mathcal{O}(k^2) \\
-a_3(t) &= k^2 \tilde{a}_3(t) + \mathcal{O}(k^3) \\
-&\vdots \\
-a_M(t) &= k^{M-1} \tilde{a}_M(t) + \mathcal{O}(k^M),
-\end{align*}
-which we can write as
-\begin{align*}
-a_1(t) &= \psi(t) + k^2 \tilde{a}_1(t) + \mathcal{O}(k^3) \\
-a_n(t) &= k^{n-1} \tilde{a}_n(t) + \mathcal{O}(k^n) && n = 2, \dots, M.
-\end{align*}
-Note that we have determined the magnitude (in $k$) of the leading order term for each amplitude $a_n(t)$, and that $a_n(t) = \mathcal{O}(k^{n-1})$, so the order of the amplitude increases with $n$. Similarly, for the angles, we obtain the asymptotic expansions
-\begin{align*}
-\theta_M(t) &= 0 \\
-\theta_{M-1}(t) &= (M-1)\phi + k^2 \tilde{\theta}_{M-1} + \mathcal{O}(k^3) \\
-\theta_{M-2}(t) &= (M-2)\phi + k^4 \tilde{\theta}_{M-2} + \mathcal{O}(k^5) \\
-&\vdots \\
-\theta_3(t) &= 2 \phi + k^{m-4} \tilde{\theta}_3(t) + \mathcal{O}(k^{m-3}) \\
-\theta_2(t) &= \phi + k^{m-2} \tilde{\theta}_3(t) + \mathcal{O}(k^{m-1}) \\
-\theta_1(t) &= 0.
-\end{align*}
-Note that in this case, the leading order term is always $\mathcal{O}(1)$, and the order of the next lowest-order term decreases with $n$. We can write this more simply as
-\begin{align*}
-\theta_n(t) &= (n-1)\phi + k^{m-2n+2}\tilde{\theta}_n(t) + \mathcal{O}(k^{m-2n+3}).
-\end{align*}
-
-
-The amazing thing is that we can actually obtain (recursive) formulas for the first remainder terms $\tilde{a}_n(t)$ and $\tilde{\theta}_n(t)$ in the asymptotic expansions above! These formulas can all be verified numerically. 
-
-ONLY LAST DEP ON PHI!
-
-First, we solve for the lowest order terms in the expansion for the amplitudes. To do this, we use the real part of \cref{eq:st2} and ``work down'' from $\tilde{a}_2(t)$ to obtain the recursive formulas:
-\begin{align*}
-\tilde{a}_2(t) &= (\omega - \partial_t^2)^{-1} \psi(t) \\
-\tilde{a}_3(t) &= (\omega - \partial_t^2)^{-1} \tilde{a}_2(t) \\
-\tilde{a}_4(t) &= (\omega - \partial_t^2)^{-1} \tilde{a}_3(t) \\
-&\vdots \\
-\tilde{a}_{M-1}(t) &= (\omega - \partial_t^2)^{-1} \tilde{a}_{M-2}(t) \\
-\tilde{a}_{M}(t) &= 2 \cos( \theta_{M-1}(t) + \phi )(\omega - \partial_t^2)^{-1} \tilde{a}_{M-1}(t),
-\end{align*}
-where we note that the operator $(\omega - \partial_t^2)$ is indeed invertible when $\omega > 0$ and we use either periodic, Dirichlet, or Neumann boundary conditions. We can write everything in terms of $\psi(t)$ to get the expressions
-\begin{align*}
-\tilde{a}_n(t)   &= (\omega - \partial_t^2)^{-(n-1)} \psi(t) && n = 2, \dots, M-1 \\
-\tilde{a}_{M}(t) &= 2 \cos( \theta_{M-1}(t) + \phi )(\omega - \partial_t^2)^{-(M-1)} \psi(t).
-\end{align*}
-In addition, for node 1, the next lowest order term in the asymptotic expansion for $a_1(t)$ satisfies the equation
-\[
-(\partial_t^2 - \omega)\tilde{a}_1(t) + 3 \psi(t)^2 \tilde{a}_1(t) + 2 \tilde{a}_2(t) = 0.
-\]
-
-If we use only the leading order term from the asymptotic expansion for $\theta_{M-1}$, we have $\theta_{M-1} \approx (M-2) \phi = [(m/2)-1] \phi$, thus the equation for $\tilde{a}_{M}(t)$ becomes, to leading order,
-\[
-\tilde{a}_{M}(t) = -2 \cos( m \phi/2 )(\partial_t^2 - \omega)^{-1} \tilde{a}_{M-1}(t),
-\]
-which is 0 if we take $\phi = \pi/m$. This is the expected result. Note that this choice eliminates only the leading order term in the asymptotic expansion for $\tilde{a}_{M}(t)$; suppression may not complete, since there may still be terms which are higher order in $k$.
-
-We can do better by solving for the remainder terms $\tilde{\theta}_n(t)$ in the asymptotic expansion of the angles. To do this, we use the imaginary part of \cref{eq:st2} and ``work up'' from $\tilde{a}_{M-1}(t)$ to get the recursive formulas:
-\begin{align*}
-\tilde{\theta}_{M-1}(t) &= -\sin(m\phi/2)\frac{ (\omega - \partial_t^2)^{-1} \tilde{a}_{M}(t)}{\tilde{a}_{M-1}(t)} \\
-\tilde{\theta}_{M-2}(t) &= \frac{ (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{M-1}(t) \tilde{\theta}_{M-1}(t) \right) }
-{\tilde{a}_{M-1}(t)} \\
-&\vdots \\
-\tilde{\theta}_{3}(t) &= \frac{ (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{4}(t) \tilde{\theta}_{4}(t) \right) }
-{\tilde{a}_{3}(t)} \\
-\tilde{\theta}_{2}(t) &= \frac{ (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{3}(t) \tilde{\theta}_{3}(t) \right) }
-{\tilde{a}_{2}(t)},
-\end{align*}
-which we can write as
-\begin{align*}
-\tilde{\theta}_{M-1}(t) &= -\sin(m\phi/2)\frac{ (\omega - \partial_t^2)^{-1} \tilde{a}_{M}(t)}{\tilde{a}_{M-1}(t)} \\
-\tilde{\theta}_{n}(t) &= \frac{ (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{n+1}(t) \tilde{\theta}_{n+1}(t) \right) }
-{\tilde{a}_{n}(t)} && n = 2, \dots, M-2.
-\end{align*}
-Now that we have these expressions, we substitute the leading order expression for $\tilde{\theta}_{M-1}(t)$ into the expression for $\tilde{a}_{M}(t)$ to get
-\begin{align*}
-\tilde{a}_{M}(t) &= 2 \cos[(M-1)\phi + \mathcal{O}(k^2) ] (\omega - \partial_t^2)^{-1} \tilde{a}_{M-1}(t) \\
-&= 2 \cos(m \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{M-1}(t) + \mathcal{O}(k^2).
-\end{align*}
-Substituting this into the equation for $\tilde{\theta}_{M-1}(t)$, we get
-\begin{align*}
-\tilde{\theta}_{M-1}(t) &= -2 \sin(m \phi/2)\cos(m \phi/2)\frac{ (\partial_t^2 - \omega)^{-2} \tilde{a}_{M-1}(t)}{\tilde{a}_{M-1}(t)} + \mathcal{O}(k^2) \\
-&= -\sin(m \phi)\frac{ (\partial_t^2 - \omega)^{-2} \tilde{a}_{M-1}(t)}{\tilde{a}_{M-1}(t)} + \mathcal{O}(k^2).
-\end{align*}
-When $\phi = \pi/m$, we have $\tilde{\theta}_{M-1}(t) = \mathcal{O}(k^2)$, which eliminates the lowest order remainder term in the expression for $\theta_{M-1}(t)$. Using the recursive formulas above, this eliminates the lowest remainder term for all of the angles $\theta_n(t)$.
 
 \section{Numerical results}\label{sec:numerics}
 
@@ -378,40 +305,44 @@ The kernel of $\dot{\psi}(t)$ is one-dimensional, and is spanned by $\{ \dot{\ps
 
 \subsection{Node 0}
 
-For node 0, the site in which the maximum intensity is concentrated, we take the power series ansatz 
+Using the symmetry relations \cref{eq:symm} and $\theta_0(t) = 0$, equation \cref{eq:st2real} for $n=0$ becomes
+\begin{equation}\label{eq:st2reala0}
+\ddot a_0  + 2 k a_1 \cos(\theta_1 - \phi) + a_0^3 - \omega a_0 = 0 
+\end{equation}
+We take the power series ansatz 
 \[
 a_0(t) = \psi(t) + k a_0^{(1)}(t) + k^2 a_0^{(2)}(t) + \mathcal{O}(k^3)
 \]
-for the amplitude, where $\psi(t)$ is the NLS soliton \cref{eq:NLSsoliton}. For the phase, we take $\theta_0(t) = 0$, which we showed in \cref{app:symm} satisfies the imaginary part \cref{eq:n0imagpart} of equation \cref{eq:st2} for $n=0$. In addition, from \cref{eq:basicseries}, we have, at minimum, 
+for the amplitude $a_0(t)$, where $\psi(t)$ is the NLS soliton \cref{eq:NLSsoliton}. In addition, from \cref{eq:basicseries}, we have, at minimum, 
 \[
-a_1(t) = \mathcal{O}(k), \qquad \theta_1(t) = \phi + \mathcal{O}(k).
+a_1(t) = k \tilde{a}_1(t) + \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k).
 \]
-Substituting this into the $n=0$ equation of \cref{eq:st2real}, using the Taylor series expansion $\cos(\theta_1-\phi) = \mathcal{O}(k^2)$, collecting powers of $k$, and simplifying, we get
+Substituting this into \cref{eq:st2reala0}, using the Taylor series expansion $\cos(\theta_1-\phi) = \mathcal{O}(k^2)$, collecting powers of $k$, and simplifying, we get
 \begin{equation*}
 \begin{aligned}
 &\left(\ddot{\psi} + \psi^3 - \omega \psi\right) 
 + k\left(\ddot a_0^{(1)} - \omega a_0^{(1)} + 3 \psi^2 a_0^{(1)}\right) \\
-&\qquad\qquad+ k^2\left(\ddot a_0^{(2)} - \omega a_0^{(2)} + 3\left(a_0^{(1)}\right)^2 + 3 \psi^2 a_0^{(2)}\right) + \mathcal{O}(k^3) = 0,
+&\qquad\qquad+ k^2\left(\ddot a_0^{(2)} - \omega a_0^{(2)} + 3\left(a_0^{(1)}\right)^2 + 3 \psi^2 a_0^{(2)} + 2 \tilde{a}_1 \right) + \mathcal{O}(k^3) = 0,
 \end{aligned}
 \end{equation*}
 where we have dropped the dependence on $t$ for simplicity. The $\mathcal{O}(1)$ term is 0 since $\psi$ solves \cref{eq:NLSreal}. The $\mathcal{O}(k)$ term can be written as $\calL(\psi)a_0^{(1)}=0$, where $\calL(\psi)$ is defined by \cref{eq:Lpsi}. Since the kernel of $\calL(\psi)$ is spanned by $\dot \psi(t)$, $a_0^{(1)} = c \dot \psi(t)$ for some constant $c$. However, since we wish our solution to satisfy the phase condition \cref{eq:phasecond}, we will take $c = 0$, from which it follows that $a_0^{(1)} = 0$. The $\mathcal{O}(k^2)$ term then becomes
 \[
-\ddot a_0^{(2)} - \omega a_0^{(2)} + 3 \psi^2 a_0^{(2)} + 2 a_1^{(1)} = 0, 
+\ddot a_0^{(2)} - \omega a_0^{(2)} + 3 \psi^2 a_0^{(2)} + 2 \tilde{a}_1 = 0.
 \]
-which we can write as 
+Letting $\tilde{a}_0(t) = a_0^{(2)}(t)$, we rewrite this as
 \begin{align}\label{eq:solvea0ta}
-\calL(\psi) a_0^{(2)} = -2 a_1^{(1)}.
+\calL(\psi) \tilde{a}_0 = -2 \tilde{a}_1.
 \end{align}
-Once we determine $a_1^{(1)}$, which we will do in the next step, we can solve for $a_0^{(2)}$, provided $a_1^{(1)} \perp \dot\psi$. Putting all of this together, we have the expression for $a_0$
+Once we determine $\tilde{a}_1$, which we will do in the next step, we can solve for $\tilde{a}_0$, provided $\tilde{a}_1 \perp \dot\psi$. Putting all of this together, we have the expression for $a_0$
 \begin{equation}\label{eq:a0eq}
-a_0(t) = \psi(t) + k^2 a_0^{(2)}(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}(k^2)
+a_0(t) = \psi(t) + k^2 \tilde{a}_0(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}(k^2).
 \end{equation}
 
 \subsection{Amplitudes}
 
 We can now determine the leading order terms for the amplitudes $a_n$, for $n = 1, \dots, m/2$, using the real parts \cref{eq:st2real} of the equations \cref{eq:st2}. The phases $\theta_n$ will be determined in the next step. For $n=1$, we take the power series ansatz 
 \[
-a_1(t) = k a_1^{(1)}(t) + \mathcal{O}(k^2).
+a_1(t) = k \tilde{a}_1(t) + \mathcal{O}(k^2).
 \]
 From \cref{eq:basicseries}, we have, at minimum,
 \[
@@ -419,11 +350,11 @@ a_2(t) = \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k), \qquad \t
 \]
 and we note that $\dot \theta_1(t) = \mathcal{O}(k)$. Substituting these together with the expression \cref{eq:a0eq} for $a_0(t)$ into the $n=1$ equation of \cref{eq:st2real}, expanding the cosine terms in Taylor series, collecting powers of $k$, and simplifying, we obtain the equation
 \[
-k\left(\ddot a_1^{(1)} - \omega a_1^{(1)} + \psi\right) + \mathcal{O}(k^2) = 0.
+k\left(\partial_t^2 \tilde{a}_1 - \omega \tilde{a}_1 + \psi\right) + \mathcal{O}(k^2) = 0.
 \]
-We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $a_1^{(1)}$ to get 
+We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $\tilde{a}_1$ to get 
 \begin{equation}\label{eq:a11}
-a_1^{(1)}(t) = (\omega - \partial_t^2)^{-1} \psi(t),
+\tilde{a}_1(t) = (\omega - \partial_t^2)^{-1} \psi(t),
 \end{equation}
 which has a solution since $\Lw$ is invertible. This gives us
 \begin{equation}\label{eq:a1eq}
@@ -432,24 +363,24 @@ a_1(t) = k (\omega - \partial_t^2) \psi(t) + \mathcal{O}(k^2).
 
 We continue this process iteratively from $n=2$ to $n=m/2-1$. We take the power series ansatz 
 \[
-a_n(t) = k^n a_n^{(n)}(t) + \mathcal{O}(k^{n+1}),
+a_n(t) = k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+1}),
 \]
 and use
 \begin{align*}
-&a_{n-1}(t) = k^{n-1} a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{n}), &&a_{n+1}(t) = \mathcal{O}(k^{n+1}), \\
+&a_{n-1}(t) = k^{n-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{n}), &&a_{n+1}(t) = \mathcal{O}(k^{n+1}), \\
 &\theta_{n-1}(t) = (n-1) \phi + \mathcal{O}(k), &&\theta_{n+1}(t) = (n+1) \phi + \mathcal{O}(k),
 \end{align*}
 where the expression for $a_{n-1}(t)$ was found in the previous step. Substituting these into \cref{eq:st2real} and following the same procedure as above, we obtain the equation
 \begin{align*}
-k^n\left(\ddot a_n^{(n)} - \omega a_n^{(n)} + a_{n-1}^{(n-1)}\right) +\mathcal{O}(k^{n+1}) = 0.
+k^n\left(\partial_t^2 \tilde{a}_n - \omega \tilde{a}_n + \tilde{a}_{n-1} \right) +\mathcal{O}(k^{n+1}) = 0.
 \end{align*}
-We use the $\mathcal{O}(k^n)$ term to solve for $a_n^{(n)}$ to get 
+We use the $\mathcal{O}(k^n)$ term to solve for $\tilde{a}_n$ to get 
 \begin{equation}\label{eq:ann}
-a_n^{(n)} = (\omega - \partial_t^2)^{-1}a_{n-1}^{(n-1)},
+\tilde{a}_n = (\omega - \partial_t^2)^{-1}\tilde{a}_{n-1},
 \end{equation}
 which gives us
 \begin{equation}\label{eq:aneq}
-a_n(t) = k^n (\omega - \partial_t^2)^{-1}a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{n+1}).
+a_n(t) = k^n (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{n+1}).
 \end{equation}
 We note that it follows from the ansatz $\theta_n = n \phi + \mathcal{O}(k)$ that $\cos[(\theta_n - \theta_{n-1}) - \phi] = 1 + \mathcal{O}(k^2)$ for all $n$, i.e. all the cosine terms are 1 to leading order. 
 
@@ -460,83 +391,81 @@ For the final node $n=m/2$, we take $\theta_{m/2}(t) = 0$ in the real part of \c
 \]
 Using the power series ansatz
 \[
-a_{m/2}(t) = k^{m/2} a_{m/2}^{({m/2})}(t) + \mathcal{O}(k^{m/2+1})
+a_{m/2}(t) = k^{m/2} \tilde{a}_{m/2}(t) + \mathcal{O}(k^{m/2+1})
 \]
-and the formula $a_{m/2-1}(t) = k^{m/2-1}a_{m/2-1}^{(m/2+1)}(t) + \mathcal{O}(k^{m/2})$ from the previous step, we obtain the expression
+and the formula $a_{m/2-1}(t) = k^{m/2-1} \tilde{a}_{m/2-1}(t) + \mathcal{O}(k^{m/2})$ from the previous step, we obtain the expression
 \begin{equation}\label{eq:am2a}
-a_{m/2}^{({m/2})} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{m/2-1} + \phi) a_{m/2-1}^{(m/2-1)}.
+\tilde{a}_{m/2} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{m/2-1} + \phi) \tilde{a}_{m/2-1}.
 \end{equation}
 It is important to note that since $\theta_{m/2} = 0$, the cosine term in \cref{eq:am2a} is order $\mathcal{O}(1)$. Substituting the ansatz $\theta_{m/2-1}(t) = (m/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2a} becomes
 \begin{equation}\label{eq:am2}
-a_{m/2}^{({m/2})} = 2 \cos( m\phi/2)(\omega - \partial_t^2)^{-1} a_{m/2-1}^{(m/2-1)},
+\tilde{a}_{m/2} = 2 \cos( m\phi/2)(\omega - \partial_t^2)^{-1} \tilde{a}_{m/2-1} + \mathcal{O}(k).
 \end{equation}
-from which it follows that
+Since $\tilde{a}_{m/2} = \mathcal{O}(1)$, it follows that
 \begin{equation}\label{eq:am2eq}
-a_{m/2}(t) = 2 k^{m/2} \cos\left( m \phi / 2\right) (\omega - \partial_t^2)^{-1} a_{n-1}^{(n-1)}(t) + \mathcal{O}(k^{m/2}+1).
+a_{m/2}(t) = 2 k^{m/2} \cos\left( m \phi / 2\right) (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{m/2}+1).
 \end{equation}
-Equations \cref{eq:tildean} follow by taking $\tilde{a}_n(t) = a_n^{(n)}(t)$. Since we have derived an expression \cref{eq:a11} for $a_1^{(1)}$, we substitute this into \cref{eq:solvea0ta} to get 
+Finally, since we have derived an expression \cref{eq:a11} for $\tilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to get 
 \[
-\calL(\psi) a_0^{(2)} = -2 (\omega - \partial_t^2)^{-1} \psi(t).
+\calL(\psi) \tilde{a}_0 = -2 (\omega - \partial_t^2)^{-1} \psi(t),
 \]
-We can solve this to obtain $a_0^{(2)}$, which we call $\tilde{a}_0(t)$ in \cref{eq:basicseries} and \cref{eq:tildea0eq}.
+which we can solve for $\tilde{a}_0$.
 
 \subsection{Phases}
 
-Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2} of the equations \cref{eq:st2}, this time working backwards from $n = m/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=m/2$ and $n=0$ by taking $\theta_{m/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=m/2-1$, substitute the power series ansatz
+Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products $\tilde{a}_n(t) \tilde{\theta}_n(t)$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = m/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=m/2$ and $n=0$ by taking $\theta_{m/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=m/2-1$, substitute the power series ansatz
 \[
-\theta_{m/2-1}(t) = k^2 \theta_{m/2-1}^{(2)}(t) + \mathcal{O}(k^{3}),
+\theta_{m/2-1}(t) = k^2 \tilde{\theta}_{m/2-1}(t) + \mathcal{O}(k^{3}),
 \]
 the expressions for $a_n(t)$ from the previous section, $\theta_m = 0$, and
 $\theta_{m/2-2}(t) = (m/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=m/2-1$ to get
 \[
-k^{m/2+1} \left( a_{m/2-1}^{({m/2-1})} \ddot\theta_{m/2-1}^{(2)} + 2 \dot a_{m/2-1}^{({m/2-1})} \dot \theta_{m/2-1}^{(2)} - a_{m/2-2}^{(m/2-2)} \theta_{m/2-1}^{(2)} - a_{m/2}^{(m/2)} \sin(m \phi/2) \right) + \mathcal{O}(k^{m/2+1}) = 0.
+k^{m/2+1} \left( \tilde{a}_{m/2-1} \ddot{\tilde{\theta}}_{m/2-1} + 2 \dot{\tilde{a}}_{m/2-1} \dot{\tilde{\theta}}_{m/2-1} - \tilde{a}_{m/2-2} \tilde{\theta}_{m/2-1} - \tilde{a}_{m/2} \sin(m \phi/2) \right) + \mathcal{O}(k^{m/2+2}) = 0.
 \]
-We use the $\mathcal{O}(k^{m/2+1})$ term to solve for $\theta_{m/2-1}^{(2)}$. First, we solve equation \cref{eq:ann} for $a_{m/2-2}^{(m/2-2)}$ and substitute this above to get
+We use the $\mathcal{O}(k^{m/2+1})$ term to solve for $\tilde{\theta}_{m/2-1}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{m/2-2}$ and substitute this above to get
 \[
-a_{m/2-1}^{({m/2-1})} \ddot\theta_{m/2-1}^{(2)} + 2 \dot a_{m/2-1}^{({m/2-1})} \dot \theta_{m/2-1}^{(2)} - \theta_{m/2-1}^{(2)} (\omega - \partial_t^2) a_{m/2-1}^{({m/2-1})} - a_{m/2}^{(m/2)} \sin(m \phi/2) = 0,
+\tilde{a}_{m/2-1} \ddot{\tilde{\theta}}_{m/2-1} + 2 \dot{\tilde{a}}_{m/2-1} \dot{\tilde{\theta}}_{m/2-1} - \tilde{\theta}_{m/2-1} (\omega - \partial_t^2) \tilde{a}_{m/2-1} - \tilde{a}_{m/2} \sin(m \phi/2) = 0,
 \]
 which simplifies as the derivative of a product to get
 \[
-(\partial_t^2 - \omega)\left( a_{m/2-1}^{({m/2-1})} \theta_{m/2-1}^{(2)} \right) = \sin(m \phi/2) a_{m/2}^{(m/2)}.
+(\omega - \partial_t^2)\left( \tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} \right) = -\sin(m \phi/2) \tilde{a}_{m/2}.
 \]
-Applying $(\partial_t^2 - \omega)^{-1}$, we obtain the formula
+Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \begin{equation}\label{am2thm2}
-a_{m/2-1}^{({m/2-1})} \theta_{m/2-1}^{(2)} = \sin(m \phi/2) (\partial_t^2 - \omega)^{-1} a_{m/2}^{(m/2)},
+\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} = -\sin(m \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{m/2},
 \end{equation}
-and we can divide by $a_{m/2-1}^{({m/2-1})}$ to solve for $\theta_{m/2-1}^{(2)}$. Using equation \cref{eq:am2} for $a_{m/2}^{(m/2)}$, equation \cref{am2thm2} becomes
+and we can divide by $\tilde{a}_{m/2-1}$ to solve for $\tilde{\theta}_{m/2-1}$. Using equation \cref{eq:am2} for $\tilde{a}_{m/2}$, equation \cref{am2thm2} becomes
 \[
-a_{m/2-1}^{({m/2-1})} \theta_{m/2-1}^{(2)} = 2 \sin(m \phi/2) \cos( m\phi/2) (\omega - \partial_t^2)^{-2} a_{m/2-1}^{(m/2-1)},
+\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} = -2 \sin(m \phi/2) \cos( m\phi/2) (\omega - \partial_t^2)^{-2} \tilde{a}_{m/2-1},
 \]
 which simplifies to 
 \begin{equation}\label{am2thm2a}
-a_{m/2-1}^{({m/2-1})} \theta_{m/2-1}^{(2)} = 2 \sin(m \phi/2) \cos( m\phi/2) (\omega - \partial_t^2)^{-2} a_{m/2-1}^{(m/2-1)}
+\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} = -\sin(m \phi) (\omega - \partial_t^2)^{-2} \tilde{a}_{m/2-1}
 \end{equation}
 using the double angle formula.
 
 We now follow an iterative procedure from $n=m/2-2$ down to $n=1$. For $n$, substitute the power series ansatz
 \[
-\theta_{n}(t) = k^{m-2n} \theta_{n}^{(m-2n)}(t) + \mathcal{O}(k^{m-2n+1}),
+\theta_{n}(t) = k^{m-2n} \tilde{\theta}_{n}(t) + \mathcal{O}(k^{m-2n+1}),
 \]
-the expressions for $a_n(t)$ from the previous section, use $\theta_m = 0$ and
-$\theta_{m/2-2}(t) = (m/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=m/2-1$ to get
+the expressions for $a_n(t)$ from the previous section, and $\theta_n(t)$ from \cref{eq:basicseries} into equation \cref{eq:st2imag} for $n$, and simplify, to get
 \[
-k^{m/2} \left( a_n^{(n)} \ddot\theta_n^{(m/2-n)} + 2 \dot a_n^{(n)} \dot \theta_n^{(m/2-n)}
-- a_{n-1}^{(n-1)} \theta_n^{(m/2-n)} + a_{n+1}^{(n+1)} \theta_{n+1}^{(m/2-n+2)} \right) = 0
+k^{m/2} \left( \tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
+- \tilde{a}_{n-1} \tilde{\theta}_n + \tilde{a}_{n+1}\tilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{m/2+1}\right) = 0
 \]
-
-We use the $\mathcal{O}(k^{m/2})$ term to solve for $\theta_{n}^{(m/2-n)}$. First, we solve equation \cref{eq:ann} for $a_{n-1}^{(n-1)}$ and substitute this above to get
+We use the $\mathcal{O}(k^{m/2})$ term to solve for $\tilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{n-1}$ and substitute this above to get
 \[
-a_n^{(n)} \ddot\theta_n^{(m/2-n)} + 2 \dot a_n^{(n)} \dot \theta_n^{(m/2-n)}
-- \theta_n^{(m/2-n)} (\omega - \partial_t^2) a_n^{(n)} + a_{n+1}^{(n+1)} \theta_{n+1}^{(m/2-n+2)} = 0,
+\tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
+- \tilde{\theta}_n (\omega - \partial_t^2) \tilde{a}_n + \tilde{a}_{n+1} \tilde{\theta}_{n+1} = 0,
 \]
 which simplifies as the derivative of a product to get
 \[
-(\partial_t^2 - \omega)\left( a_n^{(n)} \theta_n^{(m/2-n)} \right) = a_{n+1}^{(n+1)} \theta_{n+1}^{(m/2-n+2)}.
+(\omega - \partial_t^2)\left( \tilde{a}_n \tilde{\theta}_n \right) = \tilde{a}_{n+1} \tilde{\theta}_{n+1}.
 \]
-Applying $(\partial_t^2 - \omega)^{-1}$, we obtain the formula
+Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \begin{equation}\label{an2th}
-a_n^{(n)} \theta_n^{(m/2-n)} = (\partial_t^2 - \omega \left( a_{n+1}^{(n+1)} \theta_{n+1}^{(m/2-n+2)} \right),
+\tilde{a}_n \tilde{\theta}_n = (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{n+1} \tilde{\theta}_{n+1} \right),
 \end{equation}
-and we can divide by $a_n^{(n)}$ to solve for $\theta_n^{(m/2-n)}$. 
+and we can divide by $\tilde{a}_n$ to solve for $\tilde{\theta}_n$. 
 
 \end{document}
