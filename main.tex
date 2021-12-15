@@ -75,6 +75,8 @@
 \DeclareMathOperator{\ran}{range}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\md}{mod}
+% \DeclareMathOperator{\Real}{Re}
+% \DeclareMathOperator{\Imag}{Im}
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
@@ -112,9 +114,23 @@ Twisted multi-core fibers have applications in distributive sensing, in which po
 
 In what follows, we extend these results to a model incorporating a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger equation
 \begin{align}\label{eq:cnz}
-&i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0.
+&i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N.
 \end{align}
-The complex amplitudes $c_n$ are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate the optical suppression also occurs in this model, to leading order, when the number of cores $N$ and phase parameter $\phi$ are related by $N=\pi/N$. This paper is organized as follows. [SECTION SUMMARY].
+The complex amplitudes $c_n$ are now functions of both $z$ and $t$. Letting $c = (c_1, \dots, c_n)^T$, we can write this in matrix form as
+\begin{align}\label{eq:cz}
+i \partial_z c + \partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2\right)c = 0,
+\end{align}
+where $\diag\left(|c_n|^2\right)$ is the diagonal matrix with diagonal entries $|c_1|^2, \dots, |c_N|^2$, and $A(\phi)$ is the periodic, tri-diagonal, banded matrix
+\begin{align}
+A = \begin{pmatrix}
+0 & e^{-i \phi} & & \dots & e^{i \phi} \\
+e^{i \phi} & 0 & e^{-i \phi} & & & \\
+& \ddots & \ddots & \ddots &  & \\
+ & &e^{i \phi}  & 0 & e^{-i \phi}  \\
+e^{-i \phi}& \dots & & e^{i \phi} & 0
+\end{pmatrix}.
+\end{align}
+Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate the optical suppression also occurs in this model, to leading order, when the number of cores $N$ and phase parameter $\phi$ are related by $N=\pi/N$. This paper is organized as follows. [SECTION SUMMARY].
 
 % In \cref{sec:model}, we discuss the mathematical model we are using
 
@@ -124,7 +140,11 @@ We are interested in finding standing wave solutions of the form $c_n(t) e^{i \o
 \begin{align}\label{eq:standingwave}
 \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n - \omega c_n = 0,
 \end{align}
-where the subscripts $n$ are taken $\md N$. When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit, this reduces to $N$ independent copies of the standing wave equation for the NLS equation. The solution at each site is either 0 or the NLS soliton
+where the subscripts $n$ are taken $\md N$. Letting $c = (c_1, \dots, c_n)^T$, we can write this in matrix form as 
+\begin{align}\label{eq:standingwavematrix}
+\partial_t^2 c + k A(\phi) c + \diag\left(|c_1|^2, \dots, |c_n|^2 \right)c = 0
+\end{align}
+When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit, this reduces to $N$ independent copies of the standing wave equation for the NLS equation. The solution at each site is either 0 or the NLS soliton
 \begin{equation}\label{eq:NLSsoliton}
 \psi(t) = \sqrt{2 \omega} \sech(\sqrt{\omega} t).
 \end{equation}
@@ -183,7 +203,7 @@ a_n(t) &= \mathcal{O}\left(k^n\right) && n = 1, \dots, N/2 \\
 \theta_n(t) &= n \phi + \mathcal{O}\left(k^{N - 2n}\right) && n = 1, \dots, N/2-1
 \end{aligned}
 \end{equation}
-Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n_1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $(\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively, to leading order.
+Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n_1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively, to leading order.
 
 Following the procedure detailed in \cref{app:asymp}, we obtain a solution to \cref{eq:st2} of the following form:
 \begin{equation}\label{eq:asympsol}
@@ -216,7 +236,7 @@ Note that $\tilde{a}_n(t)$ does not depend on $\phi$, except for when $n=N/2$. T
 \end{equation}
 with the condition that $\tilde{a}_0(t) \perp \dot \psi(t)$.
 
-For the angles, we obtain the following recursive formulas for the products $\tilde{a}_n \tilde{\theta}$:
+For the angles, we obtain the following recursive formulas for the products $\tilde{a}_n(t)\tilde{\theta}(t)$:
 \begin{equation}\label{eq:tildeantn}
 \begin{aligned}
 \tilde{a}_{N/2-1}(t) \tilde{\theta}_{N/2-1}(t) &= -\sin(N \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{N/2}(t) \\
@@ -227,11 +247,10 @@ where each product $\tilde{a}_n(t) \tilde{\theta}_n(t)$ is defined in terms of t
 \begin{align*}
 \tilde{a}_n(t) \tilde{\theta}_n(t) &= (\omega - \partial_t^2)^{-(N/2-n-1)} \left( \tilde{a}_{N/2-1}(t) \tilde{\theta}_{N/2-1}(t) \right) && n = 1, \dots, N/2-2.
 \end{align*}
-Substituting \cref{eq:tildeanpsi} for the $\tilde{a}_n(t)$ and simplifying, we can again write everything in terms of $\psi(t)$:
+Substituting \cref{eq:tildeanpsi} for $\tilde{a}_n(t)$ and simplifying, we can again write everything in terms of $\psi(t)$ to get
 \begin{equation}\label{eq:tildeantnpsi}
 \begin{aligned}
-\tilde{a}_{N/2-1}(t) \tilde{\theta}_{N/2-1}(t) &= -\sin(N \phi) (\omega - \partial_t^2)^{-(N/2+1)} \psi(t)  \\
-\tilde{a}_n(t) \tilde{\theta}_n(t) &= -\sin(N \phi) (\omega - \partial_t^2)^{-(N-n)} \psi(t) && n = 1, \dots, N/2-2.
+\tilde{a}_n(t) \tilde{\theta}_n(t) &= -\sin(N \phi) (\omega - \partial_t^2)^{-(N-n)} \psi(t) && n = 1, \dots, N/2-1.
 \end{aligned}
 \end{equation}
 We can solve for $\tilde{\theta}_n(t)$ by dividing by $\tilde{a}_n(t)$, although we note that we have to be careful when doing this since $\tilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
@@ -241,7 +260,7 @@ When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\tilde{a}_{N/2}(
 
 \section{Numerical results}\label{sec:numerics}
 
-First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$) in MATLAB. To start the continuation, we take $c_0(t) = \psi(t)$ and $c_n(t) = 0$ for $n \neq 0$, i.e. we start with an NLS soliton in node 0, and 0 everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions. Results for $m=6$ sites are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposte site in the ring (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the lowest order remainder term $\tilde{\phi}_n(t)$ is 0 for the phases $\phi_n(t)$.
+First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$) in MATLAB. To start the continuation, we take $c_0(t) = \psi(t)$ and $c_n(t) = 0$ for $n \neq 0$, i.e. we start with an NLS soliton in node 0, and 0 everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Results for $m=6$ sites are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite site in the ring (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the lowest order remainder term $\tilde{\phi}_n(t)$ is 0 for the phases $\phi_n(t)$. \cref{fig:m6supp} shows this suppression as $\phi$ is varied, both for the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the angles.
 
 % figure: amplitudes/phases for m=6
 \begin{figure}
@@ -280,6 +299,86 @@ First, we construct standing wave solutions to \cref{eq:standingwave} by using p
     \label{fig:m6sol}
 \end{figure}
 
+% figure: amplitudes/phases for m=6
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:m6suppa3}
+        \includegraphics[width=5cm]{a3phicont.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:m6supptheta}
+        \includegraphics[width=5cm]{thetaphicont.eps}
+    \end{subfigure}
+    \caption{(a) $\log_{10} \max |a_3(t)|$ vs. $\phi$ for $k=0.1$ and $k=0.25$. (b) $\log_{10} \max_{n,t}{|\theta_n(t) - n \phi|}$ vs. $\phi$ for $k=0.1$ and $k=0.25$.}
+    \label{fig:m6supp}
+\end{figure}
+
+Next, we compute the error in for the amplitudes $a_n(t)$ and phases $\theta_n(t)$. \cref{fig:m6errora} plots the log of the $L^2$ error $\| a_n^{\text{true}}(t) - a_n^{\text{approx}}(t) \|_{L^2}$ vs. the log of coupling parameter $k$, where the true value $a_n^{\text{true}}(t)$ is obtained from numerical parameter continuation, the approximate value $a_n^{\text{approx}}(t)$ is computed using \cref{eq:asympsol}, \cref{eq:tildeanpsi}, and \cref{eq:tildea0eq}, and the $L^2$ norm on the periodic domain $[-T,T]$ is defined by
+\[
+\| f(t) \|_{L^2} = \int_{-T}^T |f(t)|^2 dt.
+\] 
+The slopes of least squares regressions lines for the error in $a_0(t)$, $a_1(t)$, $a_2(t)$, and $a_3(t)$ are within 5\% of 4, 3, 4, and 5 (respectively), which suggests that the asymptotic expansions \cref{eq:asympsol} for the amplitudes are, in fact, 
+\begin{equation}\label{eq:asympsol2}
+\begin{aligned}
+a_0(t) &= \psi(t) + k^2 \tilde{a}_0(t) + \mathcal{O}(k^4) \\
+a_n(t) &= k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2
+\end{aligned}
+\end{equation}
+i.e. the order of the remainder term is one order higher in $k$. Since the formulas \cref{eq:tildeantnpsi} involve the products $a_n(t) \theta_n(t)$ of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n(t) (\theta_n(t) - n \phi)^{\text{true}} - (a_n(t) \theta_n(t)- n \phi)^{\text{approx}}(t) \|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
+$a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \tilde{a}_n(t) \tilde{\theta}_n(t)$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1(t)\theta_1(t)$ and $a_2(t)\theta_2(t)$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n(t)$.
+
+% figure: amplitudes/phases for m=6
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:m6errora}
+        \includegraphics[width=5cm]{N6aerror.eps}
+    \end{subfigure}
+        \centering
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:m6errorb}
+        \includegraphics[width=5cm]{N6athetaerror.eps}
+    \end{subfigure}
+    \caption{$\log_{10}$ of $L^2$ error of the amplitudes $a_n(t)$ vs $\log_{10} k$ (a), and the product of the amplitudes and phases $a_n(t)\theta_n(t)$ vs $\log_{10} k$.}
+    \label{fig:m6error}
+\end{figure}
+
+
+\section{Stability}\label{sec:stability}
+
+Let $c = (c_1, \dots, c_n)$ be a solution to \cref{eq:standingwavematrix}. This time, we split up the $c_n$ into real and imaginary parts by writing $c_n = u_n + i v_n$ for $n = 1, \dots, N$. The linearization of the PDE \cref{eq:cz} about the standing wave $c$ is the linear operator $\calL(c)$ on $H^2(\R, \R^{2N}) \subset L^2(\R, \R^{2N})$, defined by 
+\begin{equation}\label{eq:linc}
+\calL(c) = \begin{pmatrix}
+k A_i(\phi) + 2 \diag(u_n v_n) & \partial_t^2 - \omega + k A_r(\phi) + \diag(u_n^2) + 3 \diag(v_n^2) \\
+-\partial_t^2 + \omega - k A_r(\phi) - 3\diag(u_n^2) - \diag(v_n^2) &
+k A_i(\phi) - 2 \diag(u_n v_n)
+\end{pmatrix},
+\end{equation}
+where
+\begin{align*}
+A_r(\phi) &= \text{Re } A(\phi) = \begin{pmatrix}
+0 & \cos \phi & & \dots & \cos \phi \\
+\cos \phi & 0 & \cos \phi & & & \\
+& \ddots & \ddots & \ddots &  & \\
+ & &\cos \phi  & 0 & \cos \phi  \\
+\cos \phi& \dots & & \cos \phi & 0
+\end{pmatrix} \\
+A_i(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
+0 & -\sin \phi & & \dots & \sin \phi \\
+\sin \phi & 0 & -\sin \phi & & & \\
+& \ddots & \ddots & \ddots &  & \\
+ & &\sin \phi  & 0 & -\sin \phi  \\
+-\sin \phi& \dots & & \sin \phi & 0
+\end{pmatrix}.
+\end{align*}
+The kernel of $\calL(c)$ is spanned by the two eigenfunctions 
+$w_1 = (\partial_t u_1, \dots, \partial_t u_N, \partial_t v_1, \dots, \partial_t v_N )^T$ and 
+$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$.
 
 \appendix
 
@@ -335,7 +434,7 @@ Linearizing this equation about $\dot{\psi}(t)$ yields the self-adjoint linear o
 \end{equation}
 The kernel of $\dot{\psi}(t)$ is one-dimensional, and is spanned by $\{ \dot{\psi}(t) \}$. By the Fredholm alternative [REF], since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u(t)$ has a solution if $u(t) \perp \dot{\psi}(t)$.
 
-\subsection{Node 0}
+\subsection{Primary core}
 
 Using the symmetry relations \cref{eq:symm} and $\theta_0(t) = 0$, equation \cref{eq:st2real} for $n=0$ becomes
 \begin{equation}\label{eq:st2reala0}
