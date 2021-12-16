@@ -69,14 +69,15 @@
 \def\ind{{\mathbb I}}
 \def\calI{{\mathcal I}}
 \def\calL{{\mathcal L}}
+\def\calH{{\mathcal H}}
 \def\Lw{{\mathcal{L}_\omega}}
 
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\ran}{range}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\md}{mod}
-% \DeclareMathOperator{\Real}{Re}
-% \DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\RR}{Re}
+\DeclareMathOperator{\II}{Im}
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
@@ -114,13 +115,19 @@ Twisted multi-core fibers have applications in distributive sensing, in which po
 
 In what follows, we extend these results to a model incorporating a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger equation
 \begin{align}\label{eq:cnz}
-&i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N.
+&i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N,
 \end{align}
-The complex amplitudes $c_n$ are now functions of both $z$ and $t$. Letting $c = (c_1, \dots, c_n)^T$, we can write this in matrix form as
+where the complex amplitudes $c_n$ are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate that optical suppression also occurs in this model, to leading order, when the number of cores $N$ is even, and phase parameter $\phi$ is given by $\phi=\pi/N$. This paper is organized as follows. [SECTION SUMMARY].
+
+% In \cref{sec:model}, we discuss the mathematical model we are using
+
+\section{Mathematical model}\label{sec:model}
+
+We start by discussing the mathematical model \cref{eq:cnz} we will be investigating. Let $c = (c_1, \dots, c_n)^T$. We can write \cref{eq:cnz} in matrix form as
 \begin{align}\label{eq:cz}
 i \partial_z c + \partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2\right)c = 0,
 \end{align}
-where $\diag\left(|c_n|^2\right)$ is the diagonal matrix with diagonal entries $|c_1|^2, \dots, |c_N|^2$, and $A(\phi)$ is the periodic, tri-diagonal, banded matrix
+where $\diag\left(|c_n|^2\right)$ is the diagonal matrix with diagonal entries $\{|c_1|^2, \dots, |c_N|^2\}$, and $A(\phi)$ is the periodic, tri-diagonal, banded matrix
 \begin{align}
 A = \begin{pmatrix}
 0 & e^{-i \phi} & & \dots & e^{i \phi} \\
@@ -130,9 +137,35 @@ e^{i \phi} & 0 & e^{-i \phi} & & & \\
 e^{-i \phi}& \dots & & e^{i \phi} & 0
 \end{pmatrix}.
 \end{align}
-Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate the optical suppression also occurs in this model, to leading order, when the number of cores $N$ and phase parameter $\phi$ are related by $N=\pi/N$. This paper is organized as follows. [SECTION SUMMARY].
-
-% In \cref{sec:model}, we discuss the mathematical model we are using
+Equation \cref{eq:cnz} is Hamiltonian, with energy given by
+\begin{align}\label{eq:Hc}
+\calH(c) = \sum_{n=1}^N \int_{-\infty}^\infty 
+\left(
+|\dot{c}_n|^2 - \frac{1}{2}|c_n|^4 - e^{i\phi}( c_{n-1}c_n^* + c_{n+1}^* c_n) 
+- e^{-i \phi}( c_{n-1}^*c_n + c_{n+1} c_n^*) \right) dt,
+\end{align}
+where the overdot denotes differentiation with respect to $t$, and the star denotes complex conjugation. We can write the system in standard Hamiltonian form by taking $q_n = \RR c_n$ and $p_n = \II c_n$, so that equation \cref{eq:cnz} becomes
+\begin{equation}
+\partial_z (q_1, \dots, q_N, p_1, \dots, p_N)^T
+ = J \nabla H(q_1, \dots, q_N, p_1, \dots, p_N).
+\end{equation}
+$J$ is the standard symplectic matrix
+\[
+J = \begin{pmatrix}
+0 & I_n \\ -I_n & 0
+\end{pmatrix},
+\]
+with $I_n$ the $N \times N$ identity matrix, and the Hamiltonian \cref{eq:Hc} is written in terms of the $q_n$ and $p_n$ as
+\begin{equation}\label{eq:Hqp}
+\begin{aligned}
+\calH(q_1, \dots, q_N, &p_1, \dots, p_N) = \sum_{n=1}^N \int_{-\infty}^\infty 
+\Big(
+\dot{q}_n^2 + \dot{p}_n^2 - \frac{1}{2}(q_n^2 + p_n^2)^2 \\
+&- \left[(p_{n-1} + p_{n+1}) \cos\phi - (q_{n-1} - p_{n+1}) \sin \phi\right] p_n \\
+&- \left[(p_{n-1} - p_{n+1}) \sin\phi + (q_{n-1} + p_{n+1}) \cos \phi\right] q_n
+\Big) dt,
+\end{aligned}
+\end{equation}
 
 \section{Standing waves}\label{sec:standing}
 
@@ -384,7 +417,7 @@ $w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$.
 
 \section{Symmetries}\label{app:symm}
 
-We verify that the symmetry relations in \cref{eq:symm} are consistent. First, for $n = 2, \dots, m/2-1$, we take equation \cref{eq:st2} for $-n$, substitute the symmetries for $a_n$ and $\theta_n$ from \cref{eq:symm}, and simplify, to obtain 
+We verify that the symmetry relations in \cref{eq:symm} are consistent. First, for $n = 2, \dots, N/2-1$, we take equation \cref{eq:st2} for $-n$, substitute the symmetries for $a_n$ and $\theta_n$ from \cref{eq:symm}, and simplify, to obtain 
 \begin{equation*}
 \begin{aligned}
 (\ddot a_n &- a_n (\dot \theta_n)^2) 
@@ -404,13 +437,13 @@ The imaginary part is
 \begin{equation}\label{eq:n0imagpart}
 a_0 \ddot\theta_0 + 2 \dot a_0 \dot \theta_0 = 2 k a_1 \cos(\theta_1 - \phi) \sin \theta_0,
 \end{equation}
-for which $\theta_0(t) = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the $\theta_{m/2} = 0$ is a solution to the imaginary part of \cref{eq:st2} for $n=m/2$, thus this condition is consistent as well.
+for which $\theta_0(t) = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the $\theta_{N/2} = 0$ is a solution to the imaginary part of \cref{eq:st2} for $n=N/2$, thus this condition is consistent as well.
 
 \section{Asymptotics}\label{app:asymp}
 
-Let $a_m(t)$ and $\theta_m(t)$ be the amplitudes and phases at site $n$, as in the ansatz \cref{eq:cnansatz}, where $n \in S = \{ 0, \pm 1, \dots, \pm m/2-1, m/2 \}$. We will take 
+Let $a_n(t)$ and $\theta_n(t)$ be the amplitudes and phases at site $n$, as in the ansatz \cref{eq:cnansatz}, where $n \in S = \{ 0, \pm 1, \dots, \pm N/2-1, N/2 \}$. We will take 
 \[
-a_m(t), \theta_m(t) \in H^2(\R) \subset L^2(\R),
+a_n(t), \theta_n(t) \in H^2(\R) \subset L^2(\R),
 \]
 where $L^2(\R)$ is the space of real, valued square-integrable functions on $\R$ equipped with the standard inner product, and $H^2(\R)$ is the corresponding Sobelev space. We note that the system of equations \cref{eq:st2} is translation invariant, i.e. if $\{ a_n(t), \theta_n(t)\}_{n\in S}$ is a solution, then so is $\{ a_n(t-\tau), \theta_n(t-\tau)\}_{n\in S}$ for any $\tau \in \R$. When $k = 0$, we want the solution $a_0(t)$ to be the ordinary NLS soliton $\psi(t)$, which is centered at 0. To ensure that the solution we find is not shifted in $t$, we impose the phase condition on the amplitude $a_0(t)$
 \begin{equation}\label{eq:phasecond}
@@ -471,7 +504,7 @@ a_0(t) = \psi(t) + k^2 \tilde{a}_0(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}
 
 \subsection{Amplitudes}
 
-We can now determine the leading order terms for the amplitudes $a_n$, for $n = 1, \dots, m/2$, using the real parts \cref{eq:st2real} of the equations \cref{eq:st2}. The phases $\theta_n$ will be determined in the next step. For $n=1$, we take the power series ansatz 
+We can now determine the leading order terms for the amplitudes $a_n$, for $n = 1, \dots, N/2$, using the real parts \cref{eq:st2real} of the equations \cref{eq:st2}. The phases $\theta_n$ will be determined in the next step. For $n=1$, we take the power series ansatz 
 \[
 a_1(t) = k \tilde{a}_1(t) + \mathcal{O}(k^2).
 \]
@@ -492,7 +525,7 @@ which has a solution since $\Lw$ is invertible. This gives us
 a_1(t) = k (\omega - \partial_t^2) \psi(t) + \mathcal{O}(k^2).
 \end{equation}
 
-We continue this process iteratively from $n=2$ to $n=m/2-1$. We take the power series ansatz 
+We continue this process iteratively from $n=2$ to $n=N/2-1$. We take the power series ansatz 
 \[
 a_n(t) = k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+1}),
 \]
@@ -515,26 +548,26 @@ a_n(t) = k^n (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{n+
 \end{equation}
 We note that it follows from the ansatz $\theta_n = n \phi + \mathcal{O}(k)$ that $\cos[(\theta_n - \theta_{n-1}) - \phi] = 1 + \mathcal{O}(k^2)$ for all $n$, i.e. all the cosine terms are 1 to leading order. 
 
-For the final node $n=m/2$, we take $\theta_{m/2}(t) = 0$ in the real part of \cref{eq:st2} for $n = m/2$, use the symmetry relations for $a_{m/2-1}$ and $\theta_{m/2-1}$ from \cref{eq:symm}, and simplify to get
+For the final node $n=N/2$, we take $\theta_{N/2}(t) = 0$ in the real part of \cref{eq:st2} for $n = N/2$, use the symmetry relations for $a_{N/2-1}$ and $\theta_{N/2-1}$ from \cref{eq:symm}, and simplify to get
 \[
-\ddot a_{m/2} - a_{m/2} (\dot \theta_{m/2})^2 + 
-2 k a_{m/2-1}\cos( \theta_{m/2-1} + \phi) + a_{m/2}^3 - \omega a_{m/2} = 0.
+\ddot a_{N/2} - a_{N/2} (\dot \theta_{N/2})^2 + 
+2 k a_{N/2-1}\cos( \theta_{N/2-1} + \phi) + a_{N/2}^3 - \omega a_{N/2} = 0.
 \]
 Using the power series ansatz
 \[
-a_{m/2}(t) = k^{m/2} \tilde{a}_{m/2}(t) + \mathcal{O}(k^{m/2+1})
+a_{N/2}(t) = k^{N/2} \tilde{a}_{N/2}(t) + \mathcal{O}(k^{N/2+1})
 \]
-and the formula $a_{m/2-1}(t) = k^{m/2-1} \tilde{a}_{m/2-1}(t) + \mathcal{O}(k^{m/2})$ from the previous step, we obtain the expression
+and the formula $a_{N/2-1}(t) = k^{N/2-1} \tilde{a}_{N/2-1}(t) + \mathcal{O}(k^{N/2})$ from the previous step, we obtain the expression
 \begin{equation}\label{eq:am2a}
-\tilde{a}_{m/2} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{m/2-1} + \phi) \tilde{a}_{m/2-1}.
+\tilde{a}_{N/2} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{N/2-1} + \phi) \tilde{a}_{N/2-1}.
 \end{equation}
-It is important to note that since $\theta_{m/2} = 0$, the cosine term in \cref{eq:am2a} is order $\mathcal{O}(1)$. Substituting the ansatz $\theta_{m/2-1}(t) = (m/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2a} becomes
+It is important to note that since $\theta_{N/2} = 0$, the cosine term in \cref{eq:am2a} is order $\mathcal{O}(1)$. Substituting the ansatz $\theta_{N/2-1}(t) = (N/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2a} becomes
 \begin{equation}\label{eq:am2}
-\tilde{a}_{m/2} = 2 \cos( m\phi/2)(\omega - \partial_t^2)^{-1} \tilde{a}_{m/2-1} + \mathcal{O}(k).
+\tilde{a}_{N/2} = 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \tilde{a}_{N/2-1} + \mathcal{O}(k).
 \end{equation}
-Since $\tilde{a}_{m/2} = \mathcal{O}(1)$, it follows that
+Since $\tilde{a}_{N/2} = \mathcal{O}(1)$, it follows that
 \begin{equation}\label{eq:am2eq}
-a_{m/2}(t) = 2 k^{m/2} \cos\left( m \phi / 2\right) (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{m/2}+1).
+a_{N/2}(t) = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{N/2}+1).
 \end{equation}
 Finally, since we have derived an expression \cref{eq:a11} for $\tilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to get 
 \[
@@ -544,47 +577,47 @@ which we can solve for $\tilde{a}_0$.
 
 \subsection{Phases}
 
-Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products $\tilde{a}_n(t) \tilde{\theta}_n(t)$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = m/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=m/2$ and $n=0$ by taking $\theta_{m/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=m/2-1$, substitute the power series ansatz
+Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products $\tilde{a}_n(t) \tilde{\theta}_n(t)$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = N/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=N/2$ and $n=0$ by taking $\theta_{N/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=N/2-1$, substitute the power series ansatz
 \[
-\theta_{m/2-1}(t) = k^2 \tilde{\theta}_{m/2-1}(t) + \mathcal{O}(k^{3}),
+\theta_{N/2-1}(t) = k^2 \tilde{\theta}_{N/2-1}(t) + \mathcal{O}(k^{3}),
 \]
-the expressions for $a_n(t)$ from the previous section, $\theta_m = 0$, and
-$\theta_{m/2-2}(t) = (m/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=m/2-1$ to get
+the expressions for $a_n(t)$ from the previous section, $\theta_{N/2} = 0$, and
+$\theta_{N/2-2}(t) = (N/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=N/2-1$ to get
 \[
-k^{m/2+1} \left( \tilde{a}_{m/2-1} \ddot{\tilde{\theta}}_{m/2-1} + 2 \dot{\tilde{a}}_{m/2-1} \dot{\tilde{\theta}}_{m/2-1} - \tilde{a}_{m/2-2} \tilde{\theta}_{m/2-1} - \tilde{a}_{m/2} \sin(m \phi/2) \right) + \mathcal{O}(k^{m/2+2}) = 0.
+k^{N/2+1} \left( \tilde{a}_{N/2-1} \ddot{\tilde{\theta}}_{N/2-1} + 2 \dot{\tilde{a}}_{N/2-1} \dot{\tilde{\theta}}_{N/2-1} - \tilde{a}_{N/2-2} \tilde{\theta}_{N/2-1} - \tilde{a}_{N/2} \sin(N \phi/2) \right) + \mathcal{O}(k^{N/2+2}) = 0.
 \]
-We use the $\mathcal{O}(k^{m/2+1})$ term to solve for $\tilde{\theta}_{m/2-1}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{m/2-2}$ and substitute this above to get
+We use the $\mathcal{O}(k^{N/2+1})$ term to solve for $\tilde{\theta}_{N/2-1}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{N/2-2}$ and substitute this above to get
 \[
-\tilde{a}_{m/2-1} \ddot{\tilde{\theta}}_{m/2-1} + 2 \dot{\tilde{a}}_{m/2-1} \dot{\tilde{\theta}}_{m/2-1} - \tilde{\theta}_{m/2-1} (\omega - \partial_t^2) \tilde{a}_{m/2-1} - \tilde{a}_{m/2} \sin(m \phi/2) = 0,
+\tilde{a}_{N/2-1} \ddot{\tilde{\theta}}_{N/2-1} + 2 \dot{\tilde{a}}_{N/2-1} \dot{\tilde{\theta}}_{N/2-1} - \tilde{\theta}_{N/2-1} (\omega - \partial_t^2) \tilde{a}_{N/2-1} - \tilde{a}_{N/2} \sin(N \phi/2) = 0,
 \]
 which simplifies as the derivative of a product to get
 \[
-(\omega - \partial_t^2)\left( \tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} \right) = -\sin(m \phi/2) \tilde{a}_{m/2}.
+(\omega - \partial_t^2)\left( \tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} \right) = -\sin(N \phi/2) \tilde{a}_{N/2}.
 \]
 Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \begin{equation}\label{am2thm2}
-\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} = -\sin(m \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{m/2},
+\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} = -\sin(N \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{N/2},
 \end{equation}
-and we can divide by $\tilde{a}_{m/2-1}$ to solve for $\tilde{\theta}_{m/2-1}$. Using equation \cref{eq:am2} for $\tilde{a}_{m/2}$, equation \cref{am2thm2} becomes
+and we can divide by $\tilde{a}_{N/2-1}$ to solve for $\tilde{\theta}_{N/2-1}$. Using equation \cref{eq:am2} for $\tilde{a}_{N/2}$, equation \cref{am2thm2} becomes
 \[
-\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} = -2 \sin(m \phi/2) \cos( m\phi/2) (\omega - \partial_t^2)^{-2} \tilde{a}_{m/2-1},
+\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} = -2 \sin(N \phi/2) \cos( N\phi/2) (\omega - \partial_t^2)^{-2} \tilde{a}_{N/2-1},
 \]
 which simplifies to 
 \begin{equation}\label{am2thm2a}
-\tilde{a}_{m/2-1} \tilde{\theta}_{m/2-1} = -\sin(m \phi) (\omega - \partial_t^2)^{-2} \tilde{a}_{m/2-1}
+\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} = -\sin(N \phi) (\omega - \partial_t^2)^{-2} \tilde{a}_{N/2-1}
 \end{equation}
 using the double angle formula.
 
-We now follow an iterative procedure from $n=m/2-2$ down to $n=1$. For $n$, substitute the power series ansatz
+We now follow an iterative procedure from $n=N/2-2$ down to $n=1$. For $n$, substitute the power series ansatz
 \[
-\theta_{n}(t) = k^{m-2n} \tilde{\theta}_{n}(t) + \mathcal{O}(k^{m-2n+1}),
+\theta_{n}(t) = k^{N-2n} \tilde{\theta}_{n}(t) + \mathcal{O}(k^{N-2n+1}),
 \]
 the expressions for $a_n(t)$ from the previous section, and $\theta_n(t)$ from \cref{eq:basicseries} into equation \cref{eq:st2imag} for $n$, and simplify, to get
 \[
-k^{m/2} \left( \tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
-- \tilde{a}_{n-1} \tilde{\theta}_n + \tilde{a}_{n+1}\tilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{m/2+1}\right) = 0
+k^{N/2} \left( \tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
+- \tilde{a}_{n-1} \tilde{\theta}_n + \tilde{a}_{n+1}\tilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{N/2+1}\right) = 0
 \]
-We use the $\mathcal{O}(k^{m/2})$ term to solve for $\tilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{n-1}$ and substitute this above to get
+We use the $\mathcal{O}(k^{N/2})$ term to solve for $\tilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{n-1}$ and substitute this above to get
 \[
 \tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
 - \tilde{\theta}_n (\omega - \partial_t^2) \tilde{a}_n + \tilde{a}_{n+1} \tilde{\theta}_{n+1} = 0,
