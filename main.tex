@@ -88,10 +88,32 @@
 
 \graphicspath{ {images/} }
 
+\begin{document}
+
 \title{Spatiotemporal dynamics of a twisted, circular waveguide array}
 
+\author{Ross Parker}
+\address{Department of Mathematics, Southern Methodist University, 
+Dallas, TX 75275, USA}
+\email{rhparker@smu.edu}
 
-\begin{document}
+\author{Yannan Shen} 
+\address{Department of Mathematics, University of Kansas, Lawrence, KS 66045, USA}
+\email{yshen@ku.edu}
+
+\author{Alejandro Aceves}
+\address{Department of Mathematics, Southern Methodist University, 
+Dallas, TX 75275, USA}
+\email{aaceves@smu.edu}
+
+\author{John Zweck}
+\address{Department of Mathematics, The University of Texas at Dallas, 
+Richardson, TX 75080, USA}
+\email{zweck@utdallas.edu}
+
+\begin{abstract}
+    We consider stuff.
+\end{abstract}
 
 \maketitle
 
@@ -175,7 +197,7 @@ We are interested in finding standing wave solutions of the form $c_n(t) e^{i \o
 \end{align}
 where the subscripts $n$ are taken $\md N$. Letting $c = (c_1, \dots, c_n)^T$, we can write this in matrix form as 
 \begin{align}\label{eq:standingwavematrix}
-\partial_t^2 c + k A(\phi) c + \diag\left(|c_1|^2, \dots, |c_n|^2 \right)c = 0
+\partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2 \right)c  - \omega c = 0
 \end{align}
 When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit, this reduces to $N$ independent copies of the standing wave equation for the NLS equation. The solution at each site is either 0 or the NLS soliton
 \begin{equation}\label{eq:NLSsoliton}
@@ -293,9 +315,70 @@ When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\tilde{a}_{N/2}(
 
 \section{Numerical results}\label{sec:numerics}
 
-First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$) in MATLAB. To start the continuation, we take $c_0(t) = \psi(t)$ and $c_n(t) = 0$ for $n \neq 0$, i.e. we start with an NLS soliton in node 0, and 0 everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Results for $m=6$ sites are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite site in the ring (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the lowest order remainder term $\tilde{\phi}_n(t)$ is 0 for the phases $\phi_n(t)$. \cref{fig:m6supp} shows this suppression as $\phi$ is varied, both for the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the angles.
+First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$). To do this, we take $c_n = u_n + i v_n$ in \cref{eq:standingwave}, and separate real and imaginary parts to get
+\begin{equation}\label{eq:standingwavesep}
+\begin{aligned}
+&\partial_t^2 u_n + k\left( (u_{n-1} + u_{n+1}) \cos \phi ) - (v_{n-1} - v_{n+1})\sin \phi \right) + (u_n^2+v_n^2) u_n - \omega u_n= 0, \\
+&\partial_t^2 v_n + k\left( (v_{n-1} + v_{n+1} ) \cos \phi + (u_{n-1}- u_{n+1})\sin \phi \right) +(u_n^2+v_n^2) v_n - \omega v_n = 0.
+\end{aligned}
+\end{equation}
+Letting $u = (u_1, \dots, u_N)^T$ and $v = (v_1, \dots, v_N)^T$, we can write \cref{eq:standingwavesep} in matrix form as 
+\begin{equation}\label{eq:standingwavematrixsep}
+\begin{aligned}
+&\partial_t^2 u + k (A_r(\phi) u - A_i(\phi) v) + \diag\left(u_n^2 + v_n^2 \right)u - \omega u = 0 \\
+&\partial_t^2 v + k (A_r(\phi) v + A_i(\phi) u) + \diag\left(u_n^2 + v_n^2 \right)v - \omega v = 0
+\end{aligned}
+\end{equation}
+where
+\begin{align*}
+A_r(\phi) &= \text{Re } A(\phi) = \begin{pmatrix}
+0 & \cos \phi & & \dots & \cos \phi \\
+\cos \phi & 0 & \cos \phi & & & \\
+& \ddots & \ddots & \ddots &  & \\
+ & &\cos \phi  & 0 & \cos \phi  \\
+\cos \phi& \dots & & \cos \phi & 0
+\end{pmatrix} \\
+A_i(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
+0 & -\sin \phi & & \dots & \sin \phi \\
+\sin \phi & 0 & -\sin \phi & & & \\
+& \ddots & \ddots & \ddots &  & \\
+ & &\sin \phi  & 0 & -\sin \phi  \\
+-\sin \phi& \dots & & \sin \phi & 0
+\end{pmatrix}.
+\end{align*}
+To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 0$, and $v_n(t) = 0$ for all $n$, i.e. we start with a real NLS soliton in node 0, and the zero solution everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Results of the parameter continuation are show in \cref{fig:kcont}. As $k$ is increased, intensity spreads from the primary core at $n=0$ to the other cores in the ring. A turning point is reached at a critical value $k^*$ (approximately 0.455 in \cref{fig:kcont}), at which point all cores have equal amplitudes. The parameter continuation then reverses direction. Solutions for decreasing $k$ are the same as those for increasing $k$, except the primary core is now located at $n=N/2$ (compare points 2 and 4 in \cref{fig:kcont}). This critical value $k^*$ depends on both $\phi$ and $\omega$. Numerical continuation experiments suggest that, for fixed $\omega$, the maximum value of $k^*$ occurs when $\phi = \pi/N$ (see \cref{fig:kcont2b} for results for $N=6$). Numerical continuation experiments also suggest that, for fixed $\phi$, $k^*$ is a linear function of $\omega$, specifically a constant multiple of $\omega$.
 
-% figure: amplitudes/phases for m=6
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{contdiag.eps}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel is continuation diagram plotting $L^2$ norm of solution vs. $k$. Right panels show amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. $\omega=1$, time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \label{fig:kcont}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:kcont2q}
+        \includegraphics[width=5cm]{contkL2norm.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:kcont2b}
+        \includegraphics[width=5cm]{contkstarvsphi.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \caption{}
+        \label{fig:kcont2c}
+        \includegraphics[width=5cm]{contkstarvsomega.eps}
+    \end{subfigure}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. Time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \label{fig:kcont2}
+\end{figure}
+
+Results for $N=6$ cores are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite site in the ring (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the lowest order remainder term $\tilde{\phi}_n(t)$ is 0 for the phases $\phi_n(t)$. \cref{fig:m6supp} shows this suppression as $\phi$ is varied, both for the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the angles.
+
+% figure: amplitudes/phases for N=6
 \begin{figure}
     \centering
     \begin{subfigure}{0.3\linewidth}
@@ -328,11 +411,11 @@ First, we construct standing wave solutions to \cref{eq:standingwave} by using p
         \label{fig:m6pi6phase}
         \includegraphics[width=5cm]{m6phipi6phase.eps}
     \end{subfigure}
-    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $m=6$ waveguides. Twist parameter $\phi = 0.25$ (top), $\phi = \pi/6$ (bottom). Left and middle are amplitude and log amplitude of solution at first four sites. Right plots $\theta_n(t) - n \phi$ for sites 1 and 2, where $\theta_n(t)$ is the phase. $k=0.25$, $\omega=1$, time domain $[-30,30]$, $N=256$ Fourier nodes.}
+    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides. Twist parameter $\phi = 0.25$ (top), $\phi = \pi/6$ (bottom). Left and middle are amplitude and log amplitude of solution at first four sites. Right plots $\theta_n(t) - n \phi$ for sites 1 and 2, where $\theta_n(t)$ is the phase. $k=0.25$, $\omega=1$, time domain $[-30,30]$, 256 Fourier nodes per core.}
     \label{fig:m6sol}
 \end{figure}
 
-% figure: amplitudes/phases for m=6
+% figure: amplitudes/phases for N=6
 \begin{figure}
     \centering
     \begin{subfigure}{0.4\linewidth}
@@ -363,7 +446,7 @@ a_n(t) &= k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2
 i.e. the order of the remainder term is one order higher in $k$. Since the formulas \cref{eq:tildeantnpsi} involve the products $a_n(t) \theta_n(t)$ of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n(t) (\theta_n(t) - n \phi)^{\text{true}} - (a_n(t) \theta_n(t)- n \phi)^{\text{approx}}(t) \|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
 $a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \tilde{a}_n(t) \tilde{\theta}_n(t)$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1(t)\theta_1(t)$ and $a_2(t)\theta_2(t)$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n(t)$.
 
-% figure: amplitudes/phases for m=6
+% figure: amplitudes/phases for N=6
 \begin{figure}
     \centering
     \begin{subfigure}{0.4\linewidth}
