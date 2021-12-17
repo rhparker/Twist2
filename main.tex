@@ -454,7 +454,6 @@ $a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \tilde{a}_n(t) \tild
         \label{fig:m6errora}
         \includegraphics[width=5cm]{N6aerror.eps}
     \end{subfigure}
-        \centering
     \begin{subfigure}{0.4\linewidth}
         \caption{}
         \label{fig:m6errorb}
@@ -474,26 +473,59 @@ k A_i(\phi) + 2 \diag(u_n v_n) & \partial_t^2 - \omega + k A_r(\phi) + \diag(u_n
 k A_i(\phi) - 2 \diag(u_n v_n)
 \end{pmatrix},
 \end{equation}
-where
-\begin{align*}
-A_r(\phi) &= \text{Re } A(\phi) = \begin{pmatrix}
-0 & \cos \phi & & \dots & \cos \phi \\
-\cos \phi & 0 & \cos \phi & & & \\
-& \ddots & \ddots & \ddots &  & \\
- & &\cos \phi  & 0 & \cos \phi  \\
-\cos \phi& \dots & & \cos \phi & 0
-\end{pmatrix} \\
-A_i(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
-0 & -\sin \phi & & \dots & \sin \phi \\
-\sin \phi & 0 & -\sin \phi & & & \\
-& \ddots & \ddots & \ddots &  & \\
- & &\sin \phi  & 0 & -\sin \phi  \\
--\sin \phi& \dots & & \sin \phi & 0
+where $A_r(\phi)$ and $A_i(\phi)$ are defined above. The spectrum of $\calL(c) $ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(c) - \lambda \calI$ is not Fredholm \cite[Section 3.1]{Kapitula2013}, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ is nontrivial. The essential spectrum depends only on the background state, i.e. is independent of $c$. The operator $\calL(c)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
+\begin{equation}\label{eq:L0}
+\calL(0) = \begin{pmatrix}
+k A_i(\phi) & \partial_t^2 - \omega + k A_r(\phi)  \\
+-\partial_t^2 + \omega - k A_r(\phi) &
+k A_i(\phi) 
 \end{pmatrix}.
-\end{align*}
-The kernel of $\calL(c)$ is spanned by the two eigenfunctions 
+\end{equation}
+It follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that we can compute the essential spectrum of $\calL(c)$ by determining when $\calL(0)-\lambda \calI$ is not Fredholm. Following \cite[Section 3.1]{Kapitula2013} (see, in particular, Section 3.1.1.5, concerning the NLS equation), this occurs for all $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ has an imaginary spatial eigenvalue, i.e. 
+\begin{equation}\label{eq:essL0}
+\left(\calL(0)-\lambda \calI \right) \begin{pmatrix}u\\v\end{pmatrix} e^{i \mu t}
+\end{equation} 
+has a solution for $\mu \in \R$. We can compute this exactly for $\phi = 0$. In that case, as in \cite[Section 3.1.1.5]{Kapitula2013}, equation \cref{eq:essL0} reduces to 
+$\left[ \left( \mu^2 + \omega - k A_r(0) \right)^2 + \lambda^2 \right]v = 0$, which can only have a solution if $v$ is an eigenvector of $A_r(0)$. If $v$ is an eigenvector of $A_r(0)$ with eigenvalue $\xi$, then equation \cref{eq:essL0} reduces to $\left[ \left( \mu^2 + \omega - k \xi \right)^2 + \lambda^2 \right]v = 0$, which has a solution if and only if $\lambda = \pm i \left( \mu^2 + \omega - k \xi \right)$. Since $A_r(0)$ is a circulant matrix \cite{davis2012circulant}, it's eigenvalues are given by $\{ 2 \cos \frac{2 \pi}{N}j : j = 0, \dots N-1 \}$ . The largest positive eigenvalue is 2, therefore the essential spectrum is given by
+\[
+\lambda_{\text{ess}} = \left\{ \pm i \left( \mu^2 + \omega - 2 k \right) : \mu \in \R \right\}.
+\]
+In other words, the essential spectrum comprises two disjoint intervals on the imaginary axis.
+\begin{equation}\label{eq:less}
+\lambda_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty).
+\end{equation}
+In particular, we note that the essential spectrum is bounded away from the origin. For $\phi = 0$, $\alpha = \omega - 2k$, which agrees very well with the numerical spectral computations (\cref{fig:phi0speca}). 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:phi0speca}
+        \includegraphics[width=5cm]{phi0speck.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:phi0specb}
+        \includegraphics[width=5cm]{phi0spec1.eps}
+    \end{subfigure}
+        \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:phi0specc}
+        \includegraphics[width=5cm]{phi0spec2.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:phi0specd}
+        \includegraphics[width=5cm]{phi0spec3.eps}
+    \end{subfigure}
+    \caption{(a) plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (b), (c), (d) Spectrum of $\calL(c)$ for increasing $k$. $\phi =0$, $\omega=1$, time domain $[-30,30]$, 256 Fourier nodes per core.}
+    \label{fig:phi0spec}
+\end{figure}
+
+We now turn to the point spectrum of $\calL(c)$. As with NLS \cite[Chapter 2.1.1.1]{Kevrekidis2009},
+The kernel of $\calL(c)$ has algebraic multiplicity 4 and geometric multiplicity 2. The kernel is spanned by the two eigenfunctions 
 $w_1 = (\partial_t u_1, \dots, \partial_t u_N, \partial_t v_1, \dots, \partial_t v_N )^T$ and 
-$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$.
+$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$. In addition, there is a pair of internal mode eigenvalues $\pm \lambda_e$, which will call edge modes since they split off from the edge of the essential spectrum (these can be seen in \cref{fig:phi0specc}). As $k$ increases, $\lambda_e$ moves towards the origin (see \cref{fig:phi0speca} for a plot of its location vs. $k$), collides with the eigenvalues at the origin at a critical value $k = k_e$, and then moves onto the real axis (\cref{fig:phi0specd}). This suggests that the solution $c$ is stable for $0 < k < k_e$ and unstable for $k > k_e$.
 
 \appendix
 
