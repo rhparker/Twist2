@@ -325,20 +325,20 @@ First, we construct standing wave solutions to \cref{eq:standingwave} by using p
 Letting $u = (u_1, \dots, u_N)^T$ and $v = (v_1, \dots, v_N)^T$, we can write \cref{eq:standingwavesep} in matrix form as 
 \begin{equation}\label{eq:standingwavematrixsep}
 \begin{aligned}
-&\partial_t^2 u + k (A_r(\phi) u - A_i(\phi) v) + \diag\left(u_n^2 + v_n^2 \right)u - \omega u = 0 \\
-&\partial_t^2 v + k (A_r(\phi) v + A_i(\phi) u) + \diag\left(u_n^2 + v_n^2 \right)v - \omega v = 0
+&\partial_t^2 u + k (A_c(\phi) u - A_s(\phi) v) + \diag\left(u_n^2 + v_n^2 \right)u - \omega u = 0 \\
+&\partial_t^2 v + k (A_c(\phi) v + A_s(\phi) u) + \diag\left(u_n^2 + v_n^2 \right)v - \omega v = 0
 \end{aligned}
 \end{equation}
 where
 \begin{align*}
-A_r(\phi) &= \text{Re } A(\phi) = \begin{pmatrix}
+A_c(\phi) &= \text{Re } A(\phi) = \begin{pmatrix}
 0 & \cos \phi & & \dots & \cos \phi \\
 \cos \phi & 0 & \cos \phi & & & \\
 & \ddots & \ddots & \ddots &  & \\
  & &\cos \phi  & 0 & \cos \phi  \\
 \cos \phi& \dots & & \cos \phi & 0
 \end{pmatrix} \\
-A_i(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
+A_s(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
 0 & -\sin \phi & & \dots & \sin \phi \\
 \sin \phi & 0 & -\sin \phi & & & \\
 & \ddots & \ddots & \ddots &  & \\
@@ -468,33 +468,38 @@ $a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \tilde{a}_n(t) \tild
 Let $c = (c_1, \dots, c_n)$ be a solution to \cref{eq:standingwavematrix}. This time, we split up the $c_n$ into real and imaginary parts by writing $c_n = u_n + i v_n$ for $n = 1, \dots, N$. The linearization of the PDE \cref{eq:cz} about the standing wave $c$ is the linear operator $\calL(c)$ on $H^2(\R, \R^{2N}) \subset L^2(\R, \R^{2N})$, defined by 
 \begin{equation}\label{eq:linc}
 \calL(c) = \begin{pmatrix}
-k A_i(\phi) + 2 \diag(u_n v_n) & \partial_t^2 - \omega + k A_r(\phi) + \diag(u_n^2) + 3 \diag(v_n^2) \\
--\partial_t^2 + \omega - k A_r(\phi) - 3\diag(u_n^2) - \diag(v_n^2) &
-k A_i(\phi) - 2 \diag(u_n v_n)
+k A_s(\phi) + 2 \diag(u_n v_n) & \partial_t^2 - \omega + k A_c(\phi) + \diag(u_n^2) + 3 \diag(v_n^2) \\
+-\partial_t^2 + \omega - k A_c(\phi) - 3\diag(u_n^2) - \diag(v_n^2) &
+k A_s(\phi) - 2 \diag(u_n v_n)
 \end{pmatrix},
 \end{equation}
-where $A_r(\phi)$ and $A_i(\phi)$ are defined above. The spectrum of $\calL(c) $ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(c) - \lambda \calI$ is not Fredholm \cite[Section 3.1]{Kapitula2013}, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ is nontrivial. The essential spectrum depends only on the background state, i.e. is independent of $c$. The operator $\calL(c)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
+where $A_c(\phi)$ and $A_s(\phi)$ are defined above. The spectrum of $\calL(c) $ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(c) - \lambda \calI$ is not Fredholm \cite[Section 3.1]{Kapitula2013}, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ is nontrivial. The essential spectrum depends only on the background state, i.e. is independent of $c$. The operator $\calL(c)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
 \begin{equation}\label{eq:L0}
 \calL(0) = \begin{pmatrix}
-k A_i(\phi) & \partial_t^2 - \omega + k A_r(\phi)  \\
--\partial_t^2 + \omega - k A_r(\phi) &
-k A_i(\phi) 
+k A_s(\phi) & \partial_t^2 - \omega + k A_c(\phi)  \\
+-\partial_t^2 + \omega - k A_c(\phi) &
+k A_s(\phi) 
 \end{pmatrix}.
 \end{equation}
-It follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that we can compute the essential spectrum of $\calL(c)$ by determining when $\calL(0)-\lambda \calI$ is not Fredholm. Following \cite[Section 3.1]{Kapitula2013} (see, in particular, Section 3.1.1.5, concerning the NLS equation), this occurs for all $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ has an imaginary spatial eigenvalue, i.e. 
-\begin{equation}\label{eq:essL0}
-\left(\calL(0)-\lambda \calI \right) \begin{pmatrix}u\\v\end{pmatrix} e^{i \mu t}
-\end{equation} 
-has a solution for $\mu \in \R$. We can compute this exactly for $\phi = 0$. In that case, as in \cite[Section 3.1.1.5]{Kapitula2013}, equation \cref{eq:essL0} reduces to 
-$\left[ \left( \mu^2 + \omega - k A_r(0) \right)^2 + \lambda^2 \right]v = 0$, which can only have a solution if $v$ is an eigenvector of $A_r(0)$. If $v$ is an eigenvector of $A_r(0)$ with eigenvalue $\xi$, then equation \cref{eq:essL0} reduces to $\left[ \left( \mu^2 + \omega - k \xi \right)^2 + \lambda^2 \right]v = 0$, which has a solution if and only if $\lambda = \pm i \left( \mu^2 + \omega - k \xi \right)$. Since $A_r(0)$ is a circulant matrix \cite{davis2012circulant}, it's eigenvalues are given by $\{ 2 \cos \frac{2 \pi}{N}j : j = 0, \dots N-1 \}$ . The largest positive eigenvalue is 2, therefore the essential spectrum is given by
-\[
-\lambda_{\text{ess}} = \left\{ \pm i \left( \mu^2 + \omega - 2 k \right) : \mu \in \R \right\}.
-\]
-In other words, the essential spectrum comprises two disjoint intervals on the imaginary axis.
-\begin{equation}\label{eq:less}
-\lambda_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty).
+It follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that we can compute the essential spectrum of $\calL(c)$ by determining when the constant coefficient operator $\calL(0)-\lambda \calI$ is not Fredholm. 
+
+\begin{proposition}\label{prop:ess}
+For $0 \leq \phi \leq \frac{2\pi}{N}$, define $\alpha$ by 
+\begin{equation}\label{eq:essalpha}
+\alpha = \begin{cases}
+\omega - 2 k \cos\left(\phi\right) & 0 \leq \phi \leq \frac{\pi}{N} \\
+\omega - 2 k \cos\left(\frac{2\pi}{N}-\phi\right) & \frac{\pi}{N} \leq \phi \leq \frac{2\pi}{N}.
+\end{cases}
 \end{equation}
-In particular, we note that the essential spectrum is bounded away from the origin. For $\phi = 0$, $\alpha = \omega - 2k$, which agrees very well with the numerical spectral computations (\cref{fig:phi0speca}). 
+If $\omega$, $k$, and $\phi$ are chosen so that $\alpha > 0$, the essential spectrum comprises two symmetric, disjoint intervals on the imaginary axis
+\begin{align}\label{eq:lessinterval}
+\lambda_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty).
+\end{align}
+$\alpha$ attains a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$.
+\end{proposition}
+We note that the essential spectrum is bounded away from the origin.
+
+ For $\phi = 0$, $\alpha = \omega - 2k$, which agrees very well with the numerical spectral computations (\cref{fig:phi0speca}). 
 
 \begin{figure}
     \centering
@@ -745,6 +750,57 @@ Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \tilde{a}_n \tilde{\theta}_n = (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{n+1} \tilde{\theta}_{n+1} \right),
 \end{equation}
 and we can divide by $\tilde{a}_n$ to solve for $\tilde{\theta}_n$. 
+
+\section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}
+
+Following \cite[Section 3.1]{Kapitula2013} (see, in particular, Section 3.1.1.5, concerning the NLS equation), the operator $\calL(0) - \lambda \calI$ is not Fredholm for $\lambda \in \C$ if it has an imaginary spatial eigenvalue, i.e. 
+$\left(\calL(0)-\lambda \calI \right) \begin{pmatrix}u\\v\end{pmatrix} e^{i r t}$
+has a solution for $r \in \R$ and $u, v \in \C^N$. After simplification, this reduces to the system of equations 
+\begin{equation}\label{eq:L0system}
+\begin{aligned}
+&(k A_s - \lambda)u - (r^2 + \omega - k A_c) v = 0 \\
+&(r^2 + \omega - k A_c)u + (k A_s - \lambda) v = 0.
+\end{aligned}
+\end{equation}
+$A_c$ and $A_s$ are both circulant matrices \cite{davis2012circulant}; the eigenvalues $\mu_j^c$ and $\mu_j^s$ of $A_c$ and $A_s$, together with their shared eigenvectors $v_j$, are given by
+\begin{equation}\label{eq:circeigs}
+\begin{aligned}
+v_j &= \frac{1}{\sqrt{N}}\left(1, \xi^j, \xi^{2j}, \dots, \xi^{(N-1)j} \right) \\
+\mu_j^c &= 2 \cos\left( \frac{2 \pi}{N} j\right) \cos \phi, \qquad 
+\mu_j^s = 2 i \sin\left( \frac{2 \pi}{N} j\right) \sin \phi
+\end{aligned}
+\end{equation}
+for $j = 0, \dots, N-1$, where $\xi = \exp{\frac{2\pi i}{N}}$ is a primitive $N$th root of unity. Since $A_s$ and $A_c$ appear in both equations in \cref{eq:L0system}, we can only have a solution if $u$ and $v$ are scalar multiples of one of the eigenvectors $v_j$. Letting $u = b_1 v_j$ and $v = b_2 v_j$, the system of equations \cref{eq:L0system} reduces to 
+\begin{equation}\label{eq:L0system2}
+\begin{aligned}
+&(k \mu_j^s - \lambda) b_1 - (r^2 + \omega - k \mu_j^c) b_2 = 0 \\
+&(r^2 + \omega - k \mu_j^c) b_1 + (k \mu_j^s - \lambda) b_2 = 0,
+\end{aligned}
+\end{equation}
+where we used the fact that $v_j \neq 0$. Multiplying the top equation by $(r^2 + \omega - k \mu_j^c)$ and substituting the bottom equation, this becomes
+\begin{equation*}
+\left[ (\lambda - k \mu_j^s)^2  + (r^2 + \omega - k \mu_j^c) \right] b_1 = 0.
+\end{equation*}
+For $k \mu_j^c \leq \omega$, this has a solution when
+\begin{align*}
+\lambda &= k \mu_j^s  \pm i (r^2 + \omega - k \mu_j^c) \\
+&= \pm i \left( r^2 + \omega \pm 2 k \sin\left( \frac{2 \pi}{N} j\right) \sin \phi 
+- 2 k \cos\left( \frac{2 \pi}{N} j\right) \cos \phi
+\right) \\
+&= \pm i \left( r^2 + \omega - 2k \cos \left( \frac{2 \pi}{N} j \pm \phi \right) \right)
+\end{align*}
+As long as $2k \max_{j=0,\dots,N-1} \cos \left( \frac{2 \pi}{N} j \pm \phi \right) \leq \omega$, $\lambda \in (-\infty,-\alpha]\cup[\alpha, \infty)$, where
+\begin{align}\label{eq:alpha1}
+\alpha = \omega - 2k \max_{j=0,\dots,N-1} \cos \left( \frac{2 \pi}{N} \right).
+\end{align}
+For $0 \leq \phi \leq 2 \pi/N$, 
+\begin{align*}
+\alpha = \begin{cases}
+\omega - 2 k \cos\left(\phi\right) & 0 \leq \phi \leq \frac{\pi}{N} \\
+\omega - 2 k \cos\left(\frac{2\pi}{N}-\phi\right) & \frac{\pi}{N} \leq \phi \leq \frac{2\pi}{N},
+\end{cases}
+\end{align*}
+which has a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$.
 
 \bibliographystyle{amsplain}
 \bibliography{twist2.bib}
