@@ -112,14 +112,14 @@ Richardson, TX 75080, USA}
 \email{zweck@utdallas.edu}
 
 \begin{abstract}
-    We consider stuff.
+We consider the existence and spectral stability of standing wave solutions to a model for light propagation in a twisted multi-core fiber which incorporates a temporal dispersion term. For an even number $N$ of waveguides, we derive asymptotic expressions for standing wave solutions in which the bulk of the light intensity is confined to a single waveguide. The leading order terms of these expressions are in very good agreement with results of numerical computations. Furthermore, as in the model without temporal dispersion, when the twist parameter $\phi$ is given by $\phi = \pi/N$, these standing waves exhibit optical suppression, in which a single waveguide remains unexcited, to leading order. Spectral computations and numerical evolution experiments suggest that these standing wave solutions are stable for values of $k$ less than a critical value, at which point a spectral instability results from the collision of an internal eigenmode with the eigenvalues at the origin. This critical value has a maximum when $\phi = \pi/N$.
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
 
-Multi-core optical fibers, optical waveguides which contain multiple fiber  cores within a single cladding, have important applications in optical communications, as well as diverse fields such as biomedical imaging and experimental physics \cite{Ortiz2018}. Addition of a twist to a circular multi-core fiber allows for fine control of diffraction and light transfer, in a similar manner to axis bending in linear waveguide arrays \cite{Longhi2005}. Initial mathematical work on light propagation in twisted, circular, multi-core fibers with was done in \cite{Longhi2007,Longhi2007b,Garanovich2012}, in which coupled mode equations modeling optical transmission were derived. In non-dimensionalized form (and in the setting of no optical gain or loss) these are given by
+Multi-core optical fibers, optical waveguides which contain multiple fiber cores within a single cladding, have important applications in optical communications, as well as diverse fields such as biomedical imaging and experimental physics \cite{Ortiz2018}. Addition of a twist to a circular multi-core fiber allows for fine control of diffraction and light transfer, in a similar manner to axis bending in linear waveguide arrays \cite{Longhi2005}. Initial mathematical work on light propagation in twisted, circular, multi-core fibers with was done in \cite{Longhi2007,Longhi2007b,Garanovich2012}, in which coupled mode equations modeling optical transmission were derived. In non-dimensionalized form (and in the setting of no optical gain or loss) these are given by
 \begin{equation}\label{eq:coupledmode}
 i \partial_z c_n + k \left(e^{i\phi}c_{n-1} + e^{-i\phi}c_{n+1} \right) + |c_n|^2 c_n = 0,
 \end{equation}
@@ -139,7 +139,7 @@ In what follows, we extend these results to a model incorporating a second-order
 \begin{align}\label{eq:cnz}
 &i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N,
 \end{align}
-where the complex amplitudes $c_n$ are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate that optical suppression also occurs in this model, to leading order, when the number of cores $N$ is even, and phase parameter $\phi$ is given by $\phi=\pi/N$. This paper is organized as follows. [SECTION SUMMARY].
+where the complex amplitudes $c_n$ are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate that optical suppression also occurs in this model, to leading order, when the number of cores $N$ is even, and phase parameter $\phi$ is given by $\phi=\pi/N$. This paper is organized as follows. In \cref{sec:model}, we continue our discussion of the mathematical model \cref{eq:cnz} we are studying, in particular its Hamiltonian structure, and derive equations for standing wave solutions. In \cref{sec:asymp}, we compute the leading order terms for asymptotic expansions of standing wave solutions where the bulk of the intensity is contained in a single waveguide; details of the computations are deferred to \cref{app:asymp}. In \cref{sec:numerics}, we present numerical results which validate our asymptotic solutions. In \cref{sec:stability}, we discuss the stability of these standing wave solutions, both with spectral computations and timestepping simulations, and we end with a brief concluding section which highlights directions for future research.
 
 % In \cref{sec:model}, we discuss the mathematical model we are using
 
@@ -185,11 +185,9 @@ with $I_n$ the $N \times N$ identity matrix, and the Hamiltonian \cref{eq:Hc} is
 \dot{q}_n^2 + \dot{p}_n^2 - \frac{1}{2}(q_n^2 + p_n^2)^2 \\
 &- \left[(p_{n-1} + p_{n+1}) \cos\phi - (q_{n-1} - p_{n+1}) \sin \phi\right] p_n \\
 &- \left[(p_{n-1} - p_{n+1}) \sin\phi + (q_{n-1} + p_{n+1}) \cos \phi\right] q_n
-\Big) dt,
+\Big) dt.
 \end{aligned}
 \end{equation}
-
-\section{Standing waves}\label{sec:standing}
 
 We are interested in finding standing wave solutions of the form $c_n(t) e^{i \omega z}$, which are oscillatory in $z$ with frequency $\omega$ and complex amplitude $c_n(t)$ depending only on $t$. Substituting this ansatz into \cref{eq:cnz}, a standing wave solution satisfies the system of $N$ coupled ordinary differential equations
 \begin{align}\label{eq:standingwave}
@@ -231,7 +229,7 @@ which we can split up into real and imaginary parts to get
 
 \section{Asymptotic solutions}\label{sec:asymp}
 
-We assume for now that the bulk of the intensity is contained a single node, which we will call the primary core and label $n=0$. We will take the number of waveguides $N$ to be even, although we will comment [IN A LATER SECTION] about what occurs when $N$ is odd. We will call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
+We assume for now that the bulk of the intensity is contained a single node, which we will call the primary core and label $n=0$. We will take the number of waveguides $N$ to be even. We will call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
 \begin{equation}\label{eq:symm}
 \begin{aligned}
 a_{-n}(t) &= a_{n}(t) && \qquad n = 1, \dots, N/2 \\
@@ -258,7 +256,7 @@ a_n(t) &= \mathcal{O}\left(k^n\right) && n = 1, \dots, N/2 \\
 \theta_n(t) &= n \phi + \mathcal{O}\left(k^{N - 2n}\right) && n = 1, \dots, N/2-1
 \end{aligned}
 \end{equation}
-Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n_1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively, to leading order.
+Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n-1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively, to leading order.
 
 Following the procedure detailed in \cref{app:asymp}, we obtain a solution to \cref{eq:st2} of the following form:
 \begin{equation}\label{eq:asympsol}
@@ -481,7 +479,7 @@ k A_s(\phi) & \partial_t^2 - \omega + k A_c(\phi)  \\
 k A_s(\phi) 
 \end{pmatrix}.
 \end{equation}
-It follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that we can compute the essential spectrum of $\calL(c)$ by determining when the constant coefficient operator $\calL(0)-\lambda \calI$ is not Fredholm. 
+It follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that we can compute the essential spectrum of $\calL(c)$ by determining when the constant coefficient operator $\calL(0)-\lambda \calI$ is not Fredholm. The following proposition locates the essential spectrum of $\calL(c)$. The proof is given in \cref{app:prop1proof}.
 
 \begin{proposition}\label{prop:ess}
 For $0 \leq \phi \leq \frac{2\pi}{N}$, define $\alpha$ by 
@@ -491,46 +489,87 @@ For $0 \leq \phi \leq \frac{2\pi}{N}$, define $\alpha$ by
 \omega - 2 k \cos\left(\frac{2\pi}{N}-\phi\right) & \frac{\pi}{N} \leq \phi \leq \frac{2\pi}{N}.
 \end{cases}
 \end{equation}
-If $\omega$, $k$, and $\phi$ are chosen so that $\alpha > 0$, the essential spectrum comprises two symmetric, disjoint intervals on the imaginary axis
+If $\omega$, $k$, and $\phi$ are chosen so that $\alpha > 0$, the essential spectrum comprises two symmetric, disjoint bands on the imaginary axis
 \begin{align}\label{eq:lessinterval}
-\lambda_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty).
+\lambda_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty),
 \end{align}
-$\alpha$ attains a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$.
+and $\alpha$ attains a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$.
 \end{proposition}
-We note that the essential spectrum is bounded away from the origin.
+Although we have only defined $\alpha$ on the interval $0 \leq \phi \leq \frac{2\pi}{N}$, it follows from the proof in \cref{app:prop1proof} that $\alpha$ is periodic with period $\frac{2\pi}{N}$. We note that the essential spectrum is bounded away from the origin when $\alpha>0$. In addition, both $\alpha$ and $k^*$ attain a maximum at $\phi = \pi/N$. 
 
- For $\phi = 0$, $\alpha = \omega - 2k$, which agrees very well with the numerical spectral computations (\cref{fig:phi0speca}). 
+The spectrum of $\calL(c)$ is found by discretizing the differentiation matrices in \cref{eq:linc} using Fourier spectral differentiation matrices, writing the operator as a block matrix, and computing the eigenvalues of that matrix using MATLAB's eigenvalue solver \texttt{eig}. The two essential spectrum bands can be seen in the bottom plots of \cref{fig:phi0spec}; the essential spectrum is a discrete set of points in these plots rather than continuous bands due to the spatial discretization. \cref{fig:phi0speca} plots the essential spectrum border $\alpha$ as computed by MATLAB, together with the analytical value given by \cref{eq:essalpha}. The relative error of the numerical result is less than 1\%. 
 
 \begin{figure}
     \centering
     \begin{subfigure}{0.4\linewidth}
         \caption{}
         \label{fig:phi0speca}
-        \includegraphics[width=5cm]{phi0speck.eps}
+        \includegraphics[width=5cm]{phi025speck.eps}
     \end{subfigure}
     \begin{subfigure}{0.4\linewidth}
         \caption{}
         \label{fig:phi0specb}
-        \includegraphics[width=5cm]{phi0spec1.eps}
+        \includegraphics[width=5cm]{keplot.eps}
     \end{subfigure}
         \begin{subfigure}{0.4\linewidth}
         \caption{}
         \label{fig:phi0specc}
-        \includegraphics[width=5cm]{phi0spec2.eps}
+        \includegraphics[width=5cm]{phi025spec2.eps}
     \end{subfigure}
     \begin{subfigure}{0.4\linewidth}
         \caption{}
         \label{fig:phi0specd}
-        \includegraphics[width=5cm]{phi0spec3.eps}
+        \includegraphics[width=5cm]{phi025spec3.eps}
     \end{subfigure}
-    \caption{(a) plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (b), (c), (d) Spectrum of $\calL(c)$ for increasing $k$. $\phi =0$, $\omega=1$, time domain $[-30,30]$, 256 Fourier nodes per core.}
+    \caption{(a) plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (b) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. (c), (d) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:phi0spec}
 \end{figure}
 
 We now turn to the point spectrum of $\calL(c)$. As with NLS \cite[Chapter 2.1.1.1]{Kevrekidis2009},
 The kernel of $\calL(c)$ has algebraic multiplicity 4 and geometric multiplicity 2. The kernel is spanned by the two eigenfunctions 
 $w_1 = (\partial_t u_1, \dots, \partial_t u_N, \partial_t v_1, \dots, \partial_t v_N )^T$ and 
-$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$. In addition, there is a pair of internal mode eigenvalues $\pm \lambda_e$, which will call edge modes since they split off from the edge of the essential spectrum (these can be seen in \cref{fig:phi0specc}). As $k$ increases, $\lambda_e$ moves towards the origin (see \cref{fig:phi0speca} for a plot of its location vs. $k$), collides with the eigenvalues at the origin at a critical value $k = k_e$, and then moves onto the real axis (\cref{fig:phi0specd}). This suggests that the solution $c$ is stable for $0 < k < k_e$ and unstable for $k > k_e$.
+$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$. In addition, there is a pair of internal mode eigenvalues $\pm \lambda_e$, which will call edge modes since they split off from the edge of the essential spectrum (these can be seen in \cref{fig:phi0specc}). As $k$ increases, $\lambda_e$ moves towards the origin (see \cref{fig:phi0speca} for a plot of $\lambda_e$ vs. $k$), collides with the eigenvalues at the origin at a critical value $k = k_e$, and then moves onto the real axis (\cref{fig:phi0specd}). This suggests that the solution $c$ is neutrally stable for $0 < k < k_e$ and unstable for $k > k_e$. A plot of this critical value $k_e$ vs. $\phi$ (\cref{fig:phi0specb}) suggests that the maximum value of $k_e$ occurs when $\phi = \pi/N$.
+
+Numerical evolution experiments suggest that this internal mode primarily affects the phases $\theta_n$ of the standing wave. For $k < k_e$, the internal mode eigenvalue $\lambda_e$ is imaginary. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits phase oscillations with frequency $\lambda_e$, with relative error less than $10^{-3}$ (see \cref{fig:evolz1b}). For $k > k_e$, the internal mode eigenvalue $\lambda_e$ is real. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits exponential growth in the phases; the growth rate is $\lambda_e$ with relative error less than $10^{-2}$ (see \cref{fig:evolz1d}). We note that in both cases, the amplitudes of the perturbed solutions also exhibit oscillatory behavior (\cref{fig:evolz1a} and \cref{fig:evolz1c}), although the magnitude of these oscillations in $L^2$ norm is much larger for $k > k_e$ than for $k < k_e$.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:evolz1a}
+        \includegraphics[width=5cm]{stableamp1.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:evolz1b}
+        \includegraphics[width=5cm]{stablephase1.eps}
+    \end{subfigure}
+        \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:evolz1c}
+        \includegraphics[width=5cm]{unstableamp1.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:evolz1d}
+        \includegraphics[width=5cm]{unstablephase1.eps}
+    \end{subfigure}
+    \caption{Evolution $c(z)$ in $z$ of perturbations of standing wave solution $c_0$ for $k = 0.25$ (top, edge mode $\lambda = \pm 0.239i$) and $k = 0.35$ (bottom, edge mode $\lambda = \pm 0.255$). Initial condition is $c_0 + \epsilon v_e$, where $v_e$ is eigenfunction corresponding to edge mode and $\epsilon = 10^{-2}$. Left panels show evolution of $L^2$ norm difference between amplitude $|c(z)|$ of perturbation and amplitude $|c_0|$ of standing wave. Right panels show evolution of phase differences at centers of peaks between perturbation $c(z)$ and standing wave $c_0$. $N=6$, $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core, evolution using \texttt{ode45} in MATLAB.}
+    \label{fig:evolz1}
+\end{figure}
+
+\section{Conclusions}
+
+In this paper, we studied a model of light propagation in a twisted multi-core fiber with a term incorporating temporal dispersion. We derived asymptotic expressions for standing wave solutions in which the number of waveguides $N$ is even, and the bulk of the intensity is contained in a single node (the primary core), and the amplitudes and phases of the solution obey certain symmetry relations. These expressions are in very good agreement with results from numerical parameter continuation. Furthermore, the asymptotic analysis shows that for an even number $N$ of waveguides, there is significant suppression of optical activity in the waveguide opposite the primary core when the twist parameter $\phi$ and the number of waveguides $N$ are related by $\phi = \pi/N$. This is the exact same relationship as in the model with no temporal dispersion \cite{parker2021}.
+Numerical computation suggests that there are two critical values $k_e$ and $k^*$ of $k$, with $0 < k_e < k^*$. The standing wave solution exists for $0 < k < k^*$ and is stable for $0 < k < k_e$, at which point an internal eigenmode collides with the eigenvalues at the origin. Both $k_e$ and $k^*$ attain their maximum when $\phi = \pi/N$, which is also the angle for which the essential spectrum boundary $\alpha$ is furthest from the origin.
+
+Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion; as in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. Future research could involve extending the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or studying the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would include examining the continuum limit, i.e. what happens if we send $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter $\phi$ is proportional to $1/N$, thus we will have $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with standing waves generated experimentally.
+
+\vspace{0.5cm}
+% \begin{acknowledgments}
+\textbf{Acknowledgments}: 
+This material is based upon work supported by the U.S. National Science Foundation under the RTG grant DMS-1840260 (R.P. and A.A.) and DMS-1909559 (AA). PUT OTHER GRANT INFO HERE.
+% \end{acknowledgments}
 
 \appendix
 
@@ -558,13 +597,13 @@ a_0 \ddot\theta_0 + 2 \dot a_0 \dot \theta_0 = 2 k a_1 \cos(\theta_1 - \phi) \si
 \end{equation}
 for which $\theta_0(t) = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the $\theta_{N/2} = 0$ is a solution to the imaginary part of \cref{eq:st2} for $n=N/2$, thus this condition is consistent as well.
 
-\section{Asymptotics}\label{app:asymp}
+\section{Asymptotic analysis}\label{app:asymp}
 
 Let $a_n(t)$ and $\theta_n(t)$ be the amplitudes and phases at site $n$, as in the ansatz \cref{eq:cnansatz}, where $n \in S = \{ 0, \pm 1, \dots, \pm N/2-1, N/2 \}$. We will take 
 \[
 a_n(t), \theta_n(t) \in H^2(\R) \subset L^2(\R),
 \]
-where $L^2(\R)$ is the space of real, valued square-integrable functions on $\R$ equipped with the standard inner product, and $H^2(\R)$ is the corresponding Sobelev space. We note that the system of equations \cref{eq:st2} is translation invariant, i.e. if $\{ a_n(t), \theta_n(t)\}_{n\in S}$ is a solution, then so is $\{ a_n(t-\tau), \theta_n(t-\tau)\}_{n\in S}$ for any $\tau \in \R$. When $k = 0$, we want the solution $a_0(t)$ to be the ordinary NLS soliton $\psi(t)$, which is centered at 0. To ensure that the solution we find is not shifted in $t$, we impose the phase condition on the amplitude $a_0(t)$
+where $L^2(\R)$ is the space of real, valued square-integrable functions on $\R$ equipped with the standard inner product, and $H^2(\R)$ is the corresponding Sobolev space. We note that the system of equations \cref{eq:st2} is translation invariant, i.e. if $\{ a_n(t), \theta_n(t)\}_{n\in S}$ is a solution, then so is $\{ a_n(t-\tau), \theta_n(t-\tau)\}_{n\in S}$ for any $\tau \in \R$. When $k = 0$, we want the solution $a_0(t)$ to be the ordinary NLS soliton $\psi(t)$, which is centered at 0. To ensure that the solution we find is not shifted in $t$, we impose the phase condition on the amplitude $a_0(t)$
 \begin{equation}\label{eq:phasecond}
 \langle a_0(t), \dot{\psi}(t) \rangle_{L^2(\R)} = \int_{-\infty}^\infty a_0(t) \dot{\psi}(t) dt = 0.
 \end{equation}
@@ -574,7 +613,7 @@ Next, define the linear operator $\Lw: H^2(\R) \subset L^2(\R) \rightarrow L^2(\
 \begin{equation}\label{eq:Lw}
 \Lw = \omega - \partial_t^2.
 \end{equation}
-Since all functions in $L^2(\R)$ vanish at infinity, the kernel of $\Lw$ is $\{0\}$, i.e. the only solution in $H^2(\R)$ to $\Lw f = 0$ is $f = 0$. Furthermore the operator $\Lw$ is invertible [REF?].
+Since all functions in $L^2(\R)$ vanish at infinity, the kernel of $\Lw$ is $\{0\}$, i.e. the only solution in $H^2(\R)$ to $\Lw f = 0$ is $f = 0$. Furthermore the operator $\Lw$ is invertible on $L^2(\R)$. We also note that if we use periodic boundary conditions on $[-T,T]$, as long as we take $\omega > 0$, $\ker \Lw = \{0\}$, and $\Lw$ is invertible on $L^2_{\text{per}}([-T,T])$.
 
 Finally, we recall that the NLS soliton $\psi(t)$ is a real-valued, standing wave solution to the NLS equation with frequency $\omega$, thus it solves 
 \begin{equation}\label{eq:NLSreal}
@@ -584,7 +623,7 @@ Linearizing this equation about $\dot{\psi}(t)$ yields the self-adjoint linear o
 \begin{equation}\label{eq:Lpsi}
 \calL(\psi) = \partial_t^2 - \omega + 3 \psi^2.
 \end{equation}
-The kernel of $\dot{\psi}(t)$ is one-dimensional, and is spanned by $\dot{\psi}(t)$. By the Fredholm alternative [REF], since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u(t)$ has a solution if $u(t) \perp \dot{\psi}(t)$.
+The kernel of $\dot{\psi}(t)$ is one-dimensional, and is spanned by $\dot{\psi}(t)$. By the Fredholm alternative \cite{Ramm2001}, since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u(t)$ has a solution if $u(t) \perp \dot{\psi}(t)$.
 
 \subsection{Primary core}
 
@@ -751,7 +790,7 @@ Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \end{equation}
 and we can divide by $\tilde{a}_n$ to solve for $\tilde{\theta}_n$. 
 
-\section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}
+\section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}\label{app:prop1proof}
 
 Following \cite[Section 3.1]{Kapitula2013} (see, in particular, Section 3.1.1.5, concerning the NLS equation), the operator $\calL(0) - \lambda \calI$ is not Fredholm for $\lambda \in \C$ if it has an imaginary spatial eigenvalue, i.e. 
 $\left(\calL(0)-\lambda \calI \right) \begin{pmatrix}u\\v\end{pmatrix} e^{i r t}$
