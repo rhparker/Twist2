@@ -31,9 +31,11 @@
 \usepackage[capitalize,nameinlink]{cleveref}
 % Per SIAM Style Manual, "section" should be lowercase
 \crefname{section}{section}{sections}
+\crefname{appendix}{appendix}{appendices}
 \crefname{subsection}{subsection}{subsections}
 \Crefname{section}{Section}{Sections}
 \Crefname{subsection}{Subsection}{Subsections}
+\Crefname{appendix}{Appendix}{Appendices}
 
 % Per SIAM Style Manual, "Figure" should be spelled out in references
 \Crefname{figure}{Figure}{Figures}
@@ -112,18 +114,19 @@ Richardson, TX 75080, USA}
 \email{zweck@utdallas.edu}
 
 \begin{abstract}
-We consider the existence and spectral stability of standing wave solutions to a model for light propagation in a twisted multi-core fiber which incorporates a temporal dispersion term. For an even number $N$ of waveguides, we derive asymptotic expressions for standing wave solutions in which the bulk of the light intensity is confined to a single waveguide. The leading order terms of these expressions are in very good agreement with results of numerical computations. Furthermore, as in the model without temporal dispersion, when the twist parameter $\phi$ is given by $\phi = \pi/N$, these standing waves exhibit optical suppression, in which a single waveguide remains unexcited, to leading order. Spectral computations and numerical evolution experiments suggest that these standing wave solutions are stable for values of $k$ less than a critical value, at which point a spectral instability results from the collision of an internal eigenmode with the eigenvalues at the origin. This critical value has a maximum when $\phi = \pi/N$.
+We consider the existence and spectral stability of standing wave solutions to a model for light propagation in a twisted multi-core fiber which incorporates a temporal dispersion term. For an even number $N$ of waveguides, we derive asymptotic expressions for standing wave solutions in which the bulk of the light intensity is confined to a single waveguide. The leading order terms of these expressions are in very good agreement with results of numerical computations. Furthermore, as in the model without temporal dispersion, when the twist parameter $\phi$ is given by $\phi = \pi/N$, these standing waves exhibit optical suppression, in which a single waveguide remains unexcited, to leading order. Spectral computations and numerical evolution experiments suggest that these standing wave solutions are stable for values of the coupling parameter $k$ less than a critical value, at which point a spectral instability results from the collision of an internal eigenvalue with the eigenvalues at the origin. This critical value has a maximum when $\phi = \pi/N$.
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
 
-Multi-core optical fibers, optical waveguides which contain multiple fiber cores within a single cladding, have important applications in optical communications, as well as diverse fields such as biomedical imaging and experimental physics \cite{Ortiz2018}. Addition of a twist to a circular multi-core fiber allows for fine control of diffraction and light transfer, in a similar manner to axis bending in linear waveguide arrays \cite{Longhi2005}. Initial mathematical work on light propagation in twisted, circular, multi-core fibers with was done in \cite{Longhi2007,Longhi2007b,Garanovich2012}, in which coupled mode equations modeling optical transmission were derived. In non-dimensionalized form (and in the setting of no optical gain or loss) these are given by
+Multi-core optical fibers, which are optical waveguides that contain multiple fiber cores within a single cladding, have important applications in optical communications, as well as in diverse fields such as biomedical imaging and experimental physics \cite{Ortiz2018}. Addition of a twist to a circular multi-core fiber allows for fine control of diffraction and light transfer, in a similar manner to axis bending in linear waveguide arrays \cite{Longhi2005}. The coupled mode equations that model optical transmission in twisted, circular, multi-core fibers were derived in \cite{Longhi2007,Longhi2007b,Garanovich2012}. In non-dimensionalized form (and in the setting of no optical gain or loss) these equations are given by
 \begin{equation}\label{eq:coupledmode}
 i \partial_z c_n + k \left(e^{i\phi}c_{n-1} + e^{-i\phi}c_{n+1} \right) + |c_n|^2 c_n = 0,
 \end{equation}
-for $n = 1, \dots, N$, where $N$ is the number of fibers in the ring, and the indices $n$ are taken $\md n$ due to the circular geometry (\cref{fig:circle}). The complex amplitudes $c_n(z)$ represent the localized field amplitude in each waveguide, the independent variable $z$ is the axis of propagation, the parameter $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring, and $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$ is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016}. We note that in this model, the intensity $c_n(z)$ of each waveguide is independent of the time $t$.
+for $n = 1, \dots, N$, where $N$ is the number of fibers in the ring, and the indices $n$ are taken $\md n$ due to the circular geometry (\cref{fig:circle}).
+The complex amplitudes $c_n(z)$ represent the localized field amplitude in each waveguide, the independent variable $z$ is along the axis of propagation, and the parameter $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring. The entire fiber structure is twisted along the propagation axis with a spatial period $\Lambda$, and the twist parameter $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$ is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $\epsilon = 2 \pi / \Lambda$ is the frequency of the twist, $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016,Parto2017}. We note that in this model, the intensity $c_n(z)$ of each waveguide is independent of time $t$.
 
 \begin{figure}
 \begin{center}
@@ -133,19 +136,18 @@ for $n = 1, \dots, N$, where $N$ is the number of fibers in the ring, and the in
 \label{fig:circle}
 \end{figure}
 
-Twisted multi-core fibers have applications in distributive sensing, in which position, temperature, strain and acoustic signals can be detected along the entire length of the fiber \cite{Gannot2014,Westbrook2017}. Of particular note is shape sensing, in which the shape of the optical fiber can be reconstructed using measurements of light transmission and scattering through the fiber. The fiber twist permits the establishment of a topological state in the fiber, in which the intensity in one (or more) of the cores is completely suppressed. A six-core twisted optical fiber was considered in \cite{castro2016}, and asymptotic analysis showed that if the bulk of the optical intensity is confined to a single fiber in the ring, the opposite fiber in the ring is suppressed, to leading order, when $\phi = \pi/6$. This phenomenon is discussed as an optical analogue of Aharonov-Bohm (AB) suppression of tunneling in \cite{Ornigotti2007,Parto2017,Parto2019}; the fiber twist plays the role of the magnetic flux in the quantum mechanical system \cite{Loss1992}. This suppression effect was shown analytically for a four-core optical fiber when $\phi=\pi/4$ in \cite{Parto2019}. In \cite{parker2021}, we extended this analysis to standing waves, solutions of the form $c_n = a_n e^{i (\omega z + \theta_n) }$ which are constant in amplitude and oscillatory in $z$. We showed that when the number of fibers $N$ is even, standing wave solutions exist in which the bulk of the intensity is contained in a single fiber core, and the intensity in the opposite core in the ring is completely suppressed for all $z$ when $\phi = \pi/N$. Using numerical spectral computation and evolution experiments, we showed that these standing wave solutions are stable, and we also extended these results to the $N$ odd case.
+Twisted multi-core fibers have applications in distributive sensing, in which position, temperature, strain, and acoustic signals can be detected along the entire length of the fiber \cite{Gannot2014,Westbrook2017}. Of particular note is shape sensing, in which the shape of the optical fiber can be reconstructed using measurements of light transmission and scattering through the fiber. The fiber twist permits the establishment of a topological state in the fiber, in which the intensity in one (or more) of the cores is completely suppressed. A six-core twisted optical fiber was considered in \cite{castro2016}, and asymptotic analysis showed that if the bulk of the optical intensity is confined to a single fiber in the ring, the opposite fiber in the ring is suppressed, to leading order, when $\phi = \pi/6$. This phenomenon is interpreted as an optical analogue of Aharonov-Bohm (AB) suppression of tunneling in \cite{Ornigotti2007,Parto2017,Parto2019}, in which the fiber twist plays the role of the magnetic flux in the quantum mechanical system \cite{Loss1992}. This suppression effect was shown analytically for a four-core optical fiber when $\phi=\pi/4$ in \cite{Parto2019}. In \cite{parker2021} we extended this analysis to standing waves, solutions of the form $c_n = a_n e^{i (\omega z + \theta_n) }$ which are constant in amplitude and oscillatory in $z$. We showed that when the number of fibers $N$ is even, standing wave solutions exist in which the bulk of the intensity is contained in a single fiber core, and the intensity in the opposite core in the ring is completely suppressed for all $z$ when $\phi = \pi/N$. Using numerical spectral computation and evolution experiments, we showed that these standing wave solutions are stable, and we also extended these results to the case that $N$ is odd.
 
-In what follows, we extend these results to a model incorporating a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger equation
+In this paper, we extend these results to a model incorporating a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger equation, namely,
 \begin{align}\label{eq:cnz}
 &i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N,
 \end{align}
-where the complex amplitudes $c_n$ are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. We demonstrate that optical suppression also occurs in this model, to leading order, when the number of cores $N$ is even, and phase parameter $\phi$ is given by $\phi=\pi/N$. This paper is organized as follows. In \cref{sec:model}, we continue our discussion of the mathematical model \cref{eq:cnz} we are studying, in particular its Hamiltonian structure, and derive equations for standing wave solutions. In \cref{sec:asymp}, we compute the leading order terms for asymptotic expansions of standing wave solutions where the bulk of the intensity is contained in a single waveguide; details of the computations are deferred to \cref{app:asymp}. In \cref{sec:numerics}, we present numerical results which validate our asymptotic solutions. In \cref{sec:stability}, we discuss the stability of these standing wave solutions, both with spectral computations and timestepping simulations, and we end with a brief concluding section which highlights directions for future research.
-
-% In \cref{sec:model}, we discuss the mathematical model we are using
+where the complex amplitudes $c_n$ are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. Since these results derive from power series expansions in the coupling parameter $k$, we consider only the case of weak coupling, i.e. $k < 1$.
+We demonstrate that optical suppression also occurs in this model when the number of cores $N$ is even, and phase parameter $\phi$ is given by $\phi=\pi/N$. The paper is organized as follows. In \cref{sec:model}, we continue our discussion of the mathematical model \cref{eq:cnz} we are studying, in particular its Hamiltonian structure, and derive equations for standing wave solutions. In \cref{sec:asymp}, we compute the leading order terms for asymptotic expansions of standing wave solutions where the bulk of the intensity is contained in a single waveguide. Details of the computations are deferred to \cref{app:asymp}. In \cref{sec:numerics}, we present numerical results which validate our asymptotic solutions. In \cref{sec:stability}, we discuss the stability of these standing wave solutions, both with spectral computations and timestepping simulations, and we end with a brief concluding section which highlights directions for future research.
 
 \section{Mathematical model}\label{sec:model}
 
-We start by discussing the mathematical model \cref{eq:cnz} we will be investigating. Let $c = (c_1, \dots, c_n)^T$. We can write \cref{eq:cnz} in matrix form as
+We start by discussing the mathematical model \cref{eq:cnz} we will be investigating. Setting $c = (c_1, \dots, c_n)^T$, we can write \cref{eq:cnz} in matrix form as
 \begin{align}\label{eq:cz}
 i \partial_z c + \partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2\right)c = 0,
 \end{align}
@@ -177,10 +179,10 @@ J = \begin{pmatrix}
 0 & I_n \\ -I_n & 0
 \end{pmatrix},
 \]
-with $I_n$ the $N \times N$ identity matrix, and the Hamiltonian \cref{eq:Hc} is written in terms of the $q_n$ and $p_n$ as
+with $I_n$ the $N \times N$ identity matrix, and where the Hamiltonian \cref{eq:Hc} is written in terms of the $q_n$ and $p_n$ as
 \begin{equation}\label{eq:Hqp}
 \begin{aligned}
-\calH(q_1, \dots, q_N, &p_1, \dots, p_N) = \sum_{n=1}^N \int_{-\infty}^\infty 
+\calH(q_1, \dots, q_N, p_1, \dots, p_N) = \sum_{n=1}^N &\int_{-\infty}^\infty 
 \Big(
 \dot{q}_n^2 + \dot{p}_n^2 - \frac{1}{2}(q_n^2 + p_n^2)^2 \\
 &- \left[(p_{n-1} + p_{n+1}) \cos\phi - (q_{n-1} - p_{n+1}) \sin \phi\right] p_n \\
@@ -189,29 +191,31 @@ with $I_n$ the $N \times N$ identity matrix, and the Hamiltonian \cref{eq:Hc} is
 \end{aligned}
 \end{equation}
 
-We are interested in finding standing wave solutions of the form $c_n(t) e^{i \omega z}$, which are oscillatory in $z$ with frequency $\omega$ and complex amplitude $c_n(t)$ depending only on $t$. Substituting this ansatz into \cref{eq:cnz}, a standing wave solution satisfies the system of $N$ coupled ordinary differential equations
+We are interested in finding standing wave solutions of the form, $c_n(z, t) = c_n(t) e^{i \omega z}$, which are oscillatory in $z$ with frequency, $\omega$, and complex amplitude, $c_n(t)$, depending only on $t$. Substituting this ansatz into \cref{eq:cnz}, the amplitudes $c_n = c_n(t)$ satisfy the system of $N$ coupled ordinary differential equations
 \begin{align}\label{eq:standingwave}
 \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n - \omega c_n = 0,
 \end{align}
 where the subscripts $n$ are taken $\md N$. Letting $c = (c_1, \dots, c_n)^T$, we can write this in matrix form as 
 \begin{align}\label{eq:standingwavematrix}
-\partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2 \right)c  - \omega c = 0
+\partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2 \right)c  - \omega c = 0.
 \end{align}
-When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit, this reduces to $N$ independent copies of the standing wave equation for the NLS equation. The solution at each site is either 0 or the NLS soliton
+When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit \cite{Serg1990,Kevrekidis2009}, equation \cref{eq:standingwavematrix} reduces to $N$ independent copies of the standing wave equation for the NLS equation. The solution at each site is either 0 or the NLS soliton
 \begin{equation}\label{eq:NLSsoliton}
 \psi(t) = \sqrt{2 \omega} \sech(\sqrt{\omega} t).
 \end{equation}
-Due to the gauge symmetry of NLS, we can multiply \cref{eq:NLSsoliton} by $e^{i \theta}$ for any $\theta$. Next, we write $c_n(t)$ as
+Due to the gauge symmetry of NLS, we can multiply \cref{eq:NLSsoliton} by $e^{i \theta}$ for any $\theta$. 
+
+Next, we write $c_n$ as
 \begin{equation}\label{eq:cnansatz}
 c_n(t) = a_n(t)e^{i \theta_n(t)},
 \end{equation}
-where we have separated each complex amplitude $c_n(t)$ into its real amplitude $a_n(t)$ and phase $\theta_n(t)$. Substituting this into \cref{eq:standingwave}, we obtain the equation
+where we have separated each complex amplitude $c_n(t)$ into its real amplitude $a_n(t)$ and phase $\theta_n(t)$. Substituting \cref{eq:cnansatz} into \cref{eq:standingwave}, we obtain the equation
 \begin{align*}
 e^{i \theta_n}&\left[ (\ddot a_n - a_n (\dot \theta_n)^2) 
 + i ( a_n \ddot\theta_n + 2 \dot a_n \dot \theta_n ) \right] \\
-&+ k\left(e^{i\phi}a_{n-1}e^{i \theta_{n-1}} +e^{-i\phi}a_{n+1}e^{i \theta_{n+1}}\right)+|a_n|^2 a_n e^{i \theta_n} - \omega a_n e^{i \theta_n} = 0.
+&+ k\left(e^{i\phi}a_{n-1}e^{i \theta_{n-1}} +e^{-i\phi}a_{n+1}e^{i \theta_{n+1}}\right)+|a_n|^2 a_n e^{i \theta_n} - \omega a_n e^{i \theta_n} = 0,
 \end{align*}
-where we have suppressed the dependence on $t$ and used the overdot notation for derivatives with respect to $t$ for convenience. Dividing by $e^{i \theta_n}$, this becomes
+where we have suppressed the dependence on $t$. Dividing by $e^{i \theta_n}$, we obtain
 \begin{equation}\label{eq:st2}
 \begin{aligned}
 (\ddot a_n &- a_n (\dot \theta_n)^2) 
@@ -219,7 +223,7 @@ where we have suppressed the dependence on $t$ and used the overdot notation for
 &+ k\left(a_{n-1}e^{-i[(\theta_n - \theta_{n-1}) - \phi]} + a_{n+1}e^{i[(\theta_{n+1} - \theta_{n}) - \phi]} \right)+a_n^3 - \omega a_n = 0,
 \end{aligned}
 \end{equation}  
-which we can split up into real and imaginary parts to get
+which we can split up into real and imaginary parts to obtain
 \begin{align}
 &\ddot a_n - a_n (\dot \theta_n)^2 +
  k\left(a_{n-1}\cos[(\theta_n - \theta_{n-1}) - \phi] + a_{n+1}\cos[(\theta_{n+1} - \theta_{n}) - \phi] \right)+a_n^3 - \omega a_n = 0 \label{eq:st2real} \\
@@ -229,7 +233,7 @@ which we can split up into real and imaginary parts to get
 
 \section{Asymptotic solutions}\label{sec:asymp}
 
-We assume for now that the bulk of the intensity is contained a single node, which we will call the primary core and label $n=0$. We will take the number of waveguides $N$ to be even. We will call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
+We assume for now that the bulk of the intensity is contained a single node, which we will call the primary core and label $n=0$. We choose the number of waveguides $N$ to be even. We call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
 \begin{equation}\label{eq:symm}
 \begin{aligned}
 a_{-n}(t) &= a_{n}(t) && \qquad n = 1, \dots, N/2 \\
@@ -238,17 +242,17 @@ a_{-n}(t) &= a_{n}(t) && \qquad n = 1, \dots, N/2 \\
 \theta_{N/2}(t) &= 0.
 \end{aligned}
 \end{equation} 
-We verify in \cref{app:symm} that these symmetry conditions are consistent, and we will look for a solution with these specific symmetries. 
+We verify in \cref{app:symm} that these symmetry conditions are consistent with \cref{eq:st2}, and we will look for a solution with these specific symmetries. 
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=7cm]{symm6}
 \end{center}
-\caption{Symmetry relations and site labeling in twisted, circular, multi-core fiber consisting of 6 waveguides.}
+\caption{Symmetry relations and site labeling in a twisted, circular, multi-core fiber consisting of 6 waveguides.}
 \label{fig:symm6}
 \end{figure}
 
-To find a leading order approximation for a solution to \cref{eq:st2}, we will assume that the amplitudes $a_n(t)$ and phases $\theta_n(t)$ have power series expansions in the coupling parameter $k$. Furthermore, we will assume that these terms have the following orders of magnitude in $k$, which are suggested by numerical parameter continuation experiments:
+To find a leading order approximation for a solution to \cref{eq:st2}, we assume that the amplitudes $a_n(t)$ and phases $\theta_n(t)$ have power series expansions in the coupling parameter $k$, where we take $0 \leq k < 1$. Furthermore, we assume that these terms have the following orders of magnitude in $k$, which are suggested by numerical parameter continuation experiments:
 \begin{equation}\label{eq:basicseries}
 \begin{aligned}
 a_0(t) &= \psi(t) + \mathcal{O}\left(k\right) \\
@@ -256,59 +260,61 @@ a_n(t) &= \mathcal{O}\left(k^n\right) && n = 1, \dots, N/2 \\
 \theta_n(t) &= n \phi + \mathcal{O}\left(k^{N - 2n}\right) && n = 1, \dots, N/2-1
 \end{aligned}
 \end{equation}
-Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n-1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively, to leading order.
+Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_1(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n-1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that, to leading order, the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively.
 
-Following the procedure detailed in \cref{app:asymp}, we obtain a solution to \cref{eq:st2} of the following form:
+Following the procedure detailed in \cref{app:asymp}, we obtain a solution to \cref{eq:st2} of the form
 \begin{equation}\label{eq:asympsol}
 \begin{aligned}
-a_0(t) &= \psi(t) + k^2 \tilde{a}_0(t) + \mathcal{O}(k^3) \\
-a_n(t) &= k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+1}) && n = 1, \dots, N/2 \\
-\theta_n(t) &= n \phi + k^{N - 2n} \tilde{\theta}_n(t) 
-+ \mathcal{O}(k^{N - 2n+1}) && n = 1, \dots, N/2-1.
+a_0(t) &= \psi(t) + k^2 \widetilde{a}_0(t) + \mathcal{O}(k^3) \\
+a_n(t) &= k^n \widetilde{a}_n(t) + \mathcal{O}(k^{n+1}) && n = 1, \dots, N/2 \\
+\theta_n(t) &= n \phi + k^{N - 2n} \widetilde{\theta}_n(t) 
++ \mathcal{O}(k^{N - 2n+1}) && n = 1, \dots, N/2-1,
 \end{aligned}
 \end{equation}
-For $n = 1, \dots, N/2$, $\tilde{a}_n(t)$ is defined recursively as 
+where $\widetilde{a}_n(t)$ is defined recursively as 
 \begin{equation}\label{eq:tildean}
 \begin{aligned}
-\tilde{a}_1(t) &= (\omega - \partial_t^2)^{-1} \psi(t) \\
-\tilde{a}_n(t) &= (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) && n = 2, \dots, N/2-1 \\
-\tilde{a}_{N/2}(t) &= 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \tilde{a}_{N/2-1}(t),
+\widetilde{a}_1(t) &= (\omega - \partial_t^2)^{-1} \psi(t) \\
+\widetilde{a}_n(t) &= (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1}(t) && n = 2, \dots, N/2-1 \\
+\widetilde{a}_{N/2}(t) &= 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \widetilde{a}_{N/2-1}(t).
 \end{aligned}
 \end{equation}
-where each function $\tilde{a}_n(t)$ is defined in terms of the function $\tilde{a}_{n-1}(t)$, which is one closer to the primary core. The linear operator $(\omega - \partial_t^2)$ is invertible, as discussed in \cref{app:asymp}. We can write the equations \cref{eq:tildean} in terms of the NLS soliton $\psi(t)$ as
+We observe that each function $\widetilde{a}_n$ is defined in terms of $\widetilde{a}_{n-1}$, i.e. the amplitude of each waveguide is defined in terms of the waveguide which is one closer to the primary core.
+The invertibility of the linear operator $(\omega - \partial_t^2)$ is discussed in \cref{app:asymp}. Collapsing these recursion relations, we can write \cref{eq:tildean} in terms of the NLS soliton $\psi$ as
 \begin{equation}\label{eq:tildeanpsi}
 \begin{aligned}
-\tilde{a}_n(t) &= (\omega - \partial_t^2)^{-n} \psi(t) && n = 1, \dots, N/2-1 \\
-\tilde{a}_{N/2}(t) &= 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-N/2} \psi(t).
+\widetilde{a}_n &= (\omega - \partial_t^2)^{-n} \psi && n = 1, \dots, N/2-1 \\
+\widetilde{a}_{N/2} &= 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-N/2} \psi.
 \end{aligned}
 \end{equation}
-Note that $\tilde{a}_n(t)$ does not depend on $\phi$, except for when $n=N/2$. The remainder term $\tilde{a}_0(t)$ from node 0 can be found by solving the equation
+Note that $\widetilde{a}_n$ does not depend on $\phi$, except when $n=N/2$. The remaining term $\widetilde{a}_0$ from node 0 can be found by solving the equation
 \begin{equation}\label{eq:tildea0eq}
-\left( \partial_t^2 - \omega + 3 \psi^2 \right) \tilde{a}_0(t) = -2 \tilde{a}_1(t) =
--2 (\omega - \partial_t^2)^{-1} \psi(t),
+\left( \partial_t^2 - \omega + 3 \psi^2 \right) \widetilde{a}_0 = -2 \widetilde{a}_1 =
+-2 (\omega - \partial_t^2)^{-1} \psi,
 \end{equation}
-with the condition that $\tilde{a}_0(t) \perp \dot \psi(t)$.
+with the condition that $\widetilde{a}_0 \perp \dot \psi$ in $L^2(\R)$.
 
-For the angles, we obtain the following recursive formulas for the products $\tilde{a}_n(t)\tilde{\theta}(t)$:
+For the phases, we obtain the following recursive formulas for the products $\widetilde{a}_n\widetilde{\theta}$:
 \begin{equation}\label{eq:tildeantn}
 \begin{aligned}
-\tilde{a}_{N/2-1}(t) \tilde{\theta}_{N/2-1}(t) &= -\sin(N \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{N/2}(t) \\
-\tilde{a}_n(t) \tilde{\theta}_n(t) &= (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{n+1}(t) \tilde{\theta}_{n+1}(t) \right) && n = 1, \dots, N/2-2,
+\widetilde{a}_{N/2-1}\widetilde{\theta}_{N/2-1} &= -\sin(N \phi/2) (\omega - \partial_t^2)^{-1} \widetilde{a}_{N/2} \\
+\widetilde{a}_n \widetilde{\theta}_n &= (\omega - \partial_t^2)^{-1} \left( \widetilde{a}_{n+1} \widetilde{\theta}_{n+1} \right) && n = 1, \dots, N/2-2,
 \end{aligned}
 \end{equation}
-where each product $\tilde{a}_n(t) \tilde{\theta}_n(t)$ is defined in terms of the product $\tilde{a}_{n+1}(t) \tilde{\theta}_{n+1}(t)$, which is one further from the primary core. Note that these involve the terms $\tilde{a}_n(t)$, which were computed above. For $n = 1, \dots, N/2-2$, we can write the expression for $\tilde{a}_n(t) \tilde{\theta}_n(t)$ in terms of $\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1}$ as
+where each product $\widetilde{a}_n \widetilde{\theta}_n$ is defined in terms of the product $\widetilde{a}_{n+1} \widetilde{\theta}_{n+1}$, i.e. the phase of each waveguide is defined in terms of the waveguide which is one further from the primary core.
+Note that these involve the terms $\widetilde{a}_n$, which were computed above. For $n = 1, \dots, N/2-2$, we can again collapse these recurrence relations and write the expression for $\widetilde{a}_n \widetilde{\theta}_n$ in terms of $\widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1}$ as
 \begin{align*}
-\tilde{a}_n(t) \tilde{\theta}_n(t) &= (\omega - \partial_t^2)^{-(N/2-n-1)} \left( \tilde{a}_{N/2-1}(t) \tilde{\theta}_{N/2-1}(t) \right) && n = 1, \dots, N/2-2.
+\widetilde{a}_n \widetilde{\theta}_n &= (\omega - \partial_t^2)^{-(N/2-n-1)} \left( \widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} \right) && n = 1, \dots, N/2-2.
 \end{align*}
-Substituting \cref{eq:tildeanpsi} for $\tilde{a}_n(t)$ and simplifying, we can again write everything in terms of $\psi(t)$ to get
+Substituting \cref{eq:tildeanpsi} for $\widetilde{a}_n$ and simplifying, we can again write everything in terms of $\psi$ to obtain
 \begin{equation}\label{eq:tildeantnpsi}
 \begin{aligned}
-\tilde{a}_n(t) \tilde{\theta}_n(t) &= -\sin(N \phi) (\omega - \partial_t^2)^{-(N-n)} \psi(t) && n = 1, \dots, N/2-1.
+\widetilde{a}_n \widetilde{\theta}_n &= -\sin(N \phi) (\omega - \partial_t^2)^{-(N-n)} \psi && n = 1, \dots, N/2-1.
 \end{aligned}
 \end{equation}
-We can solve for $\tilde{\theta}_n(t)$ by dividing by $\tilde{a}_n(t)$, although we note that we have to be careful when doing this since $\tilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
+We can solve for $\widetilde{\theta}_n$ by dividing by $\widetilde{a}_n$, although we note that we have to be careful when doing this since $\widetilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
 
-When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\tilde{a}_{N/2}(t) = 0$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}(t)$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}(t)$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\tilde{a}_n(t) \tilde{\theta}_n(t) = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n(t)$ for all $n$. These findings are confirmed numerically in the next section.
+When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section.
 
 
 \section{Numerical results}\label{sec:numerics}
@@ -374,7 +380,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
     \label{fig:kcont2}
 \end{figure}
 
-Now that we can construct standing wave solutions to \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. The amplitudes $a_n(t)$ and phases $\theta_n(t)$ for $N=6$ cores are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the angle deviation $\theta_n(t) - n \phi$ is also suppressed when $\phi=\pi/N$, indicating that the lowest order remainder term $\tilde{\phi}_n(t)$ in \cref{eq:asympsol} is 0. \cref{fig:m6supp} shows this suppression as $\phi$ is varied, both for the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the phases. In contrast to the model without temporal dispersion \cite{parker2021}, this suppression is not complete, due to the higher order terms in \cref{eq:asympsol} which may not be suppressed.
+Now that we can construct standing wave solutions to \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. The amplitudes $a_n(t)$ and phases $\theta_n(t)$ for $N=6$ cores are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the angle deviation $\theta_n(t) - n \phi$ is also suppressed when $\phi=\pi/N$, indicating that the lowest order remainder term $\widetilde{\phi}_n(t)$ in \cref{eq:asympsol} is 0. \cref{fig:m6supp} shows this suppression as $\phi$ is varied, both for the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the phases. In contrast to the model without temporal dispersion \cite{parker2021}, this suppression is not complete, due to the higher order terms in \cref{eq:asympsol} which may not be suppressed.
 
 % figure: amplitudes/phases for N=6
 \begin{figure}
@@ -437,12 +443,12 @@ Finally, we compute the error in for the amplitudes $a_n(t)$ and phases $\theta_
 The slopes of least squares regressions lines for the error in $a_0(t)$, $a_1(t)$, $a_2(t)$, and $a_3(t)$ are within 5\% of 4, 3, 4, and 5 (respectively), which suggests that the asymptotic expansions \cref{eq:asympsol} for the amplitudes are, in fact, 
 \begin{equation}\label{eq:asympsol2}
 \begin{aligned}
-a_0(t) &= \psi(t) + k^2 \tilde{a}_0(t) + \mathcal{O}(k^4) \\
-a_n(t) &= k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2
+a_0(t) &= \psi(t) + k^2 \widetilde{a}_0(t) + \mathcal{O}(k^4) \\
+a_n(t) &= k^n \widetilde{a}_n(t) + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2
 \end{aligned}
 \end{equation}
 i.e. the order of the remainder term is one order higher in $k$. Since the formulas \cref{eq:tildeantnpsi} involve the products $a_n(t) \theta_n(t)$ of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n(t) (\theta_n(t) - n \phi)^{\text{true}} - (a_n(t) \theta_n(t)- n \phi)^{\text{approx}}(t) \|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
-$a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \tilde{a}_n(t) \tilde{\theta}_n(t)$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1(t)\theta_1(t)$ and $a_2(t)\theta_2(t)$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n(t)$.
+$a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \widetilde{a}_n(t) \widetilde{\theta}_n(t)$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1(t)\theta_1(t)$ and $a_2(t)\theta_2(t)$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n(t)$.
 
 % figure: amplitudes/phases for N=6
 \begin{figure}
@@ -637,34 +643,34 @@ a_0(t) = \psi(t) + k a_0^{(1)}(t) + k^2 a_0^{(2)}(t) + \mathcal{O}(k^3)
 \]
 for the amplitude $a_0(t)$, where $\psi(t)$ is the NLS soliton \cref{eq:NLSsoliton}. In addition, from \cref{eq:basicseries}, we have, at minimum, 
 \[
-a_1(t) = k \tilde{a}_1(t) + \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k).
+a_1(t) = k \widetilde{a}_1(t) + \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k).
 \]
 Substituting this into \cref{eq:st2reala0}, using the Taylor series expansion $\cos(\theta_1-\phi) = \mathcal{O}(k^2)$, collecting powers of $k$, and simplifying, we get
 \begin{equation*}
 \begin{aligned}
 &\left(\ddot{\psi} + \psi^3 - \omega \psi\right) 
 + k\left(\ddot a_0^{(1)} - \omega a_0^{(1)} + 3 \psi^2 a_0^{(1)}\right) \\
-&\qquad\qquad+ k^2\left(\ddot a_0^{(2)} - \omega a_0^{(2)} + 3\left(a_0^{(1)}\right)^2 + 3 \psi^2 a_0^{(2)} + 2 \tilde{a}_1 \right) + \mathcal{O}(k^3) = 0,
+&\qquad\qquad+ k^2\left(\ddot a_0^{(2)} - \omega a_0^{(2)} + 3\left(a_0^{(1)}\right)^2 + 3 \psi^2 a_0^{(2)} + 2 \widetilde{a}_1 \right) + \mathcal{O}(k^3) = 0,
 \end{aligned}
 \end{equation*}
 where we have dropped the dependence on $t$ for simplicity. The $\mathcal{O}(1)$ term is 0 since $\psi$ solves \cref{eq:NLSreal}. The $\mathcal{O}(k)$ term can be written as $\calL(\psi)a_0^{(1)}=0$, where $\calL(\psi)$ is defined by \cref{eq:Lpsi}. Since the kernel of $\calL(\psi)$ is spanned by $\dot \psi(t)$, $a_0^{(1)} = c \dot \psi(t)$ for some constant $c$. However, since we wish our solution to satisfy the phase condition \cref{eq:phasecond}, we will take $c = 0$, from which it follows that $a_0^{(1)} = 0$. The $\mathcal{O}(k^2)$ term then becomes
 \[
-\ddot a_0^{(2)} - \omega a_0^{(2)} + 3 \psi^2 a_0^{(2)} + 2 \tilde{a}_1 = 0.
+\ddot a_0^{(2)} - \omega a_0^{(2)} + 3 \psi^2 a_0^{(2)} + 2 \widetilde{a}_1 = 0.
 \]
-Letting $\tilde{a}_0(t) = a_0^{(2)}(t)$, we rewrite this as
+Letting $\widetilde{a}_0(t) = a_0^{(2)}(t)$, we rewrite this as
 \begin{align}\label{eq:solvea0ta}
-\calL(\psi) \tilde{a}_0 = -2 \tilde{a}_1.
+\calL(\psi) \widetilde{a}_0 = -2 \widetilde{a}_1.
 \end{align}
-Once we determine $\tilde{a}_1$, which we will do in the next step, we can solve for $\tilde{a}_0$, provided $\tilde{a}_1 \perp \dot\psi$. Putting all of this together, we have the expression for $a_0$
+Once we determine $\widetilde{a}_1$, which we will do in the next step, we can solve for $\widetilde{a}_0$, provided $\widetilde{a}_1 \perp \dot\psi$. Putting all of this together, we have the expression for $a_0$
 \begin{equation}\label{eq:a0eq}
-a_0(t) = \psi(t) + k^2 \tilde{a}_0(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}(k^2).
+a_0(t) = \psi(t) + k^2 \widetilde{a}_0(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}(k^2).
 \end{equation}
 
 \subsection{Amplitudes}
 
 We can now determine the leading order terms for the amplitudes $a_n$, for $n = 1, \dots, N/2$, using the real parts \cref{eq:st2real} of the equations \cref{eq:st2}. The phases $\theta_n$ will be determined in the next step. For $n=1$, we take the power series ansatz 
 \[
-a_1(t) = k \tilde{a}_1(t) + \mathcal{O}(k^2).
+a_1(t) = k \widetilde{a}_1(t) + \mathcal{O}(k^2).
 \]
 From \cref{eq:basicseries}, we have, at minimum,
 \[
@@ -672,11 +678,11 @@ a_2(t) = \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k), \qquad \t
 \]
 and we note that $\dot \theta_1(t) = \mathcal{O}(k)$. Substituting these together with the expression \cref{eq:a0eq} for $a_0(t)$ into the $n=1$ equation of \cref{eq:st2real}, expanding the cosine terms in Taylor series, collecting powers of $k$, and simplifying, we obtain the equation
 \[
-k\left(\partial_t^2 \tilde{a}_1 - \omega \tilde{a}_1 + \psi\right) + \mathcal{O}(k^2) = 0.
+k\left(\partial_t^2 \widetilde{a}_1 - \omega \widetilde{a}_1 + \psi\right) + \mathcal{O}(k^2) = 0.
 \]
-We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $\tilde{a}_1$ to get 
+We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $\widetilde{a}_1$ to get 
 \begin{equation}\label{eq:a11}
-\tilde{a}_1(t) = (\omega - \partial_t^2)^{-1} \psi(t),
+\widetilde{a}_1(t) = (\omega - \partial_t^2)^{-1} \psi(t),
 \end{equation}
 which has a solution since $\Lw$ is invertible. This gives us
 \begin{equation}\label{eq:a1eq}
@@ -685,24 +691,24 @@ a_1(t) = k (\omega - \partial_t^2) \psi(t) + \mathcal{O}(k^2).
 
 We continue this process iteratively from $n=2$ to $n=N/2-1$. We take the power series ansatz 
 \[
-a_n(t) = k^n \tilde{a}_n(t) + \mathcal{O}(k^{n+1}),
+a_n(t) = k^n \widetilde{a}_n(t) + \mathcal{O}(k^{n+1}),
 \]
 and use
 \begin{align*}
-&a_{n-1}(t) = k^{n-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{n}), &&a_{n+1}(t) = \mathcal{O}(k^{n+1}), \\
+&a_{n-1}(t) = k^{n-1} \widetilde{a}_{n-1}(t) + \mathcal{O}(k^{n}), &&a_{n+1}(t) = \mathcal{O}(k^{n+1}), \\
 &\theta_{n-1}(t) = (n-1) \phi + \mathcal{O}(k), &&\theta_{n+1}(t) = (n+1) \phi + \mathcal{O}(k),
 \end{align*}
 where the expression for $a_{n-1}(t)$ was found in the previous step. Substituting these into \cref{eq:st2real} and following the same procedure as above, we obtain the equation
 \begin{align*}
-k^n\left(\partial_t^2 \tilde{a}_n - \omega \tilde{a}_n + \tilde{a}_{n-1} \right) +\mathcal{O}(k^{n+1}) = 0.
+k^n\left(\partial_t^2 \widetilde{a}_n - \omega \widetilde{a}_n + \widetilde{a}_{n-1} \right) +\mathcal{O}(k^{n+1}) = 0.
 \end{align*}
-We use the $\mathcal{O}(k^n)$ term to solve for $\tilde{a}_n$ to get 
+We use the $\mathcal{O}(k^n)$ term to solve for $\widetilde{a}_n$ to get 
 \begin{equation}\label{eq:ann}
-\tilde{a}_n = (\omega - \partial_t^2)^{-1}\tilde{a}_{n-1},
+\widetilde{a}_n = (\omega - \partial_t^2)^{-1}\widetilde{a}_{n-1},
 \end{equation}
 which gives us
 \begin{equation}\label{eq:aneq}
-a_n(t) = k^n (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{n+1}).
+a_n(t) = k^n (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1}(t) + \mathcal{O}(k^{n+1}).
 \end{equation}
 We note that it follows from the ansatz $\theta_n = n \phi + \mathcal{O}(k)$ that $\cos[(\theta_n - \theta_{n-1}) - \phi] = 1 + \mathcal{O}(k^2)$ for all $n$, i.e. all the cosine terms are 1 to leading order. 
 
@@ -713,82 +719,82 @@ For the final node $n=N/2$, we take $\theta_{N/2}(t) = 0$ in the real part of \c
 \]
 Using the power series ansatz
 \[
-a_{N/2}(t) = k^{N/2} \tilde{a}_{N/2}(t) + \mathcal{O}(k^{N/2+1})
+a_{N/2}(t) = k^{N/2} \widetilde{a}_{N/2}(t) + \mathcal{O}(k^{N/2+1})
 \]
-and the formula $a_{N/2-1}(t) = k^{N/2-1} \tilde{a}_{N/2-1}(t) + \mathcal{O}(k^{N/2})$ from the previous step, we obtain the expression
+and the formula $a_{N/2-1}(t) = k^{N/2-1} \widetilde{a}_{N/2-1}(t) + \mathcal{O}(k^{N/2})$ from the previous step, we obtain the expression
 \begin{equation}\label{eq:am2a}
-\tilde{a}_{N/2} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{N/2-1} + \phi) \tilde{a}_{N/2-1}.
+\widetilde{a}_{N/2} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{N/2-1} + \phi) \widetilde{a}_{N/2-1}.
 \end{equation}
 It is important to note that since $\theta_{N/2} = 0$, the cosine term in \cref{eq:am2a} is order $\mathcal{O}(1)$. Substituting the ansatz $\theta_{N/2-1}(t) = (N/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2a} becomes
 \begin{equation}\label{eq:am2}
-\tilde{a}_{N/2} = 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \tilde{a}_{N/2-1} + \mathcal{O}(k).
+\widetilde{a}_{N/2} = 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \widetilde{a}_{N/2-1} + \mathcal{O}(k).
 \end{equation}
-Since $\tilde{a}_{N/2} = \mathcal{O}(1)$, it follows that
+Since $\widetilde{a}_{N/2} = \mathcal{O}(1)$, it follows that
 \begin{equation}\label{eq:am2eq}
-a_{N/2}(t) = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \tilde{a}_{n-1}(t) + \mathcal{O}(k^{N/2}+1).
+a_{N/2}(t) = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1}(t) + \mathcal{O}(k^{N/2}+1).
 \end{equation}
-Finally, since we have derived an expression \cref{eq:a11} for $\tilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to get 
+Finally, since we have derived an expression \cref{eq:a11} for $\widetilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to get 
 \[
-\calL(\psi) \tilde{a}_0 = -2 (\omega - \partial_t^2)^{-1} \psi(t),
+\calL(\psi) \widetilde{a}_0 = -2 (\omega - \partial_t^2)^{-1} \psi(t),
 \]
-which we can solve for $\tilde{a}_0$.
+which we can solve for $\widetilde{a}_0$.
 
 \subsection{Phases}
 
-Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products $\tilde{a}_n(t) \tilde{\theta}_n(t)$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = N/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=N/2$ and $n=0$ by taking $\theta_{N/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=N/2-1$, substitute the power series ansatz
+Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products $\widetilde{a}_n(t) \widetilde{\theta}_n(t)$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = N/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=N/2$ and $n=0$ by taking $\theta_{N/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=N/2-1$, substitute the power series ansatz
 \[
-\theta_{N/2-1}(t) = k^2 \tilde{\theta}_{N/2-1}(t) + \mathcal{O}(k^{3}),
+\theta_{N/2-1}(t) = k^2 \widetilde{\theta}_{N/2-1}(t) + \mathcal{O}(k^{3}),
 \]
 the expressions for $a_n(t)$ from the previous section, $\theta_{N/2} = 0$, and
 $\theta_{N/2-2}(t) = (N/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=N/2-1$ to get
 \[
-k^{N/2+1} \left( \tilde{a}_{N/2-1} \ddot{\tilde{\theta}}_{N/2-1} + 2 \dot{\tilde{a}}_{N/2-1} \dot{\tilde{\theta}}_{N/2-1} - \tilde{a}_{N/2-2} \tilde{\theta}_{N/2-1} - \tilde{a}_{N/2} \sin(N \phi/2) \right) + \mathcal{O}(k^{N/2+2}) = 0.
+k^{N/2+1} \left( \widetilde{a}_{N/2-1} \ddot{\widetilde{\theta}}_{N/2-1} + 2 \dot{\widetilde{a}}_{N/2-1} \dot{\widetilde{\theta}}_{N/2-1} - \widetilde{a}_{N/2-2} \widetilde{\theta}_{N/2-1} - \widetilde{a}_{N/2} \sin(N \phi/2) \right) + \mathcal{O}(k^{N/2+2}) = 0.
 \]
-We use the $\mathcal{O}(k^{N/2+1})$ term to solve for $\tilde{\theta}_{N/2-1}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{N/2-2}$ and substitute this above to get
+We use the $\mathcal{O}(k^{N/2+1})$ term to solve for $\widetilde{\theta}_{N/2-1}$. First, we solve equation \cref{eq:ann} for $\widetilde{a}_{N/2-2}$ and substitute this above to get
 \[
-\tilde{a}_{N/2-1} \ddot{\tilde{\theta}}_{N/2-1} + 2 \dot{\tilde{a}}_{N/2-1} \dot{\tilde{\theta}}_{N/2-1} - \tilde{\theta}_{N/2-1} (\omega - \partial_t^2) \tilde{a}_{N/2-1} - \tilde{a}_{N/2} \sin(N \phi/2) = 0,
+\widetilde{a}_{N/2-1} \ddot{\widetilde{\theta}}_{N/2-1} + 2 \dot{\widetilde{a}}_{N/2-1} \dot{\widetilde{\theta}}_{N/2-1} - \widetilde{\theta}_{N/2-1} (\omega - \partial_t^2) \widetilde{a}_{N/2-1} - \widetilde{a}_{N/2} \sin(N \phi/2) = 0,
 \]
 which simplifies as the derivative of a product to get
 \[
-(\omega - \partial_t^2)\left( \tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} \right) = -\sin(N \phi/2) \tilde{a}_{N/2}.
+(\omega - \partial_t^2)\left( \widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} \right) = -\sin(N \phi/2) \widetilde{a}_{N/2}.
 \]
 Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \begin{equation}\label{am2thm2}
-\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} = -\sin(N \phi/2) (\omega - \partial_t^2)^{-1} \tilde{a}_{N/2},
+\widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} = -\sin(N \phi/2) (\omega - \partial_t^2)^{-1} \widetilde{a}_{N/2},
 \end{equation}
-and we can divide by $\tilde{a}_{N/2-1}$ to solve for $\tilde{\theta}_{N/2-1}$. Using equation \cref{eq:am2} for $\tilde{a}_{N/2}$, equation \cref{am2thm2} becomes
+and we can divide by $\widetilde{a}_{N/2-1}$ to solve for $\widetilde{\theta}_{N/2-1}$. Using equation \cref{eq:am2} for $\widetilde{a}_{N/2}$, equation \cref{am2thm2} becomes
 \[
-\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} = -2 \sin(N \phi/2) \cos( N\phi/2) (\omega - \partial_t^2)^{-2} \tilde{a}_{N/2-1},
+\widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} = -2 \sin(N \phi/2) \cos( N\phi/2) (\omega - \partial_t^2)^{-2} \widetilde{a}_{N/2-1},
 \]
 which simplifies to 
 \begin{equation}\label{am2thm2a}
-\tilde{a}_{N/2-1} \tilde{\theta}_{N/2-1} = -\sin(N \phi) (\omega - \partial_t^2)^{-2} \tilde{a}_{N/2-1}
+\widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} = -\sin(N \phi) (\omega - \partial_t^2)^{-2} \widetilde{a}_{N/2-1}
 \end{equation}
 using the double angle formula.
 
 We now follow an iterative procedure from $n=N/2-2$ down to $n=1$. For $n$, substitute the power series ansatz
 \[
-\theta_{n}(t) = k^{N-2n} \tilde{\theta}_{n}(t) + \mathcal{O}(k^{N-2n+1}),
+\theta_{n}(t) = k^{N-2n} \widetilde{\theta}_{n}(t) + \mathcal{O}(k^{N-2n+1}),
 \]
 the expressions for $a_n(t)$ from the previous section, and $\theta_n(t)$ from \cref{eq:basicseries} into equation \cref{eq:st2imag} for $n$, and simplify, to get
 \[
-k^{N/2} \left( \tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
-- \tilde{a}_{n-1} \tilde{\theta}_n + \tilde{a}_{n+1}\tilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{N/2+1}\right) = 0
+k^{N/2} \left( \widetilde{a}_n \ddot{\widetilde{\theta}}_n + 2 \dot{\widetilde{a}}_n \dot{\widetilde{\theta}}_n
+- \widetilde{a}_{n-1} \widetilde{\theta}_n + \widetilde{a}_{n+1}\widetilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{N/2+1}\right) = 0
 \]
-We use the $\mathcal{O}(k^{N/2})$ term to solve for $\tilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\tilde{a}_{n-1}$ and substitute this above to get
+We use the $\mathcal{O}(k^{N/2})$ term to solve for $\widetilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\widetilde{a}_{n-1}$ and substitute this above to get
 \[
-\tilde{a}_n \ddot{\tilde{\theta}}_n + 2 \dot{\tilde{a}}_n \dot{\tilde{\theta}}_n
-- \tilde{\theta}_n (\omega - \partial_t^2) \tilde{a}_n + \tilde{a}_{n+1} \tilde{\theta}_{n+1} = 0,
+\widetilde{a}_n \ddot{\widetilde{\theta}}_n + 2 \dot{\widetilde{a}}_n \dot{\widetilde{\theta}}_n
+- \widetilde{\theta}_n (\omega - \partial_t^2) \widetilde{a}_n + \widetilde{a}_{n+1} \widetilde{\theta}_{n+1} = 0,
 \]
 which simplifies as the derivative of a product to get
 \[
-(\omega - \partial_t^2)\left( \tilde{a}_n \tilde{\theta}_n \right) = \tilde{a}_{n+1} \tilde{\theta}_{n+1}.
+(\omega - \partial_t^2)\left( \widetilde{a}_n \widetilde{\theta}_n \right) = \widetilde{a}_{n+1} \widetilde{\theta}_{n+1}.
 \]
 Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \begin{equation}\label{an2th}
-\tilde{a}_n \tilde{\theta}_n = (\omega - \partial_t^2)^{-1} \left( \tilde{a}_{n+1} \tilde{\theta}_{n+1} \right),
+\widetilde{a}_n \widetilde{\theta}_n = (\omega - \partial_t^2)^{-1} \left( \widetilde{a}_{n+1} \widetilde{\theta}_{n+1} \right),
 \end{equation}
-and we can divide by $\tilde{a}_n$ to solve for $\tilde{\theta}_n$. 
+and we can divide by $\widetilde{a}_n$ to solve for $\widetilde{\theta}_n$. 
 
 \section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}\label{app:prop1proof}
 
