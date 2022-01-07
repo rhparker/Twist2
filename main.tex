@@ -319,7 +319,7 @@ When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N
 
 \section{Numerical results}\label{sec:numerics}
 
-First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$). To do this, we take $c_n = u_n + i v_n$ in \cref{eq:standingwave}, and separate real and imaginary parts to get
+First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$). To do this, we take $c_n = u_n + i v_n$ in \cref{eq:standingwave}, and separate real and imaginary parts to obtain
 \begin{equation}\label{eq:standingwavesep}
 \begin{aligned}
 &\partial_t^2 u_n + k\left( (u_{n-1} + u_{n+1}) \cos \phi ) - (v_{n-1} - v_{n+1})\sin \phi \right) + (u_n^2+v_n^2) u_n - \omega u_n= 0, \\
@@ -329,8 +329,8 @@ First, we construct standing wave solutions to \cref{eq:standingwave} by using p
 Letting $u = (u_1, \dots, u_N)^T$ and $v = (v_1, \dots, v_N)^T$, we can write \cref{eq:standingwavesep} in matrix form as 
 \begin{equation}\label{eq:standingwavematrixsep}
 \begin{aligned}
-&\partial_t^2 u + k (A_c(\phi) u - A_s(\phi) v) + \diag\left(u_n^2 + v_n^2 \right)u - \omega u = 0 \\
-&\partial_t^2 v + k (A_c(\phi) v + A_s(\phi) u) + \diag\left(u_n^2 + v_n^2 \right)v - \omega v = 0
+&\partial_t^2 u + k (A_c(\phi) u - A_s(\phi) v) + \diag\left(u_n^2 + v_n^2 \right)u - \omega u = 0, \\
+&\partial_t^2 v + k (A_c(\phi) v + A_s(\phi) u) + \diag\left(u_n^2 + v_n^2 \right)v - \omega v = 0,
 \end{aligned}
 \end{equation}
 where
@@ -350,12 +350,12 @@ A_s(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
 -\sin \phi& \dots & & \sin \phi & 0
 \end{pmatrix}.
 \end{align*}
-To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 0$, and $v_n(t) = 0$ for all $n$, i.e. we start with a real NLS soliton in node 0, and the zero solution everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Results of the parameter continuation are show in \cref{fig:kcont}. As $k$ is increased, intensity spreads from the primary core at $n=0$ to the other cores in the ring. A turning point is reached at a critical value $k^*$ (approximately 0.455 in \cref{fig:kcont}), at which point all cores have equal amplitudes. The parameter continuation then reverses direction. Solutions for decreasing $k$ are the same as those for increasing $k$, except the primary core is now located at $n=N/2$ (compare points 2 and 4 in \cref{fig:kcont}). This critical value $k^*$ depends on both $\phi$ and $\omega$. Numerical continuation experiments suggest that, for fixed $\omega$, the maximum value of $k^*$ occurs when $\phi = \pi/N$ (see \cref{fig:kcont2b} for results for $N=6$). Numerical continuation experiments also suggest that, for fixed $\phi$, $k^*$ is a linear function of $\omega$, specifically a constant multiple of $\omega$. Parameter continuation results for larger $N$, are similar, but this method becomes computationally infeasible with much larger $N$.
+To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 0$, and $v_n(t) = 0$ for all $n$, i.e. we start with a real NLS soliton in node 0, and the zero solution everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Results of the parameter continuation for $\phi = 0.25$ are shown in \cref{fig:kcont}. As $k$ increases, the intensity spreads from the primary core at $n=0$ to the other cores in the ring (label 2 in \cref{fig:kcont}). A turning point is reached at a critical value $k^*$ (approximately 0.455 in \cref{fig:kcont}; see \cref{fig:kcont2a} for other values of $\phi$), at which point all cores have equal amplitudes (label 3 in \cref{fig:kcont}). The parameter continuation then reverses direction. Solutions for decreasing $k$ are the same as those for increasing $k$, except that the primary core is now located at $n=N/2$ (compare labels 2 and 4 in \cref{fig:kcont}; the amplitudes are identical but are located at different sites in the ring). This critical value $k^*$ depends on both $\phi$ and $\omega$. Numerical continuation experiments suggest that, for fixed $\omega$, the maximum value of $k^*$ occurs when $\phi = \pi/N$ (see \cref{fig:kcont2b} for results for $N=6$). Numerical continuation experiments also suggest that, for fixed $\phi$, $k^*$ is proportional to $\omega$ (\cref{fig:kcont2c}). Parameter continuation results for larger $N$ are similar; however, since the discretization requires $NM$ points, where $M$ is the number of Fourier nodes per waveguide, this is computationally infeasible for very large $N$.
 
 \begin{figure}
     \centering
     \includegraphics[width=16cm]{contdiag.eps}
-    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel is continuation diagram plotting $L^2$ norm of solution vs. $k$. Right panels show amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. $\omega=1$, time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel: Continuation diagram plotting $L^2$ norm of entire solution vs. $k$. Right panels: Amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. $\omega=1$, time domain $[-20,20]$, 128 Fourier nodes per core.}
     \label{fig:kcont}
 \end{figure}
 
@@ -363,7 +363,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
     \centering
     \begin{subfigure}{0.3\linewidth}
         \caption{}
-        \label{fig:kcont2q}
+        \label{fig:kcont2a}
         \includegraphics[width=5cm]{contkL2norm.eps}
     \end{subfigure}
     \begin{subfigure}{0.3\linewidth}
@@ -376,11 +376,12 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
         \label{fig:kcont2c}
         \includegraphics[width=5cm]{contkstarvsomega.eps}
     \end{subfigure}
-    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. Time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of entire solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. Time domain $[-20,20]$, 128 Fourier nodes per core.}
     \label{fig:kcont2}
 \end{figure}
 
-Now that we can construct standing wave solutions to \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. The amplitudes $a_n(t)$ and phases $\theta_n(t)$ for $N=6$ cores are shown in \cref{fig:m6sol}. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (\cref{fig:m6pi6logamp}); in addition, we can see from \cref{fig:m6pi6phase} that the angle deviation $\theta_n(t) - n \phi$ is also suppressed when $\phi=\pi/N$, indicating that the lowest order remainder term $\widetilde{\phi}_n(t)$ in \cref{eq:asympsol} is 0. \cref{fig:m6supp} shows this suppression as $\phi$ is varied, both for the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the phases. In contrast to the model without temporal dispersion \cite{parker2021}, this suppression is not complete, due to the higher order terms in \cref{eq:asympsol} which may not be suppressed.
+Now that we have constructed standing wave solutions of \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. In \cref{fig:m6sol}, we show the amplitudes, $a_n(t)$, and phases, $\theta_n(t)$, for $N=6$ cores. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (\cref{fig:m6pi6logamp}). In addition, in \cref{fig:m6pi6phase}, we see that the angle deviation $\theta_n(t) - n \phi$ is also suppressed when $\phi=\pi/N$, indicating that the lowest order remainder term $\widetilde{\phi}_n(t)$ in \cref{eq:asympsol} is 0, as predicted by \cref{eq:tildeantnpsi}.
+In \cref{fig:m6supp}, we show how both the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the phases are suppressed as $\phi$ varies. In contrast to the model without temporal dispersion \cite{parker2021}, this suppression is not complete, due to the higher order terms in \cref{eq:asympsol} which may not be suppressed.
 
 % figure: amplitudes/phases for N=6
 \begin{figure}
@@ -415,7 +416,7 @@ Now that we can construct standing wave solutions to \cref{eq:standingwave}, we 
         \label{fig:m6pi6phase}
         \includegraphics[width=5cm]{m6phipi6phase.eps}
     \end{subfigure}
-    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides. Twist parameter $\phi = 0.25$ (top), $\phi = \pi/6$ (bottom). Left and middle are amplitude and log amplitude of solution at first four sites. Right plots $\theta_n(t) - n \phi$ for sites 1 and 2, where $\theta_n(t)$ is the phase. $k=0.25$, $\omega=1$, time domain $[-30,30]$, 256 Fourier nodes per core.}
+    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2. $k=0.25$, $\omega=1$, time domain $[-30,30]$, 256 Fourier nodes per core.}
     \label{fig:m6sol}
 \end{figure}
 
@@ -436,19 +437,19 @@ Now that we can construct standing wave solutions to \cref{eq:standingwave}, we 
     \label{fig:m6supp}
 \end{figure}
 
-Finally, we compute the error in for the amplitudes $a_n(t)$ and phases $\theta_n(t)$. \cref{fig:m6errora} plots the log of the $L^2$ error $\| a_n^{\text{true}}(t) - a_n^{\text{approx}}(t) \|_{L^2}$ vs. the log of coupling parameter $k$, where the true value $a_n^{\text{true}}(t)$ is obtained from numerical parameter continuation, the approximate value $a_n^{\text{approx}}(t)$ is computed using \cref{eq:asympsol}, \cref{eq:tildeanpsi}, and \cref{eq:tildea0eq}, and the $L^2$ norm on the periodic domain $[-T,T]$ is defined by
+Finally, we compute the error in the asymptotic formulae for the amplitudes, $a_n(t)$, and phases, $\theta_n(t)$. In \cref{fig:m6errora}, we plots the log of the $L^2$ error $\| a_n^{\text{num}} - a_n^{\text{asymp}} \|_{L^2}$ vs. the log of coupling parameter $k$, where $a_n^{\text{num}}(t)$ is obtained from numerical parameter continuation, $a_n^{\text{approx}}(t)$ is computed using \cref{eq:asympsol}, \cref{eq:tildeanpsi}, and \cref{eq:tildea0eq}, and the $L^2$ norm on the periodic domain $[-T,T]$ is defined by
 \[
 \| f(t) \|_{L^2} = \int_{-T}^T |f(t)|^2 dt.
 \] 
-The slopes of least squares regressions lines for the error in $a_0(t)$, $a_1(t)$, $a_2(t)$, and $a_3(t)$ are within 5\% of 4, 3, 4, and 5 (respectively), which suggests that the asymptotic expansions \cref{eq:asympsol} for the amplitudes are, in fact, 
+The slopes of least squares regressions lines for the error in $a_0$, $a_1$, $a_2$, and $a_3$ are within 5\% of 4, 3, 4, and 5 (respectively), which suggests that the asymptotic expansions \cref{eq:asympsol} for the amplitudes are, in fact, 
 \begin{equation}\label{eq:asympsol2}
 \begin{aligned}
 a_0(t) &= \psi(t) + k^2 \widetilde{a}_0(t) + \mathcal{O}(k^4) \\
 a_n(t) &= k^n \widetilde{a}_n(t) + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2
 \end{aligned}
 \end{equation}
-i.e. the order of the remainder term is one order higher in $k$. Since the formulas \cref{eq:tildeantnpsi} involve the products $a_n(t) \theta_n(t)$ of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n(t) (\theta_n(t) - n \phi)^{\text{true}} - (a_n(t) \theta_n(t)- n \phi)^{\text{approx}}(t) \|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
-$a_n(t) \theta_n(t) - n \phi )^{\text{approx}}(t) = k^{N-n} \widetilde{a}_n(t) \widetilde{\theta}_n(t)$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1(t)\theta_1(t)$ and $a_2(t)\theta_2(t)$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n(t)$.
+i.e. the order of the remainder term is one order higher in $k$. Since the formulas \cref{eq:tildeantnpsi} involve the products, $a_n \theta_n$, of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n (\theta_n - n \phi)^{\text{num}} - a_n(\theta_n - n \phi)^{\text{asymp}}\|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
+$a_n (\theta_n - n \phi )^{\text{asymp}} = k^{N-n} \widetilde{a}_n \widetilde{\theta}_n$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1\theta_1$ and $a_2\theta_2$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n$.
 
 % figure: amplitudes/phases for N=6
 \begin{figure}
