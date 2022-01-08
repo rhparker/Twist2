@@ -314,7 +314,7 @@ Substituting \cref{eq:tildeanpsi} for $\widetilde{a}_n$ and simplifying, we can 
 \end{equation}
 We can solve for $\widetilde{\theta}_n$ by dividing by $\widetilde{a}_n$, although we note that we have to be careful when doing this since $\widetilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
 
-When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section.
+When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section. We will see that numerical evidence in fact supports complete suppression of the opposite core when $\phi = \pi/N$.
 
 
 \section{Numerical results}\label{sec:numerics}
@@ -380,8 +380,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
     \label{fig:kcont2}
 \end{figure}
 
-Now that we have constructed standing wave solutions of \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. In \cref{fig:m6sol}, we show the amplitudes, $a_n(t)$, and phases, $\theta_n(t)$, for $N=6$ cores. As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (\cref{fig:m6pi6logamp}). In addition, in \cref{fig:m6pi6phase}, we see that the angle deviation $\theta_n(t) - n \phi$ is also suppressed when $\phi=\pi/N$, indicating that the lowest order remainder term $\widetilde{\phi}_n(t)$ in \cref{eq:asympsol} is 0, as predicted by \cref{eq:tildeantnpsi}.
-In \cref{fig:m6supp}, we show how both the amplitude $a_3(t)$ of the opposite core and the deviations $\phi_n(t) - n \phi$ of the phases are suppressed as $\phi$ varies. In contrast to the model without temporal dispersion \cite{parker2021}, this suppression is not complete, due to the higher order terms in \cref{eq:asympsol} which may not be suppressed.
+Now that we have constructed standing wave solutions of \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. In \cref{fig:m6sol}, we show the amplitudes, $a_n(t)$, and phases, $\theta_n(t)$, for $N=6$ cores, for $\phi=0.25$ (top row) and $\phi=\pi/6$ (bottom row). As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (compare \cref{fig:m6025logamp} and \cref{fig:m6pi6logamp}). In addition, we see that the angle deviation $\theta_n(t) - n \phi$ is also significantly suppressed when $\phi=\pi/N$ (compare \cref{fig:m6025phase} and \cref{fig:m6pi6phase}). Although we only showed that the lowest order terms in the asymptotic expansion \cref{eq:asympsol} are suppressed when $\phi=\pi/N$, numerical evidence suggests that this suppression is complete, as in the model without temporal dispersion \cite{parker2021}. In \cref{fig:m6supp}, we show how both the amplitude, $a_3(t)$, of the opposite core and the deviations, $\phi_n(t) - n \phi$, of the phases are suppressed as $\phi$ varies; the cusps at $\phi=\pi/6$ provides further numerical evidence for complete suppression. These suppression results do not depend on the number of Fourier nodes in the temporal discretization.
 
 % figure: amplitudes/phases for N=6
 \begin{figure}
@@ -464,13 +463,13 @@ $a_n (\theta_n - n \phi )^{\text{asymp}} = k^{N-n} \widetilde{a}_n \widetilde{\t
         \label{fig:m6errorb}
         \includegraphics[width=5cm]{N6athetaerror.eps}
     \end{subfigure}
-    \caption{$\log_{10}$ of $L^2$ error of the amplitudes $a_n(t)$ vs $\log_{10} k$ (a), and the product of the amplitudes and phases $a_n(t)\theta_n(t)$ vs $\log_{10} k$.}
+    \caption{(a) $\log_{10}$ of $L^2$ error of the amplitudes $a_n$ vs $\log_{10} k$,, and (b) the product of the amplitudes and phases $a_n \theta_n $ vs $\log_{10} k$.}
     \label{fig:m6error}
 \end{figure}
 
 \section{Stability}\label{sec:stability}
 
-Let $c = (c_1, \dots, c_n)$ be a solution to \cref{eq:standingwavematrix}. This time, we split up the $c_n$ into real and imaginary parts by writing $c_n = u_n + i v_n$ for $n = 1, \dots, N$. The linearization of the PDE \cref{eq:cz} about the standing wave $c$ is the linear operator $\calL(c)$ on $H^2(\R, \R^{2N}) \subset L^2(\R, \R^{2N})$, defined by 
+To analyze the stability of a solution to \cref{eq:standingwavematrix}, we express each $c_n$ as $c_n = u_n + i v_n$, and let $c = (u_1, \dots, u_n,v_1, \dots, v_n) \in \R^{2N}$. The linearization of the PDE \cref{eq:cz} about the standing wave $c$ is the linear operator $\calL(c)$ on $H^2(\R, \R^{2N}) \subset L^2(\R, \R^{2N})$, defined by 
 \begin{equation}\label{eq:linc}
 \calL(c) = \begin{pmatrix}
 k A_s(\phi) + 2 \diag(u_n v_n) & \partial_t^2 - \omega + k A_c(\phi) + \diag(u_n^2) + 3 \diag(v_n^2) \\
@@ -478,64 +477,67 @@ k A_s(\phi) + 2 \diag(u_n v_n) & \partial_t^2 - \omega + k A_c(\phi) + \diag(u_n
 k A_s(\phi) - 2 \diag(u_n v_n)
 \end{pmatrix},
 \end{equation}
-where $A_c(\phi)$ and $A_s(\phi)$ are defined above. The spectrum of $\calL(c) $ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(c) - \lambda \calI$ is not Fredholm \cite[Section 3.1]{Kapitula2013}, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ is nontrivial. The essential spectrum depends only on the background state, i.e. is independent of $c$. The operator $\calL(c)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
+where $A_c(\phi)$ and $A_s(\phi)$ are defined above. The spectrum of $\calL(c) $ can be divided into two disjoint sets: for this problem, the essential spectrum is the set of $\lambda \in \C$ for which $\calL(c) - \lambda \calI$ is not Fredholm \cite[Section 3.1]{Kapitula2013}, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( \calL(c) - \lambda \calI)$ is nontrivial. (Although the essential spectrum also comprises those $\lambda \in \C$ for which $\calL(c) - \lambda \calI$ is Fredholm with nonzero index, we will explain below that this is not possible.) The essential spectrum depends only on the background state, i.e. is independent of $c$. Since the operator $\calL(c)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
 \begin{equation}\label{eq:L0}
 \calL(0) = \begin{pmatrix}
 k A_s(\phi) & \partial_t^2 - \omega + k A_c(\phi)  \\
 -\partial_t^2 + \omega - k A_c(\phi) &
 k A_s(\phi) 
-\end{pmatrix}.
+\end{pmatrix},
 \end{equation}
-It follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that we can compute the essential spectrum of $\calL(c)$ by determining when the constant coefficient operator $\calL(0)-\lambda \calI$ is not Fredholm. The following proposition locates the essential spectrum of $\calL(c)$. The proof is given in \cref{app:prop1proof}.
+it follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that the essential spectrum of $\calL(c)$ is given by the essential spectrum of the constant coefficient operator $\calL(0)$, which we compute in \cref{app:prop1proof}. Since $\calL(c)$ is exponentially asymptotic to $\calL(0)$ at both $\pm \infty$, $\calL(0) - \lambda \calI$ cannot have nonzero Fredholm index (see \cite[Lemma 3.1.10]{Kapitula2013}). Consequently, we obtain the following result.
 
 \begin{proposition}\label{prop:ess}
-For $0 \leq \phi \leq \frac{2\pi}{N}$, define $\alpha$ by 
+For $0 \leq \phi \leq \frac{2\pi}{N}$, define $\alpha$ in terms of $\phi$ by 
 \begin{equation}\label{eq:essalpha}
 \alpha = \begin{cases}
-\omega - 2 k \cos\left(\phi\right) & 0 \leq \phi \leq \frac{\pi}{N} \\
-\omega - 2 k \cos\left(\frac{2\pi}{N}-\phi\right) & \frac{\pi}{N} \leq \phi \leq \frac{2\pi}{N}.
+\omega - 2 k \cos\left(\phi\right), & 0 \leq \phi \leq \frac{\pi}{N}, \\
+\omega - 2 k \cos\left(\frac{2\pi}{N}-\phi\right), & \frac{\pi}{N} \leq \phi \leq \frac{2\pi}{N},
 \end{cases}
 \end{equation}
-If $\omega$, $k$, and $\phi$ are chosen so that $\alpha > 0$, the essential spectrum comprises two symmetric, disjoint bands on the imaginary axis
+and extend $\alpha$ periodically in $\phi$ with period $2 \pi/N$. If $\omega$, $k$, and $\phi$ are chosen so that $\alpha > 0$, the essential spectrum comprises two symmetric, disjoint bands on the imaginary axis
 \begin{align}\label{eq:lessinterval}
-\lambda_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty),
+\sigma_{\text{ess}} = i (-\infty, -\alpha] \cup i [\alpha, \infty),
 \end{align}
 and $\alpha$ attains a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$.
 \end{proposition}
-Although we have only defined $\alpha$ on the interval $0 \leq \phi \leq \frac{2\pi}{N}$, it follows from the proof in \cref{app:prop1proof} that $\alpha$ is periodic with period $\frac{2\pi}{N}$. We note that the essential spectrum is bounded away from the origin when $\alpha>0$. In addition, both $\alpha$ and $k^*$ attain a maximum at $\phi = \pi/N$. 
+We note that the essential spectrum is bounded away from the origin when $\alpha>0$. In addition, both $\alpha$ and $k^*$ attain a maximum at $\phi = \pi/N$. 
 
-The spectrum of $\calL(c)$ is found by discretizing the differentiation matrices in \cref{eq:linc} using Fourier spectral differentiation matrices, writing the operator as a block matrix, and computing the eigenvalues of that matrix using MATLAB's eigenvalue solver \texttt{eig}. The two essential spectrum bands can be seen in the bottom plots of \cref{fig:phi0spec}; the essential spectrum is a discrete set of points in these plots rather than continuous bands due to the spatial discretization. \cref{fig:phi0speca} plots the essential spectrum border $\alpha$ as computed by MATLAB, together with the analytical value given by \cref{eq:essalpha}. The relative error of the numerical result is less than 1\%. 
+The spectrum of $\calL(c)$ is found by discretizing the differentiation matrices in \cref{eq:linc} using Fourier spectral differentiation matrices, writing the operator as a block matrix, and computing the eigenvalues of that matrix using MATLAB's eigenvalue solver \texttt{eig}. 
+The two essential spectrum bands can be seen in the top row of \cref{fig:phi0spec}.
+Due to the spatial discretization, the continuous bands constituting the essential spectrum are approximated by discrete sets of points. In \cref{fig:phi0specc}, we plot the border, $\alpha$, of the essential spectrum as a function of the coupling parameter, $k$. The results obtained using the matrix discretization of the operator are shown with the red dashed curve, and those obtained using \cref{eq:essalpha} are shown with the yellow dotted curve. The relative error of the numerical result is less than 1\%. 
 
 \begin{figure}
     \centering
     \begin{subfigure}{0.4\linewidth}
         \caption{}
         \label{fig:phi0speca}
-        \includegraphics[width=5cm]{phi025speck.eps}
-    \end{subfigure}
-    \begin{subfigure}{0.4\linewidth}
-        \caption{}
-        \label{fig:phi0specb}
-        \includegraphics[width=5cm]{keplot.eps}
-    \end{subfigure}
-        \begin{subfigure}{0.4\linewidth}
-        \caption{}
-        \label{fig:phi0specc}
         \includegraphics[width=5cm]{phi025spec2.eps}
     \end{subfigure}
     \begin{subfigure}{0.4\linewidth}
         \caption{}
-        \label{fig:phi0specd}
+        \label{fig:phi0specb}
         \includegraphics[width=5cm]{phi025spec3.eps}
     \end{subfigure}
-    \caption{(a) plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (b) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. (c), (d) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:phi0specc}
+        \includegraphics[width=5cm]{phi025speck.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.4\linewidth}
+        \caption{}
+        \label{fig:phi0specd}
+        \includegraphics[width=5cm]{keplot.eps}
+    \end{subfigure}
+
+    \caption{(a), (b) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. (c) Plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (d) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:phi0spec}
 \end{figure}
 
 We now turn to the point spectrum of $\calL(c)$. As with NLS \cite[Chapter 2.1.1.1]{Kevrekidis2009},
 The kernel of $\calL(c)$ has algebraic multiplicity 4 and geometric multiplicity 2. The kernel is spanned by the two eigenfunctions 
 $w_1 = (\partial_t u_1, \dots, \partial_t u_N, \partial_t v_1, \dots, \partial_t v_N )^T$ and 
-$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$. In addition, there is a pair of internal mode eigenvalues $\pm \lambda_e$, which will call edge modes since they split off from the edge of the essential spectrum (these can be seen in \cref{fig:phi0specc}). As $k$ increases, $\lambda_e$ moves towards the origin (see \cref{fig:phi0speca} for a plot of $\lambda_e$ vs. $k$), collides with the eigenvalues at the origin at a critical value $k = k_e$, and then moves onto the real axis (\cref{fig:phi0specd}). This suggests that the solution $c$ is neutrally stable for $0 < k < k_e$ and unstable for $k > k_e$. A plot of this critical value $k_e$ vs. $\phi$ (\cref{fig:phi0specb}) suggests that the maximum value of $k_e$ occurs when $\phi = \pi/N$.
+$w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$. In addition, there is a pair of internal mode eigenvalues $\pm \lambda_e$, which will call edge modes since they split off from the edge of the essential spectrum (these can be seen in \cref{fig:phi0speca}). As $k$ increases, $\lambda_e$ moves towards the origin (see \cref{fig:phi0specc} for a plot of $\lambda_e$ vs. $k$), collides with the eigenvalues at the origin at a critical value $k = k_e$, and then moves onto the real axis (\cref{fig:phi0specb}). This suggests that the solution $c$ is neutrally stable for $0 < k < k_e$ and unstable for $k > k_e$. A plot of this critical value $k_e$ vs. $\phi$ in \cref{fig:phi0specd} suggests that the maximum value of $k_e$ occurs when $\phi = \pi/N$.
 
 Numerical evolution experiments suggest that this internal mode primarily affects the phases $\theta_n$ of the standing wave. For $k < k_e$, the internal mode eigenvalue $\lambda_e$ is imaginary. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits phase oscillations with frequency $\lambda_e$, with relative error less than $10^{-3}$ (see \cref{fig:evolz1b}). For $k > k_e$, the internal mode eigenvalue $\lambda_e$ is real. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits exponential growth in the phases; the growth rate is $\lambda_e$ with relative error less than $10^{-2}$ (see \cref{fig:evolz1d}). We note that in both cases, the amplitudes of the perturbed solutions also exhibit oscillatory behavior (\cref{fig:evolz1a} and \cref{fig:evolz1c}), although the magnitude of these oscillations in $L^2$ norm is much larger for $k > k_e$ than for $k < k_e$.
 
@@ -567,22 +569,22 @@ Numerical evolution experiments suggest that this internal mode primarily affect
 
 \section{Conclusions}
 
-In this paper, we studied a model of light propagation in a twisted multi-core fiber with a term incorporating temporal dispersion. We derived asymptotic expressions for standing wave solutions in which the number of waveguides $N$ is even, and the bulk of the intensity is contained in a single node (the primary core), and the amplitudes and phases of the solution obey certain symmetry relations. These expressions are in very good agreement with results from numerical parameter continuation. Furthermore, the asymptotic analysis shows that for an even number $N$ of waveguides, there is significant suppression of optical activity in the waveguide opposite the primary core when the twist parameter $\phi$ and the number of waveguides $N$ are related by $\phi = \pi/N$. This is the exact same relationship as in the model with no temporal dispersion \cite{parker2021}.
+In this paper, we studied a model of light propagation in a twisted multi-core fiber with a term incorporating temporal dispersion. We derived asymptotic expressions for standing wave solutions in which the number of waveguides, $N$, is even, the bulk of the intensity is contained in a single node (the primary core), and the amplitudes and phases of the solution obey certain symmetry relations. These expressions are in very good agreement with results from numerical parameter continuation. Furthermore, the asymptotic analysis shows that for an even number, $N$, of waveguides, there is significant suppression of optical activity in the waveguide opposite the primary core when the twist parameter, $\phi$, and the number of waveguides, $N$, are related by $\phi = \pi/N$. This is the exact same relationship as in the model with no temporal dispersion \cite{parker2021}.
 Numerical computation suggests that there are two critical values $k_e$ and $k^*$ of $k$, with $0 < k_e < k^*$. The standing wave solution exists for $0 < k < k^*$ and is stable for $0 < k < k_e$, at which point an internal eigenmode collides with the eigenvalues at the origin. Both $k_e$ and $k^*$ attain their maximum when $\phi = \pi/N$, which is also the angle for which the essential spectrum boundary $\alpha$ is furthest from the origin.
 
-Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion; as in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. Future research could involve extending the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or studying the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would include examining the continuum limit, i.e. what happens if we send $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter $\phi$ is proportional to $1/N$, thus we will have $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with standing waves generated experimentally.
+Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion. As in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. It could also be interesting to extend the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or to study the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would be to examine the continuum limit, i.e. what happens as $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter, $\phi$, is proportional to $1/N$, thus we will have $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with standing waves generated experimentally.
 
 \vspace{0.5cm}
 % \begin{acknowledgments}
 \textbf{Acknowledgments}: 
-This material is based upon work supported by the U.S. National Science Foundation under the RTG grant DMS-1840260 (R.P. and A.A.) and DMS-1909559 (AA). PUT OTHER GRANT INFO HERE.
+This material is based upon work supported by the U.S. National Science Foundation under the RTG grant DMS-1840260 (R.P. and A.A.), DMS-1909559 (A.A.), and DMS-2106203 (J.Z.). PUT OTHER GRANT INFO HERE.
 % \end{acknowledgments}
 
 \appendix
 
 \section{Symmetries}\label{app:symm}
 
-We verify that the symmetry relations in \cref{eq:symm} are consistent. First, for $n = 2, \dots, N/2-1$, we take equation \cref{eq:st2} for $-n$, substitute the symmetries for $a_n$ and $\theta_n$ from \cref{eq:symm}, and simplify, to obtain 
+We verify that the symmetry relations in \cref{eq:symm} are consistent with \cref{eq:st2}, i.e. solutions to \cref{eq:st2} can exist with these symmetries. First, for $n = 2, \dots, N/2-1$, we take equation \cref{eq:st2} for $-n$, substitute the symmetries for $a_n$ and $\theta_n$ from \cref{eq:symm}, and simplify, to obtain 
 \begin{equation*}
 \begin{aligned}
 (\ddot a_n &- a_n (\dot \theta_n)^2) 
@@ -602,160 +604,160 @@ The imaginary part is
 \begin{equation}\label{eq:n0imagpart}
 a_0 \ddot\theta_0 + 2 \dot a_0 \dot \theta_0 = 2 k a_1 \cos(\theta_1 - \phi) \sin \theta_0,
 \end{equation}
-for which $\theta_0(t) = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the $\theta_{N/2} = 0$ is a solution to the imaginary part of \cref{eq:st2} for $n=N/2$, thus this condition is consistent as well.
+for which $\theta_0 = 0$ is a solution, thus this condition is consistent. Following the same procedure by using the imaginary part of equation \cref{eq:st2}, we can show that the $\theta_{N/2} = 0$ is a solution to the imaginary part of \cref{eq:st2} for $n=N/2$, thus this condition is consistent as well.
 
 \section{Asymptotic analysis}\label{app:asymp}
 
-Let $a_n(t)$ and $\theta_n(t)$ be the amplitudes and phases at site $n$, as in the ansatz \cref{eq:cnansatz}, where $n \in S = \{ 0, \pm 1, \dots, \pm N/2-1, N/2 \}$. We will take 
+Let $a_n$ and $\theta_n$ be the amplitudes and phases at site $n$, as in the ansatz \cref{eq:cnansatz}, where $n \in S = \{ 0, \pm 1, \dots, \pm N/2-1, N/2 \}$. We assume that 
 \[
-a_n(t), \theta_n(t) \in H^2(\R) \subset L^2(\R),
+a_n, \theta_n \in H^2(\R) \subset L^2(\R),
 \]
-where $L^2(\R)$ is the space of real, valued square-integrable functions on $\R$ equipped with the standard inner product, and $H^2(\R)$ is the corresponding Sobolev space. We note that the system of equations \cref{eq:st2} is translation invariant, i.e. if $\{ a_n(t), \theta_n(t)\}_{n\in S}$ is a solution, then so is $\{ a_n(t-\tau), \theta_n(t-\tau)\}_{n\in S}$ for any $\tau \in \R$. When $k = 0$, we want the solution $a_0(t)$ to be the ordinary NLS soliton $\psi(t)$, which is centered at 0. To ensure that the solution we find is not shifted in $t$, we impose the phase condition on the amplitude $a_0(t)$
+where $L^2(\R)$ is the space of real, valued square-integrable functions on $\R$ equipped with the standard inner product, and $H^2(\R)$ is the corresponding Sobolev space. We note that the system of equations \cref{eq:st2} is translation invariant, i.e. if $\{ a_n(t), \theta_n(t)\}_{n\in S}$ is a solution, then so is $\{ a_n(t-\tau), \theta_n(t-\tau)\}_{n\in S}$ for any $\tau \in \R$. When $k = 0$, we want the solution $a_0$ to be the ordinary NLS soliton $\psi$, which is centered at 0. To ensure that the solution we find is not shifted in $t$, we impose the phase condition,
 \begin{equation}\label{eq:phasecond}
-\langle a_0(t), \dot{\psi}(t) \rangle_{L^2(\R)} = \int_{-\infty}^\infty a_0(t) \dot{\psi}(t) dt = 0.
+\langle a_0, \dot{\psi} \rangle_{L^2(\R)} = \int_{-\infty}^\infty a_0(t) \dot{\psi}(t) dt = 0,
 \end{equation}
-In other words, $a_0(t)$ will have no component in the direction of $\dot{\psi}(t)$.
+on the amplitude $a_0$. In other words, $a_0$ has no component in the direction of $\dot{\psi}$.
 
-Next, define the linear operator $\Lw: H^2(\R) \subset L^2(\R) \rightarrow L^2(\R)$ by
+We define the linear operator $\Lw: H^2(\R) \subset L^2(\R) \rightarrow L^2(\R)$ by
 \begin{equation}\label{eq:Lw}
 \Lw = \omega - \partial_t^2.
 \end{equation}
-Since all functions in $L^2(\R)$ vanish at infinity, the kernel of $\Lw$ is $\{0\}$, i.e. the only solution in $H^2(\R)$ to $\Lw f = 0$ is $f = 0$. Furthermore the operator $\Lw$ is invertible on $L^2(\R)$. We also note that if we use periodic boundary conditions on $[-T,T]$, as long as we take $\omega > 0$, $\ker \Lw = \{0\}$, and $\Lw$ is invertible on $L^2_{\text{per}}([-T,T])$.
+The kernel of $\Lw$ is $\{0\}$, i.e. the only solution in $H^2(\R)$ to $\Lw f = 0$ is $f = 0$, which can be verified by taking the Fourier transform of $\Lw$. Consequently, the operator $\Lw$ is invertible on $L^2(\R)$. We also note that if we use periodic boundary conditions on $[-T,T]$, as long as we take $\omega > 0$, $\ker \Lw = \{0\}$, and $\Lw$ is invertible on $L^2_{\text{per}}([-T,T])$.
 
-Finally, we recall that the NLS soliton $\psi(t)$ is a real-valued, standing wave solution to the NLS equation with frequency $\omega$, thus it solves 
+Next, we recall that the NLS soliton, $\psi$, is a real-valued, standing wave solution to the NLS equation with frequency $\omega$, thus it solves 
 \begin{equation}\label{eq:NLSreal}
 \ddot{u} + u^3 - \omega u = 0. 
 \end{equation}
-Linearizing this equation about $\dot{\psi}(t)$ yields the self-adjoint linear operator $\calL(\psi): H^2(\R) \subset L^2(\R) \rightarrow L^2(\R)$, defined by
+Linearizing this equation about $\psi$ yields the self-adjoint linear operator $\calL(\psi): H^2(\R) \subset L^2(\R) \rightarrow L^2(\R)$, defined by
 \begin{equation}\label{eq:Lpsi}
 \calL(\psi) = \partial_t^2 - \omega + 3 \psi^2.
 \end{equation}
-The kernel of $\dot{\psi}(t)$ is one-dimensional, and is spanned by $\dot{\psi}(t)$. By the Fredholm alternative \cite{Ramm2001}, since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u(t)$ has a solution if $u(t) \perp \dot{\psi}(t)$.
+The kernel of $\calL(\psi)$ is one-dimensional, and is spanned by $\dot{\psi}(t)$. By the Fredholm alternative \cite{Ramm2001}, since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u$ has a solution if $u \perp \dot{\psi}$.
 
 \subsection{Primary core}
 
-Using the symmetry relations \cref{eq:symm} and $\theta_0(t) = 0$, equation \cref{eq:st2real} for $n=0$ becomes
+Using the symmetry relations \cref{eq:symm} and $\theta_0 = 0$, equation \cref{eq:st2real} for $n=0$ becomes
 \begin{equation}\label{eq:st2reala0}
-\ddot a_0  + 2 k a_1 \cos(\theta_1 - \phi) + a_0^3 - \omega a_0 = 0 
+\ddot a_0  + 2 k a_1 \cos(\theta_1 - \phi) + a_0^3 - \omega a_0 = 0.
 \end{equation}
 We take the power series ansatz 
 \[
-a_0(t) = \psi(t) + k a_0^{(1)}(t) + k^2 a_0^{(2)}(t) + \mathcal{O}(k^3)
+a_0 = \psi + k a_0^{(1)} + k^2 a_0^{(2)} + \mathcal{O}(k^3)
 \]
-for the amplitude $a_0(t)$, where $\psi(t)$ is the NLS soliton \cref{eq:NLSsoliton}. In addition, from \cref{eq:basicseries}, we have, at minimum, 
+for the amplitude $a_0$, where $\psi$ is the NLS soliton \cref{eq:NLSsoliton}. In addition, from \cref{eq:basicseries}, we have, at minimum, 
 \[
-a_1(t) = k \widetilde{a}_1(t) + \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k).
+a_1 = k \widetilde{a}_1 + \mathcal{O}(k^2), \qquad \theta_1 = \phi + \mathcal{O}(k).
 \]
-Substituting this into \cref{eq:st2reala0}, using the Taylor series expansion $\cos(\theta_1-\phi) = \mathcal{O}(k^2)$, collecting powers of $k$, and simplifying, we get
+Substituting this into \cref{eq:st2reala0}, using the Taylor series expansion $\cos(\theta_1-\phi) = \mathcal{O}(k^2)$, collecting powers of $k$, and simplifying, we obtain
 \begin{equation*}
 \begin{aligned}
 &\left(\ddot{\psi} + \psi^3 - \omega \psi\right) 
 + k\left(\ddot a_0^{(1)} - \omega a_0^{(1)} + 3 \psi^2 a_0^{(1)}\right) \\
-&\qquad\qquad+ k^2\left(\ddot a_0^{(2)} - \omega a_0^{(2)} + 3\left(a_0^{(1)}\right)^2 + 3 \psi^2 a_0^{(2)} + 2 \widetilde{a}_1 \right) + \mathcal{O}(k^3) = 0,
+&\qquad\qquad+ k^2\left(\ddot a_0^{(2)} - \omega a_0^{(2)} + 3\left(a_0^{(1)}\right)^2 + 3 \psi^2 a_0^{(2)} + 2 \widetilde{a}_1 \right) + \mathcal{O}(k^3) = 0.
 \end{aligned}
 \end{equation*}
-where we have dropped the dependence on $t$ for simplicity. The $\mathcal{O}(1)$ term is 0 since $\psi$ solves \cref{eq:NLSreal}. The $\mathcal{O}(k)$ term can be written as $\calL(\psi)a_0^{(1)}=0$, where $\calL(\psi)$ is defined by \cref{eq:Lpsi}. Since the kernel of $\calL(\psi)$ is spanned by $\dot \psi(t)$, $a_0^{(1)} = c \dot \psi(t)$ for some constant $c$. However, since we wish our solution to satisfy the phase condition \cref{eq:phasecond}, we will take $c = 0$, from which it follows that $a_0^{(1)} = 0$. The $\mathcal{O}(k^2)$ term then becomes
+The $\mathcal{O}(1)$ term is 0 since $\psi$ solves \cref{eq:NLSreal}. The $\mathcal{O}(k)$ term can be written as $\calL(\psi)a_0^{(1)}=0$, where $\calL(\psi)$ is defined by \cref{eq:Lpsi}. Since the kernel of $\calL(\psi)$ is spanned by $\dot \psi$, $a_0^{(1)} = c \dot \psi$ for some constant $c$. However, since we wish our solution to satisfy the phase condition \cref{eq:phasecond}, we require that $a_0^{(1)} = 0$. The $\mathcal{O}(k^2)$ term then becomes
 \[
 \ddot a_0^{(2)} - \omega a_0^{(2)} + 3 \psi^2 a_0^{(2)} + 2 \widetilde{a}_1 = 0.
 \]
-Letting $\widetilde{a}_0(t) = a_0^{(2)}(t)$, we rewrite this as
+Letting $\widetilde{a}_0 = a_0^{(2)}$, we rewrite this as
 \begin{align}\label{eq:solvea0ta}
-\calL(\psi) \widetilde{a}_0 = -2 \widetilde{a}_1.
+\calL(\psi) \widetilde{a}_0 = -2 \widetilde{a}_1,
 \end{align}
-Once we determine $\widetilde{a}_1$, which we will do in the next step, we can solve for $\widetilde{a}_0$, provided $\widetilde{a}_1 \perp \dot\psi$. Putting all of this together, we have the expression for $a_0$
+which is the first equality in \cref{eq:tildea0eq}. Once we determine $\widetilde{a}_1$, which we will do in the next step, we can solve for $\widetilde{a}_0$, provided $\widetilde{a}_1 \perp \dot\psi$. Putting all of this together, we have the expression for $a_0$
 \begin{equation}\label{eq:a0eq}
-a_0(t) = \psi(t) + k^2 \widetilde{a}_0(t) + \mathcal{O}(k^3) = \psi(t) + \mathcal{O}(k^2).
+a_0 = \psi + k^2 \widetilde{a}_0 + \mathcal{O}(k^3) = \psi + \mathcal{O}(k^2),
 \end{equation}
+which is the first equation in \cref{eq:asympsol}.
 
 \subsection{Amplitudes}
 
 We can now determine the leading order terms for the amplitudes $a_n$, for $n = 1, \dots, N/2$, using the real parts \cref{eq:st2real} of the equations \cref{eq:st2}. The phases $\theta_n$ will be determined in the next step. For $n=1$, we take the power series ansatz 
 \[
-a_1(t) = k \widetilde{a}_1(t) + \mathcal{O}(k^2).
+a_1 = k \widetilde{a}_1 + \mathcal{O}(k^2).
 \]
 From \cref{eq:basicseries}, we have, at minimum,
 \[
-a_2(t) = \mathcal{O}(k^2), \qquad \theta_1(t) = \phi + \mathcal{O}(k), \qquad \theta_2(t) = 2 \phi + \mathcal{O}(k),
+a_2 = \mathcal{O}(k^2), \qquad \theta_1 = \phi + \mathcal{O}(k), \qquad \theta_2 = 2 \phi + \mathcal{O}(k),
 \]
-and we note that $\dot \theta_1(t) = \mathcal{O}(k)$. Substituting these together with the expression \cref{eq:a0eq} for $a_0(t)$ into the $n=1$ equation of \cref{eq:st2real}, expanding the cosine terms in Taylor series, collecting powers of $k$, and simplifying, we obtain the equation
+and we note that $\dot \theta_1 = \mathcal{O}(k)$. Substituting these together with the expression \cref{eq:a0eq} for $a_0$ into the $n=1$ equation of \cref{eq:st2real}, expanding the cosine terms in Taylor series, collecting powers of $k$, and simplifying, we obtain the equation
 \[
 k\left(\partial_t^2 \widetilde{a}_1 - \omega \widetilde{a}_1 + \psi\right) + \mathcal{O}(k^2) = 0.
 \]
-We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $\widetilde{a}_1$ to get 
+We note that the nonlinear term $a_1^3$ does not contribute to the lowest order term in the asymptotic expansion. We use the $\mathcal{O}(k)$ term to solve for $\widetilde{a}_1$ to obtain
 \begin{equation}\label{eq:a11}
-\widetilde{a}_1(t) = (\omega - \partial_t^2)^{-1} \psi(t),
+\widetilde{a}_1 = (\omega - \partial_t^2)^{-1} \psi,
 \end{equation}
-which has a solution since $\Lw$ is invertible. This gives us
+which has a solution since $\Lw$ is invertible. This is the first equation in \cref{eq:tildean}. Therefore,
 \begin{equation}\label{eq:a1eq}
-a_1(t) = k (\omega - \partial_t^2) \psi(t) + \mathcal{O}(k^2).
+a_1 = k (\omega - \partial_t^2) \psi + \mathcal{O}(k^2).
 \end{equation}
 
 We continue this process iteratively from $n=2$ to $n=N/2-1$. We take the power series ansatz 
 \[
-a_n(t) = k^n \widetilde{a}_n(t) + \mathcal{O}(k^{n+1}),
+a_n = k^n \widetilde{a}_n + \mathcal{O}(k^{n+1}),
 \]
 and use
 \begin{align*}
-&a_{n-1}(t) = k^{n-1} \widetilde{a}_{n-1}(t) + \mathcal{O}(k^{n}), &&a_{n+1}(t) = \mathcal{O}(k^{n+1}), \\
-&\theta_{n-1}(t) = (n-1) \phi + \mathcal{O}(k), &&\theta_{n+1}(t) = (n+1) \phi + \mathcal{O}(k),
+&a_{n-1} = k^{n-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{n}), &&a_{n+1} = \mathcal{O}(k^{n+1}), \\
+&\theta_{n-1} = (n-1) \phi + \mathcal{O}(k), &&\theta_{n+1} = (n+1) \phi + \mathcal{O}(k),
 \end{align*}
-where the expression for $a_{n-1}(t)$ was found in the previous step. Substituting these into \cref{eq:st2real} and following the same procedure as above, we obtain the equation
+where the expression for $a_{n-1}$ was found in the previous step. Substituting these into \cref{eq:st2real} and following the same procedure as above, we obtain the equation
 \begin{align*}
 k^n\left(\partial_t^2 \widetilde{a}_n - \omega \widetilde{a}_n + \widetilde{a}_{n-1} \right) +\mathcal{O}(k^{n+1}) = 0.
 \end{align*}
-We use the $\mathcal{O}(k^n)$ term to solve for $\widetilde{a}_n$ to get 
+We use the $\mathcal{O}(k^n)$ term to solve for $\widetilde{a}_n$ to obtain
 \begin{equation}\label{eq:ann}
 \widetilde{a}_n = (\omega - \partial_t^2)^{-1}\widetilde{a}_{n-1},
 \end{equation}
-which gives us
+which is the second equation in \cref{eq:tildean}. This gives us
 \begin{equation}\label{eq:aneq}
-a_n(t) = k^n (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1}(t) + \mathcal{O}(k^{n+1}).
+a_n = k^n (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{n+1}).
 \end{equation}
-We note that it follows from the ansatz $\theta_n = n \phi + \mathcal{O}(k)$ that $\cos[(\theta_n - \theta_{n-1}) - \phi] = 1 + \mathcal{O}(k^2)$ for all $n$, i.e. all the cosine terms are 1 to leading order. 
 
-For the final node $n=N/2$, we take $\theta_{N/2}(t) = 0$ in the real part of \cref{eq:st2} for $n = N/2$, use the symmetry relations for $a_{N/2-1}$ and $\theta_{N/2-1}$ from \cref{eq:symm}, and simplify to get
+For the final node $n=N/2$, we take $\theta_{N/2} = 0$ in the real part of \cref{eq:st2} for $n = N/2$, use the symmetry relations for $a_{N/2-1}$ and $\theta_{N/2-1}$ from \cref{eq:symm}, and simplify to obtain
 \[
 \ddot a_{N/2} - a_{N/2} (\dot \theta_{N/2})^2 + 
 2 k a_{N/2-1}\cos( \theta_{N/2-1} + \phi) + a_{N/2}^3 - \omega a_{N/2} = 0.
 \]
 Using the power series ansatz
 \[
-a_{N/2}(t) = k^{N/2} \widetilde{a}_{N/2}(t) + \mathcal{O}(k^{N/2+1})
+a_{N/2} = k^{N/2} \widetilde{a}_{N/2} + \mathcal{O}(k^{N/2+1})
 \]
-and the formula $a_{N/2-1}(t) = k^{N/2-1} \widetilde{a}_{N/2-1}(t) + \mathcal{O}(k^{N/2})$ from the previous step, we obtain the expression
+and the formula $a_{N/2-1} = k^{N/2-1} \widetilde{a}_{N/2-1} + \mathcal{O}(k^{N/2})$ from the previous step, we obtain the expression
 \begin{equation}\label{eq:am2a}
 \widetilde{a}_{N/2} = 2 (\omega - \partial_t^2)^{-1}\cos( \theta_{N/2-1} + \phi) \widetilde{a}_{N/2-1}.
 \end{equation}
-It is important to note that since $\theta_{N/2} = 0$, the cosine term in \cref{eq:am2a} is order $\mathcal{O}(1)$. Substituting the ansatz $\theta_{N/2-1}(t) = (N/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2a} becomes
+It is important to note that since $\theta_{N/2} = 0$, the cosine term in \cref{eq:am2a} is order $\mathcal{O}(1)$. Substituting the ansatz $\theta_{N/2-1} = (N/2-1)\phi + \mathcal{O}(k)$ and simplifying, equation \cref{eq:am2a} becomes
 \begin{equation}\label{eq:am2}
-\widetilde{a}_{N/2} = 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \widetilde{a}_{N/2-1} + \mathcal{O}(k).
+\widetilde{a}_{N/2} = 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} \widetilde{a}_{N/2-1} + \mathcal{O}(k),
 \end{equation}
-Since $\widetilde{a}_{N/2} = \mathcal{O}(1)$, it follows that
+which is the third equation in \cref{eq:tildean}. Since $\widetilde{a}_{N/2} = \mathcal{O}(1)$, it follows that
 \begin{equation}\label{eq:am2eq}
-a_{N/2}(t) = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1}(t) + \mathcal{O}(k^{N/2}+1).
+a_{N/2} = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{N/2}+1).
 \end{equation}
 Finally, since we have derived an expression \cref{eq:a11} for $\widetilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to get 
 \[
-\calL(\psi) \widetilde{a}_0 = -2 (\omega - \partial_t^2)^{-1} \psi(t),
+\calL(\psi) \widetilde{a}_0 = -2 (\omega - \partial_t^2)^{-1} \psi,
 \]
-which we can solve for $\widetilde{a}_0$.
+which we can solve for $\widetilde{a}_0$. This is the second equality in \cref{eq:tildea0eq}.
 
 \subsection{Phases}
 
-Now that we have determined the leading order terms for the amplitudes $a_n(t)$, we will compute the leading order terms for the phases $\theta_n(t)$. In fact, we will get expressions for the products $\widetilde{a}_n(t) \widetilde{\theta}_n(t)$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = N/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=N/2$ and $n=0$ by taking $\theta_{N/2}(t) = 0$ and $\theta_0(t) = 0$, respectively). For $n=N/2-1$, substitute the power series ansatz
+Now that we have determined the leading order terms for the amplitudes, $a_n$, we will compute the leading order terms for the phases, $\theta_n$. In fact, we will get expressions for the products $\widetilde{a}_n \widetilde{\theta}_n$ of the leading order terms of the amplitudes and the phases. To do this, we will use the imaginary parts \cref{eq:st2imag} of the equations \cref{eq:st2}, this time working backwards from $n = N/2-1$ to $n=1$. (Equations \cref{eq:st2} have already been satisfied for $n=N/2$ and $n=0$ by taking $\theta_{N/2} = 0$ and $\theta_0 = 0$, respectively). For $n=N/2-1$, substitute the power series ansatz
 \[
-\theta_{N/2-1}(t) = k^2 \widetilde{\theta}_{N/2-1}(t) + \mathcal{O}(k^{3}),
+\theta_{N/2-1} = k^2 \widetilde{\theta}_{N/2-1} + \mathcal{O}(k^{3}),
 \]
-the expressions for $a_n(t)$ from the previous section, $\theta_{N/2} = 0$, and
-$\theta_{N/2-2}(t) = (N/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=N/2-1$ to get
+the expressions for $a_n$ from the previous section, $\theta_{N/2} = 0$, and
+$\theta_{N/2-2} = (N/2-2)\phi + \mathcal{O}(k^4)$ from \cref{eq:basicseries} into equation \cref{eq:st2} for $n=N/2-1$ to obtain
 \[
 k^{N/2+1} \left( \widetilde{a}_{N/2-1} \ddot{\widetilde{\theta}}_{N/2-1} + 2 \dot{\widetilde{a}}_{N/2-1} \dot{\widetilde{\theta}}_{N/2-1} - \widetilde{a}_{N/2-2} \widetilde{\theta}_{N/2-1} - \widetilde{a}_{N/2} \sin(N \phi/2) \right) + \mathcal{O}(k^{N/2+2}) = 0.
 \]
-We use the $\mathcal{O}(k^{N/2+1})$ term to solve for $\widetilde{\theta}_{N/2-1}$. First, we solve equation \cref{eq:ann} for $\widetilde{a}_{N/2-2}$ and substitute this above to get
+We use the $\mathcal{O}(k^{N/2+1})$ term to solve for $\widetilde{\theta}_{N/2-1}$. First, we solve equation \cref{eq:ann} for $\widetilde{a}_{N/2-2}$ and substitute this above to obtain
 \[
 \widetilde{a}_{N/2-1} \ddot{\widetilde{\theta}}_{N/2-1} + 2 \dot{\widetilde{a}}_{N/2-1} \dot{\widetilde{\theta}}_{N/2-1} - \widetilde{\theta}_{N/2-1} (\omega - \partial_t^2) \widetilde{a}_{N/2-1} - \widetilde{a}_{N/2} \sin(N \phi/2) = 0,
 \]
-which simplifies as the derivative of a product to get
+which simplifies as the derivative of a product to obtain
 \[
 (\omega - \partial_t^2)\left( \widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} \right) = -\sin(N \phi/2) \widetilde{a}_{N/2}.
 \]
@@ -769,25 +771,25 @@ and we can divide by $\widetilde{a}_{N/2-1}$ to solve for $\widetilde{\theta}_{N
 \]
 which simplifies to 
 \begin{equation}\label{am2thm2a}
-\widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} = -\sin(N \phi) (\omega - \partial_t^2)^{-2} \widetilde{a}_{N/2-1}
+\widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} = -\sin(N \phi) (\omega - \partial_t^2)^{-2} \widetilde{a}_{N/2-1},
 \end{equation}
 using the double angle formula.
 
 We now follow an iterative procedure from $n=N/2-2$ down to $n=1$. For $n$, substitute the power series ansatz
 \[
-\theta_{n}(t) = k^{N-2n} \widetilde{\theta}_{n}(t) + \mathcal{O}(k^{N-2n+1}),
+\theta_{n} = k^{N-2n} \widetilde{\theta}_{n} + \mathcal{O}(k^{N-2n+1}),
 \]
-the expressions for $a_n(t)$ from the previous section, and $\theta_n(t)$ from \cref{eq:basicseries} into equation \cref{eq:st2imag} for $n$, and simplify, to get
+the expressions for $a_n$ from the previous section, and $\theta_n$ from \cref{eq:basicseries} into equation \cref{eq:st2imag} for $n$, and simplify, to obtain
 \[
 k^{N/2} \left( \widetilde{a}_n \ddot{\widetilde{\theta}}_n + 2 \dot{\widetilde{a}}_n \dot{\widetilde{\theta}}_n
-- \widetilde{a}_{n-1} \widetilde{\theta}_n + \widetilde{a}_{n+1}\widetilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{N/2+1}\right) = 0
+- \widetilde{a}_{n-1} \widetilde{\theta}_n + \widetilde{a}_{n+1}\widetilde{\theta}_{n+1} \right) + \mathcal{O}\left(k^{N/2+1}\right) = 0.
 \]
-We use the $\mathcal{O}(k^{N/2})$ term to solve for $\widetilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\widetilde{a}_{n-1}$ and substitute this above to get
+We use the $\mathcal{O}(k^{N/2})$ term to solve for $\widetilde{\theta}_{n}$. First, we solve equation \cref{eq:ann} for $\widetilde{a}_{n-1}$ and substitute this above to obtain
 \[
 \widetilde{a}_n \ddot{\widetilde{\theta}}_n + 2 \dot{\widetilde{a}}_n \dot{\widetilde{\theta}}_n
 - \widetilde{\theta}_n (\omega - \partial_t^2) \widetilde{a}_n + \widetilde{a}_{n+1} \widetilde{\theta}_{n+1} = 0,
 \]
-which simplifies as the derivative of a product to get
+which simplifies as the derivative of a product to obtain
 \[
 (\omega - \partial_t^2)\left( \widetilde{a}_n \widetilde{\theta}_n \right) = \widetilde{a}_{n+1} \widetilde{\theta}_{n+1}.
 \]
@@ -799,7 +801,7 @@ and we can divide by $\widetilde{a}_n$ to solve for $\widetilde{\theta}_n$.
 
 \section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}\label{app:prop1proof}
 
-Following \cite[Section 3.1]{Kapitula2013} (see, in particular, Section 3.1.1.5, concerning the NLS equation), the operator $\calL(0) - \lambda \calI$ is not Fredholm for $\lambda \in \C$ if it has an imaginary spatial eigenvalue, i.e. 
+Following \cite[Section 3.1]{Kapitula2013} (see, in particular, Section 3.1.1.5, concerning the NLS equation), $\lambda \in \sigma_{\text{ess}}(\calL(0))$ if and only if $\calL(0) - \lambda$ has an imaginary spatial eigenvalue, i.e. 
 $\left(\calL(0)-\lambda \calI \right) \begin{pmatrix}u\\v\end{pmatrix} e^{i r t}$
 has a solution for $r \in \R$ and $u, v \in \C^N$. After simplification, this reduces to the system of equations 
 \begin{equation}\label{eq:L0system}
@@ -808,24 +810,28 @@ has a solution for $r \in \R$ and $u, v \in \C^N$. After simplification, this re
 &(r^2 + \omega - k A_c)u + (k A_s - \lambda) v = 0.
 \end{aligned}
 \end{equation}
-$A_c$ and $A_s$ are both circulant matrices \cite{davis2012circulant}; the eigenvalues $\mu_j^c$ and $\mu_j^s$ of $A_c$ and $A_s$, together with their shared eigenvectors $v_j$, are given by
+$A_c$ and $A_s$ are both circulant matrices \cite{davis2012circulant}. The eigenvalues, $\mu_j^c$ and $\mu_j^s$, of the circulant matrices $A_c$ and $A_s$, are given by
 \begin{equation}\label{eq:circeigs}
 \begin{aligned}
-v_j &= \frac{1}{\sqrt{N}}\left(1, \xi^j, \xi^{2j}, \dots, \xi^{(N-1)j} \right) \\
 \mu_j^c &= 2 \cos\left( \frac{2 \pi}{N} j\right) \cos \phi, \qquad 
-\mu_j^s = 2 i \sin\left( \frac{2 \pi}{N} j\right) \sin \phi
+\mu_j^s = 2 i \sin\left( \frac{2 \pi}{N} j\right) \sin \phi, \qquad
+j = 0, \dots, N-1,
 \end{aligned}
 \end{equation}
-for $j = 0, \dots, N-1$, where $\xi = \exp{\frac{2\pi i}{N}}$ is a primitive $N$th root of unity. Since $A_s$ and $A_c$ appear in both equations in \cref{eq:L0system}, we can only have a solution if $u$ and $v$ are scalar multiples of one of the eigenvectors $v_j$. Letting $u = b_1 v_j$ and $v = b_2 v_j$, the system of equations \cref{eq:L0system} reduces to 
+and the corresponding common eigenvectors are given by
+\begin{equation}\label{eq:circevecs}
+v_j = \frac{1}{\sqrt{N}}\left(1, \xi^j, \xi^{2j}, \dots, \xi^{(N-1)j} \right),
+\end{equation}
+where $\xi = \exp{\frac{2\pi i}{N}}$ is a primitive $N$th root of unity \cite{davis2012circulant}. Since $A_s$ and $A_c$ appear in both equations in \cref{eq:L0system}, we can only have a solution if $u$ and $v$ are scalar multiples of one of the eigenvectors $v_j$. Letting $u = b_1 v_j$ and $v = b_2 v_j$, the system of equations \cref{eq:L0system} reduces to 
 \begin{equation}\label{eq:L0system2}
 \begin{aligned}
 &(k \mu_j^s - \lambda) b_1 - (r^2 + \omega - k \mu_j^c) b_2 = 0 \\
 &(r^2 + \omega - k \mu_j^c) b_1 + (k \mu_j^s - \lambda) b_2 = 0,
 \end{aligned}
 \end{equation}
-where we used the fact that $v_j \neq 0$. Multiplying the top equation by $(r^2 + \omega - k \mu_j^c)$ and substituting the bottom equation, this becomes
+where we used the fact that $v_j \neq 0$. This has a nontrivial solution if and only if the determinant of the corresponding $2 \times 2$ coefficient matrix is 0, i.e.
 \begin{equation*}
-\left[ (\lambda - k \mu_j^s)^2  + (r^2 + \omega - k \mu_j^c) \right] b_1 = 0.
+(\lambda - k \mu_j^s)^2  + (r^2 + \omega - k \mu_j^c)^2 = 0.
 \end{equation*}
 For $k \mu_j^c \leq \omega$, this has a solution when
 \begin{align*}
@@ -833,7 +839,7 @@ For $k \mu_j^c \leq \omega$, this has a solution when
 &= \pm i \left( r^2 + \omega \pm 2 k \sin\left( \frac{2 \pi}{N} j\right) \sin \phi 
 - 2 k \cos\left( \frac{2 \pi}{N} j\right) \cos \phi
 \right) \\
-&= \pm i \left( r^2 + \omega - 2k \cos \left( \frac{2 \pi}{N} j \pm \phi \right) \right)
+&= \pm i \left( r^2 + \omega - 2k \cos \left( \frac{2 \pi}{N} j \pm \phi \right) \right).
 \end{align*}
 As long as $2k \max_{j=0,\dots,N-1} \cos \left( \frac{2 \pi}{N} j \pm \phi \right) \leq \omega$, $\lambda \in (-\infty,-\alpha]\cup[\alpha, \infty)$, where
 \begin{align}\label{eq:alpha1}
@@ -846,7 +852,7 @@ For $0 \leq \phi \leq 2 \pi/N$,
 \omega - 2 k \cos\left(\frac{2\pi}{N}-\phi\right) & \frac{\pi}{N} \leq \phi \leq \frac{2\pi}{N},
 \end{cases}
 \end{align*}
-which has a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$.
+which has a maximum of $\omega - 2 k \cos\left(\pi/N\right)$ when $\phi = \pi/N$. For $\phi$ outside of this interval, $\alpha$ is periodic with period $\frac{2\pi}{N}$. 
 
 \bibliographystyle{amsplain}
 \bibliography{twist2.bib}
