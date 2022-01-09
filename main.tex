@@ -27,6 +27,7 @@
 \captionsetup{font={small},skip=0.25\baselineskip}
 \captionsetup{justification=raggedright}
 \captionsetup[subfigure]{font={small}, skip=1pt, singlelinecheck=false}
+\captionsetup[subfigure]{labelfont=rm}
 
 \usepackage[capitalize,nameinlink]{cleveref}
 % Per SIAM Style Manual, "section" should be lowercase
@@ -58,6 +59,8 @@
 
 % Make number non-italic in any environment.
 \crefdefaultlabelformat{#2\textup{#1}#3}
+
+\hypersetup{hidelinks}
 
 \def\noi{\noindent}
 \def\T{{\mathbb T}}
@@ -314,7 +317,7 @@ Substituting \cref{eq:tildeanpsi} for $\widetilde{a}_n$ and simplifying, we can 
 \end{equation}
 We can solve for $\widetilde{\theta}_n$ by dividing by $\widetilde{a}_n$, although we note that we have to be careful when doing this since $\widetilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
 
-When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section. We will see that numerical evidence in fact supports complete suppression of the opposite core when $\phi = \pi/N$.
+When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$ for all $t$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section. We will see that numerical evidence in fact supports complete suppression of the opposite core when $\phi = \pi/N$.
 
 
 \section{Numerical results}\label{sec:numerics}
@@ -355,7 +358,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
 \begin{figure}
     \centering
     \includegraphics[width=16cm]{contdiag.eps}
-    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel: Continuation diagram plotting $L^2$ norm of entire solution vs. $k$. Right panels: Amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. $\omega=1$, time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel: Continuation diagram plotting $L^2$ norm of entire solution vs. $k$. Right panels: Amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. Parameters: $N=6$, $\omega=1$, time domain $[-20,20]$, 128 Fourier nodes per core.}
     \label{fig:kcont}
 \end{figure}
 
@@ -376,7 +379,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
         \label{fig:kcont2c}
         \includegraphics[width=5cm]{contkstarvsomega.eps}
     \end{subfigure}
-    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of entire solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. Time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of entire solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. Parameters: $N=6$, time domain $[-20,20]$, 128 Fourier nodes per core.}
     \label{fig:kcont2}
 \end{figure}
 
@@ -415,7 +418,7 @@ Now that we have constructed standing wave solutions of \cref{eq:standingwave}, 
         \label{fig:m6pi6phase}
         \includegraphics[width=5cm]{m6phipi6phase.eps}
     \end{subfigure}
-    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2. $k=0.25$, $\omega=1$, time domain $[-30,30]$, 256 Fourier nodes per core.}
+    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2. Parameters: $N=6$, $k=0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:m6sol}
 \end{figure}
 
@@ -432,7 +435,7 @@ Now that we have constructed standing wave solutions of \cref{eq:standingwave}, 
         \label{fig:m6supptheta}
         \includegraphics[width=5cm]{thetaphicont.eps}
     \end{subfigure}
-    \caption{(a) $\log_{10} \max |a_3(t)|$ vs. $\phi$ for $k=0.1$ and $k=0.25$. (b) $\log_{10} \max_{n,t}{|\theta_n(t) - n \phi|}$ vs. $\phi$ for $k=0.1$ and $k=0.25$.}
+    \caption{(a) $\log_{10} \max |a_3(t)|$ vs. $\phi$ for $k=0.1$ and $k=0.25$. (b) $\log_{10} \max_{n,t}{|\theta_n(t) - n \phi|}$ vs. $\phi$ for $k=0.1$ and $k=0.25$. Parameters: $N=6$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:m6supp}
 \end{figure}
 
@@ -463,7 +466,7 @@ $a_n (\theta_n - n \phi )^{\text{asymp}} = k^{N-n} \widetilde{a}_n \widetilde{\t
         \label{fig:m6errorb}
         \includegraphics[width=5cm]{N6athetaerror.eps}
     \end{subfigure}
-    \caption{(a) $\log_{10}$ of $L^2$ error of the amplitudes $a_n$ vs $\log_{10} k$,, and (b) the product of the amplitudes and phases $a_n \theta_n $ vs $\log_{10} k$.}
+    \caption{(a) $\log_{10}$ of $L^2$ error of the amplitudes $a_n$ vs $\log_{10} k$, and (b) the product of the amplitudes and phases $a_n \theta_n $ vs $\log_{10} k$. Parameters: $N=6$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:m6error}
 \end{figure}
 
@@ -530,7 +533,7 @@ Due to the spatial discretization, the continuous bands constituting the essenti
         \includegraphics[width=5cm]{keplot.eps}
     \end{subfigure}
 
-    \caption{(a), (b) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. (c) Plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (d) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \caption{(a), (b) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. (c) Plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (d) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. Parameters: $N=6$, $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:phi0spec}
 \end{figure}
 
@@ -539,7 +542,7 @@ The kernel of $\calL(c)$ has algebraic multiplicity 4 and geometric multiplicity
 $w_1 = (\partial_t u_1, \dots, \partial_t u_N, \partial_t v_1, \dots, \partial_t v_N )^T$ and 
 $w_2 = (-v_1, \dots, -v_N, u_1, \dots, u_N )^T$. In addition, there is a pair of internal mode eigenvalues $\pm \lambda_e$, which will call edge modes since they split off from the edge of the essential spectrum (these can be seen in \cref{fig:phi0speca}). As $k$ increases, $\lambda_e$ moves towards the origin (see \cref{fig:phi0specc} for a plot of $\lambda_e$ vs. $k$), collides with the eigenvalues at the origin at a critical value $k = k_e$, and then moves onto the real axis (\cref{fig:phi0specb}). This suggests that the solution $c$ is neutrally stable for $0 < k < k_e$ and unstable for $k > k_e$. A plot of this critical value $k_e$ vs. $\phi$ in \cref{fig:phi0specd} suggests that the maximum value of $k_e$ occurs when $\phi = \pi/N$.
 
-Numerical evolution experiments suggest that this internal mode primarily affects the phases $\theta_n$ of the standing wave. For $k < k_e$, the internal mode eigenvalue $\lambda_e$ is imaginary. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits phase oscillations with frequency $\lambda_e$, with relative error less than $10^{-3}$ (see \cref{fig:evolz1b}). For $k > k_e$, the internal mode eigenvalue $\lambda_e$ is real. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits exponential growth in the phases; the growth rate is $\lambda_e$ with relative error less than $10^{-2}$ (see \cref{fig:evolz1d}). We note that in both cases, the amplitudes of the perturbed solutions also exhibit oscillatory behavior (\cref{fig:evolz1a} and \cref{fig:evolz1c}), although the magnitude of these oscillations in $L^2$ norm is much larger for $k > k_e$ than for $k < k_e$.
+Numerical evolution experiments using MATLAB's \texttt{ode45} function suggest that this internal mode primarily affects the phases $\theta_n$ of the standing wave. For $k < k_e$, the internal mode eigenvalue $\lambda_e$ is imaginary. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits phase oscillations with frequency $\lambda_e$, with relative error less than $10^{-3}$ (see \cref{fig:evolz1b}). For $k > k_e$, the internal mode eigenvalue $\lambda_e$ is real. Evolution of perturbations in the direction of the corresponding eigenmode $v_e$ exhibits exponential growth in the phases; the growth rate is $\lambda_e$ with relative error less than $10^{-2}$ (see \cref{fig:evolz1d}). We note that in both cases, the amplitudes of the perturbed solutions also exhibit oscillatory behavior (\cref{fig:evolz1a} and \cref{fig:evolz1c}), although the magnitude of these oscillations in $L^2$ norm is much larger for $k > k_e$ than for $k < k_e$.
 
 \begin{figure}
     \centering
@@ -563,7 +566,7 @@ Numerical evolution experiments suggest that this internal mode primarily affect
         \label{fig:evolz1d}
         \includegraphics[width=5cm]{unstablephase1.eps}
     \end{subfigure}
-    \caption{Evolution $c(z)$ in $z$ of perturbations of standing wave solution $c_0$ for $k = 0.25$ (top, edge mode $\lambda = \pm 0.239i$) and $k = 0.35$ (bottom, edge mode $\lambda = \pm 0.255$). Initial condition is $c_0 + \epsilon v_e$, where $v_e$ is eigenfunction corresponding to edge mode and $\epsilon = 10^{-2}$. Left panels show evolution of $L^2$ norm difference between amplitude $|c(z)|$ of perturbation and amplitude $|c_0|$ of standing wave. Right panels show evolution of phase differences at centers of peaks between perturbation $c(z)$ and standing wave $c_0$. $N=6$, $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core, evolution using \texttt{ode45} in MATLAB.}
+    \caption{Evolution $c(z)$ in $z$ of perturbations of standing wave solution $c_0$ for $k = 0.25$ (top, edge mode $\lambda = \pm 0.239i$) and $k = 0.35$ (bottom, edge mode $\lambda = \pm 0.255$). Initial condition is $c_0 + \epsilon v_e$, where $v_e$ is eigenfunction corresponding to edge mode and $\epsilon = 10^{-2}$. Left panels show evolution of $L^2$ norm difference between amplitude $|c(z)|$ of perturbation and amplitude $|c_0|$ of standing wave. Right panels show evolution of phase differences at centers of peaks between perturbation $c(z)$ and standing wave $c_0$. Parameters: $N=6$, $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
     \label{fig:evolz1}
 \end{figure}
 
@@ -632,7 +635,7 @@ Linearizing this equation about $\psi$ yields the self-adjoint linear operator $
 \begin{equation}\label{eq:Lpsi}
 \calL(\psi) = \partial_t^2 - \omega + 3 \psi^2.
 \end{equation}
-The kernel of $\calL(\psi)$ is one-dimensional, and is spanned by $\dot{\psi}(t)$. By the Fredholm alternative \cite{Ramm2001}, since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u$ has a solution if $u \perp \dot{\psi}$.
+The kernel of $\calL(\psi)$ is one-dimensional, and is spanned by $\dot{\psi}$. By the Fredholm alternative \cite{Ramm2001}, since $\calL(\psi)$ is self-adjoint, the equation $\calL(\psi) = u$ has a solution if $u \perp \dot{\psi}$.
 
 \subsection{Primary core}
 
@@ -736,7 +739,7 @@ which is the third equation in \cref{eq:tildean}. Since $\widetilde{a}_{N/2} = \
 \begin{equation}\label{eq:am2eq}
 a_{N/2} = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{N/2}+1).
 \end{equation}
-Finally, since we have derived an expression \cref{eq:a11} for $\widetilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to get 
+Finally, since we have derived an expression \cref{eq:a11} for $\widetilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to obtain 
 \[
 \calL(\psi) \widetilde{a}_0 = -2 (\omega - \partial_t^2)^{-1} \psi,
 \]
@@ -773,7 +776,7 @@ which simplifies to
 \begin{equation}\label{am2thm2a}
 \widetilde{a}_{N/2-1} \widetilde{\theta}_{N/2-1} = -\sin(N \phi) (\omega - \partial_t^2)^{-2} \widetilde{a}_{N/2-1},
 \end{equation}
-using the double angle formula.
+using the double angle formula. This is the first equation in \cref{eq:tildeantn}.
 
 We now follow an iterative procedure from $n=N/2-2$ down to $n=1$. For $n$, substitute the power series ansatz
 \[
@@ -797,7 +800,7 @@ Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \begin{equation}\label{an2th}
 \widetilde{a}_n \widetilde{\theta}_n = (\omega - \partial_t^2)^{-1} \left( \widetilde{a}_{n+1} \widetilde{\theta}_{n+1} \right),
 \end{equation}
-and we can divide by $\widetilde{a}_n$ to solve for $\widetilde{\theta}_n$. 
+which is the second equation in \cref{eq:tildeantn}. We can divide by $\widetilde{a}_n$ to solve for $\widetilde{\theta}_n$. 
 
 \section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}\label{app:prop1proof}
 
