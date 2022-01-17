@@ -322,7 +322,7 @@ When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N
 
 \section{Numerical results}\label{sec:numerics}
 
-First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$). To do this, we take $c_n = u_n + i v_n$ in \cref{eq:standingwave}, and separate real and imaginary parts to obtain
+For all simulations, unless otherwise indicated, we will take $N=6$ fibers and $\omega=1$. First, we construct standing wave solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$). To do this, we take $c_n = u_n + i v_n$ in \cref{eq:standingwave}, and separate real and imaginary parts to obtain
 \begin{equation}\label{eq:standingwavesep}
 \begin{aligned}
 &\partial_t^2 u_n + k\left( (u_{n-1} + u_{n+1}) \cos \phi ) - (v_{n-1} - v_{n+1})\sin \phi \right) + (u_n^2+v_n^2) u_n - \omega u_n= 0, \\
@@ -353,12 +353,12 @@ A_s(\phi) &= \text{Im } A(\phi) = \begin{pmatrix}
 -\sin \phi& \dots & & \sin \phi & 0
 \end{pmatrix}.
 \end{align*}
-To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 0$, and $v_n(t) = 0$ for all $n$, i.e. we start with a real NLS soliton in node 0, and the zero solution everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Results of the parameter continuation for $\phi = 0.25$ are shown in \cref{fig:kcont}. As $k$ increases, the intensity spreads from the primary core at $n=0$ to the other cores in the ring (label 2 in \cref{fig:kcont}). A turning point is reached at a critical value $k^*$ (approximately 0.455 in \cref{fig:kcont}; see \cref{fig:kcont2a} for other values of $\phi$), at which point all cores have equal amplitudes (label 3 in \cref{fig:kcont}). The parameter continuation then reverses direction. Solutions for decreasing $k$ are the same as those for increasing $k$, except that the primary core is now located at $n=N/2$ (compare labels 2 and 4 in \cref{fig:kcont}; the amplitudes are identical but are located at different sites in the ring). This critical value $k^*$ depends on both $\phi$ and $\omega$. Numerical continuation experiments suggest that, for fixed $\omega$, the maximum value of $k^*$ occurs when $\phi = \pi/N$ (see \cref{fig:kcont2b} for results for $N=6$). Numerical continuation experiments also suggest that, for fixed $\phi$, $k^*$ is proportional to $\omega$ (\cref{fig:kcont2c}). Parameter continuation results for larger $N$ are similar; however, since the discretization requires $NM$ points, where $M$ is the number of Fourier nodes per waveguide, this is computationally infeasible for very large $N$.
+To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 0$, and $v_n(t) = 0$ for all $n$, i.e. we start with a real NLS soliton in node 0, and the zero solution everywhere else. Spatial discretization is done using a Fourier spectral discretization with periodic boundary conditions on the interval $[-T,T]$, where $T$ is chosen sufficiently large so that the tails of the localized solutions have sufficient room to decay. Unless otherwise indicated, we will take $T=20$, and use 256 Fourier nodes per fiber core. Results of the parameter continuation for $\phi = 0.25$ are shown in \cref{fig:kcont}. As $k$ increases, the intensity spreads from the primary core at $n=0$ to the other cores in the ring (label 2 in \cref{fig:kcont}). A turning point is reached at a critical value $k^*$ (approximately 0.455 in \cref{fig:kcont}; see \cref{fig:kcont2a} for other values of $\phi$), at which point all cores have equal amplitudes (label 3 in \cref{fig:kcont}). The parameter continuation then reverses direction. Solutions for decreasing $k$ are the same as those for increasing $k$, except that the primary core is now located at $n=N/2$ (compare labels 2 and 4 in \cref{fig:kcont}; the amplitudes are identical but are located at different sites in the ring). This critical value $k^*$ depends on both $\phi$ and $\omega$. Numerical continuation experiments suggest that, for fixed $\omega$, the maximum value of $k^*$ occurs when $\phi = \pi/N$ (see \cref{fig:kcont2b} for results for $N=6$). Numerical continuation experiments also suggest that, for fixed $\phi$, $k^*$ is proportional to $\omega$ (\cref{fig:kcont2c}). Parameter continuation results for larger $N$ are similar; however, since the discretization requires $NM$ points, where $M$ is the number of Fourier nodes per waveguide, this is computationally infeasible for very large $N$.
 
 \begin{figure}
     \centering
     \includegraphics[width=16cm]{contdiag.eps}
-    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel: Continuation diagram plotting $L^2$ norm of entire solution vs. $k$. Right panels: Amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. Parameters: $N=6$, $\omega=1$, time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave} for $\phi=0.25$. Left panel: Continuation diagram plotting $L^2$ norm of entire solution vs. $k$. Right panels: Amplitudes of first four sites of representative solutions, which correspond to labeled points on the continuation diagram. Label 2 is $k=0.25$ in the direction of increasing $k$. Label 4 is $k=0.25$ in the direction of decreasing $k$. 128 Fourier nodes per core.}
     \label{fig:kcont}
 \end{figure}
 
@@ -379,7 +379,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
         \label{fig:kcont2c}
         \includegraphics[width=5cm]{contkstarvsomega.eps}
     \end{subfigure}
-    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of entire solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. Parameters: $N=6$, time domain $[-20,20]$, 128 Fourier nodes per core.}
+    \caption{Parameter continuation in $k$ for solutions to \cref{eq:standingwave}. (a) Continuation diagram plotting $L^2$ norm of entire solution vs. $k$ for various $\phi$. (b) Plot of critical value $k^*$ vs. $\phi$ for $\omega = 1$. (c) Plot of critical value $k^*$ vs $\omega$ for various $\phi$. 128 Fourier nodes per core.}
     \label{fig:kcont2}
 \end{figure}
 
@@ -418,7 +418,7 @@ Now that we have constructed standing wave solutions of \cref{eq:standingwave}, 
         \label{fig:m6pi6phase}
         \includegraphics[width=5cm]{m6phipi6phase.eps}
     \end{subfigure}
-    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2. Parameters: $N=6$, $k=0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides and $k=0.25$. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2.}
     \label{fig:m6sol}
 \end{figure}
 
@@ -435,7 +435,7 @@ Now that we have constructed standing wave solutions of \cref{eq:standingwave}, 
         \label{fig:m6supptheta}
         \includegraphics[width=5cm]{thetaphicont.eps}
     \end{subfigure}
-    \caption{(a) $\log_{10} \max |a_3(t)|$ vs. $\phi$ for $k=0.1$ and $k=0.25$. (b) $\log_{10} \max_{n,t}{|\theta_n(t) - n \phi|}$ vs. $\phi$ for $k=0.1$ and $k=0.25$. Parameters: $N=6$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \caption{(a) $\log_{10} \max |a_3(t)|$ vs. $\phi$ for $k=0.1$ and $k=0.25$. (b) $\log_{10} \max_{n,t}{|\theta_n(t) - n \phi|}$ vs. $\phi$ for $k=0.1$ and $k=0.25$.}
     \label{fig:m6supp}
 \end{figure}
 
@@ -466,7 +466,7 @@ $a_n (\theta_n - n \phi )^{\text{asymp}} = k^{N-n} \widetilde{a}_n \widetilde{\t
         \label{fig:m6errorb}
         \includegraphics[width=5cm]{N6athetaerror.eps}
     \end{subfigure}
-    \caption{(a) $\log_{10}$ of $L^2$ error of the amplitudes $a_n$ vs $\log_{10} k$, and (b) the product of the amplitudes and phases $a_n \theta_n $ vs $\log_{10} k$. Parameters: $N=6$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \caption{(a) $\log_{10}$ of $L^2$ error of the amplitudes $a_n$ vs $\log_{10} k$, and (b) the product of the amplitudes and phases $a_n \theta_n $ vs $\log_{10} k$.}
     \label{fig:m6error}
 \end{figure}
 
@@ -532,8 +532,7 @@ Due to the spatial discretization, the continuous bands constituting the essenti
         \label{fig:phi0specd}
         \includegraphics[width=5cm]{keplot.eps}
     \end{subfigure}
-
-    \caption{(a), (b) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. (c) Plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (d) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. Parameters: $N=6$, $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \caption{(a), (b) Spectrum of $\calL(c)$ before and after collision of internal mode eigenvalue with origin. (c) Plot of predicted essential spectrum border $\alpha$, computed essential spectrum border, and internal mode eigenvalue vs. $k$. (d) Plot of critical value $k_e$ for internal mode eigenvalue collision vs. $\phi$. Twist parameter $\phi = 0.25$ for all plots.}
     \label{fig:phi0spec}
 \end{figure}
 
@@ -566,7 +565,7 @@ Numerical evolution experiments using MATLAB's \texttt{ode45} function suggest t
         \label{fig:evolz1d}
         \includegraphics[width=5cm]{unstablephase1.eps}
     \end{subfigure}
-    \caption{Evolution $c(z)$ in $z$ of perturbations of standing wave solution $c_0$ for $k = 0.25$ (top, edge mode $\lambda = \pm 0.239i$) and $k = 0.35$ (bottom, edge mode $\lambda = \pm 0.255$). Initial condition is $c_0 + \epsilon v_e$, where $v_e$ is eigenfunction corresponding to edge mode and $\epsilon = 10^{-2}$. Left panels show evolution of $L^2$ norm difference between amplitude $|c(z)|$ of perturbation and amplitude $|c_0|$ of standing wave. Right panels show evolution of phase differences at centers of peaks between perturbation $c(z)$ and standing wave $c_0$. Parameters: $N=6$, $\phi = 0.25$, $\omega=1$, time domain $[-20,20]$, 256 Fourier nodes per core.}
+    \caption{Evolution $c(z)$ in $z$ of perturbations of standing wave solution $c_0$ for $k = 0.25$ (top, edge mode $\lambda = \pm 0.239i$) and $k = 0.35$ (bottom, edge mode $\lambda = \pm 0.255$). Initial condition is $c_0 + \epsilon v_e$, where $v_e$ is eigenfunction corresponding to edge mode and $\epsilon = 10^{-2}$. Left panels show evolution of $L^2$ norm difference between amplitude $|c(z)|$ of perturbation and amplitude $|c_0|$ of standing wave. Right panels show evolution of phase differences at centers of peaks between perturbation $c(z)$ and standing wave $c_0$. Twist parameter $\phi = 0.25$ for all plots.}
     \label{fig:evolz1}
 \end{figure}
 
