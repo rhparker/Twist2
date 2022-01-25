@@ -95,7 +95,7 @@ f% \documentclass[reprint, amsmath,amssymb,aps,pra]{revtex4-2}
 
 \begin{document}
 
-\title{Spatiotemporal dynamics of a twisted, circular waveguide array}
+\title{Spatiotemporal dynamics on a twisted, circular waveguide array}
 
 \author{Ross Parker}
 \address{Department of Mathematics, Southern Methodist University, 
@@ -124,12 +124,15 @@ We consider the existence and spectral stability of nonlinear discrete localized
 
 \section{Introduction}
 
-Multi-core optical fibers, which are optical waveguides that contain multiple fiber cores within a single cladding, have important applications in diverse fields. In the linear regime, current research targets the possibility of achieving spatial division multiplexing (SDM) at telecommunication wavelengths and in return, increase the information capacity \cite{azadeh}. There is also research in for example biomedical imaging \cite{Ortiz2018}. At high intensities, in the nonlinear regime, current research includes generating high power coherent pulses by combining light propagating in each core \cite{balakin}. As it relates to basic research, this optics platform presents an opportunity to explore spatio-temporal dynamics in nonlinear systems. This includes obtaining localized soliton-like solutions, optical vortices and other nonlinear modes \cite{pryamikov}  Addition of a twist to a circular multi-core fiber allows for fine control of diffraction and light transfer, in a similar manner to axis bending in linear waveguide arrays \cite{Longhi2005}. The coupled mode equations that model optical transmission in twisted, circular, multi-core fibers were derived in \cite{Longhi2007,Longhi2007b,Garanovich2012}. In non-dimensionalized form (and in the setting of no optical gain or loss) these equations are given by
+Multi-core optical fibers, which are optical waveguides that contain multiple fiber cores within a single cladding, have important applications in diverse fields. In the linear regime, current research targets the possibility of achieving spatial division multiplexing (SDM) at telecommunication wavelengths and in return, increase the information capacity \cite{azadeh}. There is also research in for example biomedical imaging \cite{Ortiz2018}. At high intensities, in the nonlinear regime, current research includes generating high power coherent pulses by combining light propagating in each core \cite{balakin}. As it relates to basic research, this optics platform presents an opportunity to explore theoretically \cite{ace} and experimentally \cite{minardi} localized spatio-temporal dynamics (discrete light bullets) in nonlinear discrete systems localized soliton-like solutions as well as explore  other structures such as discrete optical vortices \cite{pryamikov}. While most of the research has been on uniform, equally spaced waveguide arrays, the technological possibilities to depart from this scheme has opened new research directions in what is called topological photonics. This is the case when a twist is imposed to a circular multi-core fiber; something that in particular allows for fine control of diffraction and light transfer in a similar manner to axis bending in linear waveguide arrays \cite{Longhi2005}. The coupled mode equations that model optical transmission in twisted, circular, multi-core fibers were derived in \cite{Longhi2007,Longhi2007b,Garanovich2012}. In non-dimensionalized form (and in the setting of no optical gain or loss) these equations are given by
 \begin{equation}\label{eq:coupledmode}
 i \partial_z c_n + k \left(e^{i\phi}c_{n-1} + e^{-i\phi}c_{n+1} \right) + |c_n|^2 c_n = 0,
 \end{equation}
 for $n = 1, \dots, N$, where $N$ is the number of fibers in the ring, and the indices $n$ are taken $\md n$ due to the circular geometry (\cref{fig:circle}).
-The complex amplitudes $c_n(z)$ represent the localized field amplitude in each waveguide, the independent variable $z$ is along the axis of propagation, and the parameter $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring. The entire fiber structure is twisted along the propagation axis with a spatial period $\Lambda$, and the twist parameter $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$ is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $\epsilon = 2 \pi / \Lambda$ is the frequency of the twist, $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016,Parto2017}. We note that in this model, the intensity $c_n(z)$ of each waveguide is independent of time $t$.
+The complex amplitudes $c_n(z)$ represent the localized field amplitude in each waveguide, the independent variable $z$ is along the axis of propagation, and $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring. The entire fiber structure is twisted along the propagation axis with a spatial period $\Lambda$, and the twist parameter $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$ is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $\epsilon = 2 \pi / \Lambda$ is the frequency of the twist, $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016,Parto2017}. We note that this model only considers continuous wave (cw) modes on each waveguide. In the linear regime, 
+twisted multi-core fibers have applications in distributive sensing, in which position, temperature, strain, and acoustic signals can be detected along the entire length of the fiber \cite{Gannot2014,Westbrook2017}. Of particular note is shape sensing, in which the shape of the optical fiber can be reconstructed using measurements of light transmission and scattering through the fiber. 
+
+The work presented does not center on applications, but instead on advancing our understanding of the role topological properties have in the dynamics spatio-temporal localized modes. 
 
 \begin{figure}
 \begin{center}
@@ -138,10 +141,9 @@ The complex amplitudes $c_n(z)$ represent the localized field amplitude in each 
 \caption{Twisted, circular, multi-core fiber consisting of $N$ waveguides.}
 \label{fig:circle}
 \end{figure}
+ Indeed, the fiber twist permits the establishment of a topological state in the fiber, in which the intensity in one (or more) of the cores is completely suppressed. A six-core twisted optical fiber was considered in \cite{castro2016}, and asymptotic analysis showed that if the bulk of the optical intensity is confined to a single fiber in the ring, the opposite fiber in the ring is suppressed, to leading order, when $\phi = \pi/6$. This phenomenon is interpreted as an optical analogue of Aharonov-Bohm (AB) suppression of tunneling in \cite{Ornigotti2007,Parto2017,Parto2019}, in which the fiber twist plays the role of the magnetic flux in the quantum mechanical system \cite{Loss1992}. This suppression effect was shown analytically for a four-core optical fiber when $\phi=\pi/4$ in \cite{Parto2019}. In \cite{parker2021} we extended this analysis to cw solutions of the form $c_n = a_n e^{i (\omega z + \theta_n) }$ which are constant in amplitude and oscillatory in $z$. We showed that when the number of fibers $N$ is even, standing wave solutions exist in which the bulk of the intensity is contained in a single fiber core, and the intensity in the opposite core in the ring is completely suppressed for all $z$ when $\phi = \pi/N$. Using numerical spectral computation and evolution experiments, we showed that these standing wave solutions are stable, and we also extended these results to the case that $N$ is odd.
 
-Twisted multi-core fibers have applications in distributive sensing, in which position, temperature, strain, and acoustic signals can be detected along the entire length of the fiber \cite{Gannot2014,Westbrook2017}. Of particular note is shape sensing, in which the shape of the optical fiber can be reconstructed using measurements of light transmission and scattering through the fiber. The fiber twist permits the establishment of a topological state in the fiber, in which the intensity in one (or more) of the cores is completely suppressed. A six-core twisted optical fiber was considered in \cite{castro2016}, and asymptotic analysis showed that if the bulk of the optical intensity is confined to a single fiber in the ring, the opposite fiber in the ring is suppressed, to leading order, when $\phi = \pi/6$. This phenomenon is interpreted as an optical analogue of Aharonov-Bohm (AB) suppression of tunneling in \cite{Ornigotti2007,Parto2017,Parto2019}, in which the fiber twist plays the role of the magnetic flux in the quantum mechanical system \cite{Loss1992}. This suppression effect was shown analytically for a four-core optical fiber when $\phi=\pi/4$ in \cite{Parto2019}. In \cite{parker2021} we extended this analysis to standing waves, solutions of the form $c_n = a_n e^{i (\omega z + \theta_n) }$ which are constant in amplitude and oscillatory in $z$. We showed that when the number of fibers $N$ is even, standing wave solutions exist in which the bulk of the intensity is contained in a single fiber core, and the intensity in the opposite core in the ring is completely suppressed for all $z$ when $\phi = \pi/N$. Using numerical spectral computation and evolution experiments, we showed that these standing wave solutions are stable, and we also extended these results to the case that $N$ is odd.
-
-In this paper, we extend these results to a model incorporating a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger equation, namely,
+In this paper, we extend these results to the pulsed regime. For this, we incorporate a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger equation, namely,
 \begin{align}\label{eq:cnz}
 &i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N,
 \end{align}
@@ -150,7 +152,7 @@ We demonstrate that optical suppression also occurs in this model when the numbe
 
 \section{Mathematical model}\label{sec:model}
 
-We start by discussing the mathematical model \cref{eq:cnz} we will be investigating. Setting $c = (c_1, \dots, c_n)^T$, we can write \cref{eq:cnz} in matrix form as
+We first recast the model \cref{eq:cnz} in vector form. Setting $c = (c_1, \dots, c_n)^T$, we can write \cref{eq:cnz} as
 \begin{align}\label{eq:cz}
 i \partial_z c + \partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2\right)c = 0,
 \end{align}
@@ -164,19 +166,19 @@ e^{i \phi} & 0 & e^{-i \phi} & & & \\
 e^{-i \phi}& \dots & & e^{i \phi} & 0
 \end{pmatrix}.
 \end{align}
-Equation \cref{eq:cnz} is Hamiltonian, with energy given by
+Equation \cref{eq:cnz} has a Hamiltonian given by
 \begin{align}\label{eq:Hc}
 \calH(c) = \sum_{n=1}^N \int_{-\infty}^\infty 
 \left(
 |\dot{c}_n|^2 - \frac{1}{2}|c_n|^4 - e^{i\phi}( c_{n-1}c_n^* + c_{n+1}^* c_n) 
 - e^{-i \phi}( c_{n-1}^*c_n + c_{n+1} c_n^*) \right) dt,
 \end{align}
-where the overdot denotes differentiation with respect to $t$, and the star denotes complex conjugation. We can write the system in standard Hamiltonian form by taking $q_n = \RR c_n$ and $p_n = \II c_n$, so that equation \cref{eq:cnz} becomes
+where the overdot denotes differentiation with respect to $t$, and the star denotes complex conjugation. While we present our results in this representation, we first point out that one can write the system in standard (real) Hamiltonian form by taking $q_n = \RR c_n$ and $p_n = \II c_n$, so that equation \cref{eq:cnz} becomes
 \begin{equation}
 \partial_z (q_1, \dots, q_N, p_1, \dots, p_N)^T
  = J \nabla H(q_1, \dots, q_N, p_1, \dots, p_N).
 \end{equation}
-$J$ is the standard symplectic matrix
+$J$ is the symplectic matrix
 \[
 J = \begin{pmatrix}
 0 & I_n \\ -I_n & 0
@@ -194,25 +196,26 @@ with $I_n$ the $N \times N$ identity matrix, and where the Hamiltonian \cref{eq:
 \end{aligned}
 \end{equation}
 
-We are interested in finding standing wave solutions of the form, $c_n(z, t) = c_n(t) e^{i \omega z}$, which are oscillatory in $z$ with frequency, $\omega$, and complex amplitude, $c_n(t)$, depending only on $t$. Substituting this ansatz into \cref{eq:cnz}, the amplitudes $c_n = c_n(t)$ satisfy the system of $N$ coupled ordinary differential equations
+We are interested in finding pulse-like solutions of the form, $c_n(z, t) = C_n(t) e^{i \omega z}$, which are oscillatory in $z$ with wavenumber $\omega$, and complex amplitude, $C_n(t)$. Substituting this ansatz into \cref{eq:cnz}, the amplitudes $C_n = C_n(t)$ satisfy the system of $N$ coupled ordinary differential equations
 \begin{align}\label{eq:standingwave}
-\partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n - \omega c_n = 0,
+\partial_t^2 C_n + k\left(e^{i\phi}C_{n-1}+e^{-i\phi}C_{n+1}\right)+|
+C_n|^2 C_n - \omega C_n = 0,
 \end{align}
-where the subscripts $n$ are taken $\md N$. Letting $c = (c_1, \dots, c_n)^T$, we can write this in matrix form as 
+where the subscripts $n$ are taken $\md N$. Letting $C = (C_1, \dots, C_n)^T$, we can write this in matrix form as 
 \begin{align}\label{eq:standingwavematrix}
-\partial_t^2 c + k A(\phi) c + \diag\left(|c_n|^2 \right)c  - \omega c = 0.
+\partial_t^2 C + k A(\phi) C + \diag\left(|C_n|^2 \right)c  - \omega C = 0.
 \end{align}
-When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit \cite{Serg1990,Kevrekidis2009}, equation \cref{eq:standingwavematrix} reduces to $N$ independent copies of the standing wave equation for the NLS equation. The solution at each site is either 0 or the NLS soliton
+When the coupling parameter $k=0$, which is known as the anti-continuum (AC) limit \cite{Serg1990,Kevrekidis2009}, equation \cref{eq:standingwavematrix} reduces to $N$ independent copies of the stationary NLS equation, so that the solution at each site is either 0 or the NLS soliton
 \begin{equation}\label{eq:NLSsoliton}
 \psi(t) = \sqrt{2 \omega} \sech(\sqrt{\omega} t).
 \end{equation}
 Due to the gauge symmetry of NLS, we can multiply \cref{eq:NLSsoliton} by $e^{i \theta}$ for any $\theta$. 
 
-Next, we write $c_n$ as
+To properly address the role of the twist, we add possible nontrivial time dependence to the phase of the field $C_n$ as
 \begin{equation}\label{eq:cnansatz}
-c_n(t) = a_n(t)e^{i \theta_n(t)},
+C_n(t) = a_n(t)e^{i \theta_n(t)},
 \end{equation}
-where we have separated each complex amplitude $c_n(t)$ into its real amplitude $a_n(t)$ and phase $\theta_n(t)$. Substituting \cref{eq:cnansatz} into \cref{eq:standingwave}, we obtain the equation
+where we have separated each complex field $C_n(t)$ into its real amplitude $a_n(t)$ and phase $\theta_n(t)$. Substituting \cref{eq:cnansatz} into \cref{eq:standingwave}, we obtain the equation
 \begin{align*}
 e^{i \theta_n}&\left[ (\ddot a_n - a_n (\dot \theta_n)^2) 
 + i ( a_n \ddot\theta_n + 2 \dot a_n \dot \theta_n ) \right] \\
@@ -236,7 +239,7 @@ which we can split up into real and imaginary parts to obtain
 
 \section{Asymptotic solutions}\label{sec:asymp}
 
-We assume for now that the bulk of the intensity is contained a single node, which we will call the primary core and label $n=0$. We choose the number of waveguides $N$ to be even. We call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
+Here we take an asymptotic approach to find highly localized solutions. To do this, we assume that the bulk of the energy is concentrated in a single pulse propagating in one core, which we will call the primary node and label $n=0$; furthermore, we only consider the case where  the number of waveguides $N$ is even. We call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
 \begin{equation}\label{eq:symm}
 \begin{aligned}
 a_{-n}(t) &= a_{n}(t) && \qquad n = 1, \dots, N/2 \\
@@ -383,7 +386,7 @@ To start the continuation, we take $u_0(t) = \psi(t)$, $u_n(t) = 0$ for $n \neq 
     \label{fig:kcont2}
 \end{figure}
 
-Now that we have constructed standing wave solutions of \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. In \cref{fig:m6sol}, we show the amplitudes, $a_n(t)$, and phases, $\theta_n(t)$, for $N=6$ cores, for $\phi=0.25$ (top row) and $\phi=\pi/6$ (bottom row). As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (compare \cref{fig:m6025logamp} and \cref{fig:m6pi6logamp}). In addition, we see that the angle deviation $\theta_n(t) - n \phi$ is also significantly suppressed when $\phi=\pi/N$ (compare \cref{fig:m6025phase} and \cref{fig:m6pi6phase}). Although we only showed that the lowest order terms in the asymptotic expansion \cref{eq:asympsol} are suppressed when $\phi=\pi/N$, numerical evidence suggests that this suppression is complete, as in the model without temporal dispersion \cite{parker2021}. In \cref{fig:m6supp}, we show how both the amplitude, $a_3(t)$, of the opposite core and the deviations, $\phi_n(t) - n \phi$, of the phases are suppressed as $\phi$ varies; the cusps at $\phi=\pi/6$ provides further numerical evidence for complete suppression. These suppression results do not depend on the number of Fourier nodes in the temporal discretization.
+Now that we have constructed  solutions of \cref{eq:standingwave}, we show that we can attain suppression of the opposite core when $\phi=\pi/N$. In \cref{fig:m6sol}, we show the amplitudes, $a_n(t)$, and phases, $\theta_n(t)$, for $N=6$ cores, for $\phi=0.25$ (top row) and $\phi=\pi/6$ (bottom row). As predicted, when $\phi=\pi/6$, there is significant suppression of the amplitude at the opposite core (compare \cref{fig:m6025logamp} and \cref{fig:m6pi6logamp}). In addition, we see that the angle deviation $\theta_n(t) - n \phi$ is also significantly suppressed when $\phi=\pi/N$ (compare \cref{fig:m6025phase} and \cref{fig:m6pi6phase}). Although we only showed that the lowest order terms in the asymptotic expansion \cref{eq:asympsol} are suppressed when $\phi=\pi/N$, numerical evidence suggests that this suppression is complete, as in the model without temporal dispersion \cite{parker2021}. In \cref{fig:m6supp}, we show how both the amplitude, $a_3(t)$, of the opposite core and the deviations, $\phi_n(t) - n \phi$, of the phases are suppressed as $\phi$ varies; the cusps at $\phi=\pi/6$ provides further numerical evidence for complete suppression. These suppression results do not depend on the number of Fourier nodes in the temporal discretization.
 
 % figure: amplitudes/phases for N=6
 \begin{figure}
@@ -418,7 +421,7 @@ Now that we have constructed standing wave solutions of \cref{eq:standingwave}, 
         \label{fig:m6pi6phase}
         \includegraphics[width=5cm]{m6phipi6phase.eps}
     \end{subfigure}
-    \caption{Standing wave solutions to equation \cref{eq:standingwave} for $N=6$ waveguides and $k=0.25$. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2.}
+    \caption{Spatio-temporal solutions to equation \cref{eq:standingwave} for $N=6$ waveguides and $k=0.25$. The twist parameter is $\phi = 0.25$ (top) and $\phi = \pi/6$ (bottom). Left and middle: Amplitude and log amplitude of solution at first four sites. Right: $\theta_n(t) - n \phi$ for sites 1 and 2.}
     \label{fig:m6sol}
 \end{figure}
 
@@ -571,10 +574,10 @@ Numerical evolution experiments using MATLAB's \texttt{ode45} function suggest t
 
 \section{Conclusions}
 
-In this paper, we studied a model of light propagation in a twisted multi-core fiber with a term incorporating temporal dispersion. We derived asymptotic expressions for standing wave solutions in which the number of waveguides, $N$, is even, the bulk of the intensity is contained in a single node (the primary core), and the amplitudes and phases of the solution obey certain symmetry relations. These expressions are in very good agreement with results from numerical parameter continuation. Furthermore, the asymptotic analysis shows that for an even number, $N$, of waveguides, there is significant suppression of optical activity in the waveguide opposite the primary core when the twist parameter, $\phi$, and the number of waveguides, $N$, are related by $\phi = \pi/N$. This is the exact same relationship as in the model with no temporal dispersion \cite{parker2021}.
+In this paper, we studied a model of light propagation in a twisted multi-core fiber that includes temporal dispersion. We derived asymptotic expressions for spatio-temporal solutions in which the number of waveguides, $N$, is even, the bulk of the intensity is contained in a single node (the primary core), and the amplitudes and phases of the solution obey certain symmetry relations. These expressions are in very good agreement with results from numerical parameter continuation. Furthermore, the asymptotic analysis shows that for an even number, $N$, of waveguides, there is significant suppression of optical activity in the waveguide opposite the primary core when the twist parameter, $\phi$, and the number of waveguides, $N$, are related by $\phi = \pi/N$. This is the exact same behavior found in the model with no temporal dispersion \cite{parker2021}.
 Numerical computation suggests that there are two critical values $k_e$ and $k^*$ of $k$, with $0 < k_e < k^*$. The standing wave solution exists for $0 < k < k^*$ and is stable for $0 < k < k_e$, at which point an internal eigenmode collides with the eigenvalues at the origin. Both $k_e$ and $k^*$ attain their maximum when $\phi = \pi/N$, which is also the angle for which the essential spectrum boundary $\alpha$ is furthest from the origin.
 
-Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion. As in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. It could also be interesting to extend the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or to study the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would be to examine the continuum limit, i.e. what happens as $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter, $\phi$, is proportional to $1/N$, thus we will have $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with standing waves generated experimentally.
+Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion. As in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. It could also be interesting to extend the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or to study the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would be to examine the continuum limit, i.e. what happens as $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter, $\phi$, is proportional to $1/N$, thus we will have $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with experimental realizations.
 
 \vspace{0.5cm}
 % \begin{acknowledgments}
