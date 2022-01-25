@@ -1,4 +1,4 @@
-f% \documentclass[reprint, amsmath,amssymb,aps,pra]{revtex4-2}
+% \documentclass[reprint, amsmath,amssymb,aps,pra]{revtex4-2}
 \documentclass[11pt,reqno]{amsart}
 
 \usepackage[pdfborder={0 0 0.5 [3 2]}, plainpages=false]{hyperref}%
@@ -491,7 +491,7 @@ k A_s(\phi) & \partial_t^2 - \omega + k A_c(\phi)  \\
 k A_s(\phi) 
 \end{pmatrix},
 \end{equation}
-it follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that the essential spectrum of $\calL(c)$ is given by the essential spectrum of the constant coefficient operator $\calL(0)$, which we compute in \cref{app:prop1proof}. Since $\calL(c)$ is exponentially asymptotic to $\calL(0)$ at both $\pm \infty$, $\calL(0) - \lambda \calI$ cannot have nonzero Fredholm index (see \cite[Lemma 3.1.10]{Kapitula2013}). Consequently, we obtain the following result.
+it follows from the Weyl essential spectrum theorem \cite[Theorem 2.2.6]{Kapitula2013} that the essential spectrum of $\calL(c)$ is given by the essential spectrum of the constant coefficient operator $\calL(0)$, which we compute in \cref{app:prop1proof}. Since $\calL(c)$ is exponentially asymptotic to $\calL(0)$ at both $\pm \infty$, i.e. the Morse indices of the asymptotic operator are the same at $\pm \infty$, $\calL(0) - \lambda \calI$ cannot have nonzero Fredholm index (see \cite[Lemma 3.1.10]{Kapitula2013}). Consequently, we obtain the following result.
 
 \begin{proposition}\label{prop:ess}
 For $0 \leq \phi \leq \frac{2\pi}{N}$, define $\alpha$ in terms of $\phi$ by 
