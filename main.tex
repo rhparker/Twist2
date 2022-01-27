@@ -83,8 +83,8 @@
 \DeclareMathOperator{\ran}{range}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\md}{mod}
-\DeclareMathOperator{\RR}{Re}
-\DeclareMathOperator{\II}{Im}
+\DeclareMathOperator{\RR}{\text{Re}}
+\DeclareMathOperator{\II}{\text{Im}}
 
 \newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
@@ -356,14 +356,14 @@ Letting $u = (u_1, \dots, u_N)^T$ and $v = (v_1, \dots, v_N)^T$, we can write \c
 \end{equation}
 where
 \begin{align}
-A_c(\phi) &= \Re  (A(\phi)) = \begin{pmatrix}
+A_c(\phi) &= \RR A(\phi) = \begin{pmatrix}
 0 & \cos \phi & & \dots & \cos \phi \\
 \cos \phi & 0 & \cos \phi & & & \\
 & \ddots & \ddots & \ddots &  & \\
  & &\cos \phi  & 0 & \cos \phi  \\
 \cos \phi& \dots & & \cos \phi & 0
 \end{pmatrix} \label{eq:realA} \\ 
-A_s(\phi) &= \Im( A(\phi)) = \begin{pmatrix}
+A_s(\phi) &= \II A(\phi) = \begin{pmatrix}
 0 & -\sin \phi & & \dots & \sin \phi \\
 \sin \phi & 0 & -\sin \phi & & & \\
 & \ddots & \ddots & \ddots &  & \\
