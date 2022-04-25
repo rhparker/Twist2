@@ -141,8 +141,10 @@ The coupled mode equations that model optical transmission in twisted, circular,
 i \partial_z c_n + k \left(e^{i\phi}c_{n-1} + e^{-i\phi}c_{n+1} \right) + |c_n|^2 c_n = 0,
 \end{equation}
 for $n = 1, \dots, N$, where $N$ is the number of fibers in the ring, and the indices $n$ are taken $\md N$ due to the circular geometry (see \cref{fig:circle}).
-The complex amplitudes, $c_n(z)$, represent the localized field amplitude in each waveguide, the independent variable, $z$, is along the axis of propagation, and $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring. The entire fiber structure is twisted along the propagation axis with a spatial period, $\Lambda$, and the twist parameter, $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$, is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $\epsilon = 2 \pi / \Lambda$ is the frequency of the twist, $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016,Parto2017}. We note that this model only considers standing wave modes in each waveguide.  
-
+The complex amplitudes, $c_n(z)$, represent the localized field amplitude in each waveguide, the independent variable, $z$, is along the axis of propagation, and $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring. The entire fiber structure is twisted along the propagation axis with a spatial period, $\Lambda$, and the twist parameter, $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$, is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $\epsilon = 2 \pi / \Lambda$ is the frequency of the twist, $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016,Parto2017}. We note that this model only considers standing wave modes in each waveguide. 
+\revised{
+When the twist parameter $\phi = 0$, the model reduces to the discrete nonlinear Schr\"odinger (DNLS) equation \cite{Kevrekidis2009} on a finite, periodic lattice. Other recent work concerning DNLS lattices includes a result on nonexistence of phase-shift discrete solitons in a model with coupling extended beyond nearest neighbors \cite{penati2018} and the existence and spectral stability of multi-pulse solutions \cite{Parker2020}.
+}
 
 \begin{figure}
 \begin{center}
@@ -154,7 +156,7 @@ The complex amplitudes, $c_n(z)$, represent the localized field amplitude in eac
 
 
 Rather than focusing on applications, the results in this paper are aimed at advancing  understanding of the role that topological properties have on the dynamics of spatiotemporal localized modes. 
-Indeed, the fiber twist permits the establishment of a topological state in the fiber, in which the intensity in one (or more) of the cores is completely suppressed. Specifically, an asymptotic analysis of the optical intensity in a  six-core twisted optical fiber~\cite{castro2016} showed that if the bulk of the optical intensity is confined to a single fiber in the ring, then the intensity in the opposite fiber in the ring is suppressed, to leading order, when $\phi = \pi/6$. This phenomenon can be interpreted as an optical analogue of Aharonov-Bohm (AB) suppression of tunneling in \cite{Ornigotti2007,Parto2017,Parto2019}, in which the fiber twist plays the role of the magnetic flux in the quantum mechanical system \cite{Loss1992}. This suppression effect was established analytically for a four-core optical fiber when $\phi=\pi/4$ in \cite{Parto2019}. In \cite{parker2021} we extended this analysis to standing wave solutions of the form $c_n = a_n e^{i (\omega z + \theta_n) }$ which are constant in amplitude and oscillatory in $z$. We showed that when the number of fibers $N$ is even, standing wave solutions exist in which the bulk of the intensity is contained in a single fiber core, and the intensity in the opposite core in the ring is completely suppressed for all $z$ when $\phi = \pi/N$. Using numerical computations of spectra and evolution experiments, we showed that these standing wave solutions are stable, and we also extended these results to the case that $N$ is odd. 
+Indeed, the fiber twist permits the establishment of a topological state in the fiber, in which the intensity in one (or more) of the cores is completely suppressed. Specifically, an asymptotic analysis of the optical intensity in a  six-core twisted optical fiber~\cite{castro2016} showed that if the bulk of the optical intensity is confined to a single fiber in the ring, then the intensity in the opposite fiber in the ring is suppressed, to leading order, when $\phi = \pi/6$. This phenomenon can be interpreted as an optical analogue of Aharonov-Bohm (AB) suppression of tunneling in \cite{Ornigotti2007,Parto2017,Parto2019}, in which the fiber twist plays the role of the magnetic flux in the quantum mechanical system \cite{Loss1992}. This suppression effect was established analytically for a four-core optical fiber when $\phi=\pi/4$ in \cite{Parto2019}. In \cite{parker2021} we extended this analysis to standing wave solutions of the form $c_n = a_n e^{i (\omega z + \theta_n) }$ which are constant in amplitude and oscillatory in $z$. We showed that when the number of fibers $N$ is even, standing wave solutions exist in which the bulk of the intensity is contained in a single fiber core, and the intensity in the opposite core in the ring is completely suppressed for all $z$ when $\phi = \pi/N$. Using numerical computations of spectra and evolution experiments, we showed that these standing wave solutions are stable, and we also extended these results to the case that $N$ is odd.
 
 In this paper, we extend these results to the pulsed regime. To do so, we incorporate a second-order temporal dispersion term, as is found in the nonlinear Schr\"odinger (NLS) equation, namely,
 \begin{align}\label{eq:cnz}
@@ -348,14 +350,17 @@ Substituting \cref{eq:tildeanpsi} for $\widetilde{a}_n$ and simplifying, we can 
 \end{equation}
 We can solve for $\widetilde{\theta}_n$ by dividing by $\widetilde{a}_n$, although we note that we have to be careful when doing this since $\widetilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
 
-When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$ for all $t$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, which is $\mathcal{O}(N/2)$. The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+1})$ and higher) in the expansion for $a_{N/2}$ that we have not computed. Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section. We will see that numerical evidence in fact supports complete suppression of the opposite core when $\phi = \pi/N$.
-
+When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$ for all $t$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. 
+\revised{
+It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, from which we can conclude that $a_{N/2} = \mathcal{O}(k^{N/2+1})$. By examining higher order terms in the asymptotic expansion, we can actually obtain the stronger result $a_{N/2} = \mathcal{O}(k^{N/2+4})$ when $\phi = \pi/N$ (see \cref{sec:hot}). The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+4})$ and higher) in the expansion for $a_{N/2}$ that are much more difficult to compute.
+}
+Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section. We will see that numerical evidence in fact supports complete suppression of the opposite core when $\phi = \pi/N$.
 
 \section{Numerical results}\label{sec:numerics}
 
 For all simulations, unless otherwise indicated, we will take $N=6$ fibers and $\omega=1$. 
 \revised{
-The choice of $N=6$ fibers is for efficiency of computation, and to parallel what was done in \cite{castro2016,parker2021}. Results for larger $N$ will be shown to illustrate the suppression effect in the opposite core when the twist parameter $\phi$ is $\pi/N$.
+The choice of $N=6$ fibers is for efficiency of computation, and to parallel what was done in \cite{castro2016,parker2021}. Results for larger $N$ will be shown to illustrate the suppression effect in the opposite core when the twist parameter $\phi$ is $\pi/N$ (\cref{fig:suppN}).
 }
 First, we construct pulse solutions to \cref{eq:standingwave} by using parameter continuation from the anti-continuum (AC) limit ($k=0$). To do this, we take $C_n = u_n + i v_n$ in \cref{eq:standingwave}, and separate real and imaginary parts to obtain
 \begin{equation}\label{eq:standingwavesep}
@@ -493,14 +498,18 @@ Finally, we compute the error in the asymptotic formulae for the amplitudes, $a_
 \[
 \| f \|_{L^2} = \int_{-T}^T |f(t)|^2 dt.
 \] 
-The slopes of least squares regressions lines for the error in $a_0$, $a_1$, $a_2$, and $a_3$ are within 5\% of 4, 3, 4, and 5 (respectively), which suggests that the asymptotic expansions \cref{eq:asympsol} for the amplitudes are, in fact, 
+The slopes of least squares regressions lines for the error in $a_0$, $a_1$, $a_2$, and $a_3$ are within 5\% of 4, 3, 4, and 5 (respectively), which suggests that the asymptotic expansions \cref{eq:asympsol} for the amplitudes are,
 \begin{equation}\label{eq:asympsol2}
 \begin{aligned}
 a_0(t) &= \psi(t) + k^2 \widetilde{a}_0(t) + \mathcal{O}(k^4) \\
 a_n(t) &= k^n \widetilde{a}_n(t) + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2,
 \end{aligned}
 \end{equation}
-i.e. the order of the remainder term is one order higher in $k$. Since the formulas \cref{eq:tildeantnpsi} involve the products, $a_n \theta_n$, of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n (\theta_n - n \phi)^{\text{num}} - a_n(\theta_n - n \phi)^{\text{asymp}}\|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
+i.e. the order of the remainder term is one order higher in $k$ than in \cref{eq:asympsol}. 
+\revised{
+This is consistent with the results obtained by considering the next-to-leading order terms in the asymptotic expansion (see \cref{sec:hot}).
+}
+Since the formulas \cref{eq:tildeantnpsi} involve the products, $a_n \theta_n$, of the amplitudes and phases, \cref{fig:m6errorb} plots the log of the $L^2$ error of $\| (a_n (\theta_n - n \phi)^{\text{num}} - a_n(\theta_n - n \phi)^{\text{asymp}}\|_{L^2}$ vs. the log of coupling parameter $k$, where the true value is obtained from numerical parameter continuation, and the approximate value is computed using 
 $a_n (\theta_n - n \phi )^{\text{asymp}} = k^{N-n} \widetilde{a}_n \widetilde{\theta}_n$ and \cref{eq:tildeantnpsi}. The slopes of least squares regressions lines for the error in $a_1\theta_1$ and $a_2\theta_2$ are within 2.5\% of 5 and 4 (respectively), which suggests that the order of the remainder term in $k$ is correct in the asymptotic expansions \cref{eq:asympsol} for $\theta_n$.
 
 % figure: amplitudes/phases for N=6
@@ -779,10 +788,10 @@ a_n = k^n (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{n+1}
 \end{equation}
 
 For the final node $n=N/2$, we take $\theta_{N/2} = 0$ in the real part of \cref{eq:st2} for $n = N/2$, use the symmetry relations for $a_{N/2-1}$ and $\theta_{N/2-1}$ from \cref{eq:symm}, and simplify to obtain
-\[
+\begin{equation}\label{eq:oppcore}
 \ddot a_{N/2} - a_{N/2} (\dot \theta_{N/2})^2 + 
 2 k a_{N/2-1}\cos( \theta_{N/2-1} + \phi) + a_{N/2}^3 - \omega a_{N/2} = 0.
-\]
+\end{equation}
 Using the power series ansatz
 \[
 a_{N/2} = k^{N/2} \widetilde{a}_{N/2} + \mathcal{O}(k^{N/2+1})
@@ -861,6 +870,41 @@ Applying $(\omega - \partial_t^2)^{-1}$ to both sides, we obtain the formula
 \widetilde{a}_n \widetilde{\theta}_n = (\omega - \partial_t^2)^{-1} \left( \widetilde{a}_{n+1} \widetilde{\theta}_{n+1} \right),
 \end{equation}
 which is the second equation in \cref{eq:tildeantn}. We can divide by $\widetilde{a}_n$ to solve for $\widetilde{\theta}_n$. 
+
+\subsection{Higher order terms}\label{sec:hot}
+
+\revised{
+We briefly consider the higher order terms in the asymptotic expansion for the amplitudes, $a_n$. We take the power series ansatz
+\begin{align}\label{eq:seriesansatz}
+a_n &= k^n \sum_{j=0}^\infty a_n^{(j)} k^j && n = 0, \dots, \frac{N}{2},
+\end{align}
+where, using the notation in the previous section for the leading order terms, we have $a_0^{0}= \psi$, $a_0^{1}=0$, $a_0^{2} = \tilde{a}_0$, and $a_n^{0} = \tilde{a}_n$ for $n = 1, \dots, N/2$. Substituting this into \cref{eq:st2real}, using the estimate in \cref{eq:basicseries} for $\theta_n$, and simplifying, we obtain the following expression for the next-to-leading order terms:
+\begin{align*}
+\calL(\psi) a_0^{(3)} &= -2 a_1^{(1)} \\
+a_n^{(1)} &= (\omega - \partial_t^2)^{-1}a_{n-1}^{(1)} && n = 1, \dots, N/2-1 \\
+a_{N/2}^{(1)} &= 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} a_{N/2-1}^{(1)}.
+\end{align*}
+Since $a_0^{(1)}=0$, it follows that $a_n^{(1)}=0$ for $n = 1, \dots, N/2$. In principle, we can continue this process to obtain still higher order correction terms, although we note that the expressions we obtain will become increasingly more unwieldy. The next term in the asymptotic series, for example, is
+\begin{align*}
+a_n^{(2)} &= (\omega - \partial_t^2)^{-1}(a_{n-1}^{(2)} + a_{n+1}^{0}) && n = 1, \dots, N/2-1,
+\end{align*}
+which involves a contribution from both neighboring nodes. Higher terms in the series will incorporate contributions from the nonlinearity as well as the phase $\theta_n$.
+}
+
+\revised{
+For the opposite core, we substitute the power series ansatz \cref{eq:seriesansatz}, $\theta_{N/2}=0$, and the estimate $\theta_{N/2-1} = \mathcal{O}(k^2)$ from \cref{eq:tildeantn} into \cref{eq:oppcore}, expand the cosine term in a Taylor series, and simplify to obtain
+\[
+\sum_{j=0}^\infty a_{N/2}^{(j)} k^j + 2 \left[\cos( N\phi/2) + \mathcal{O}(k^4) \right] \sum_{j=0}^\infty a_{N/2-1}^{(j)} k^j - \omega \sum_{j=0}^\infty a_{N/2}^{(j)} + \mathcal{O}(k^N) = 0.
+\]
+Since $N$ is even, and we will always take $N\geq 4$, the $\mathcal{O}(k^4)$ terms will only contribute for $j \geq 4$, thus we obtain
+\begin{align*}
+a_{N/2}^{(j)} &= 2 \cos( N\phi/2)(\omega - \partial_t^2)^{-1} a_{N/2-1}^{(j)} && j = 0,1,2,3.
+\end{align*}
+It follows that if $\phi=\pi/N$, $a_{N/2}^{(j)}=0$ for $j = 0,1,2,3$, in which case we obtain the estimate
+\[
+a_{N/2} = \mathcal{O}\left({k^{N/2+4}}\right).
+\]
+}
 
 \section{Proof of \texorpdfstring{\cref{prop:ess}}{Proposition 1}}\label{app:prop1proof}
 
