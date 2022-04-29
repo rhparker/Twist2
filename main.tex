@@ -143,7 +143,7 @@ i \partial_z c_n + k \left(e^{i\phi}c_{n-1} + e^{-i\phi}c_{n+1} \right) + |c_n|^
 for $n = 1, \dots, N$, where $N$ is the number of fibers in the ring, and the indices $n$ are taken $\md N$ due to the circular geometry (see \cref{fig:circle}).
 The complex amplitudes, $c_n(z)$, represent the localized field amplitude in each waveguide, the independent variable, $z$, is along the axis of propagation, and $k$ is the non-dimensional strength of the nearest-neighbor coupling of the waveguides in the ring. The entire fiber structure is twisted along the propagation axis with a spatial period, $\Lambda$, and the twist parameter, $\phi = 4 \pi^2 \epsilon n_s R^2/N \lambda$, is the Peierls phase introduced by the twist \cite{Longhi2007,Peierls1933}, where $\epsilon = 2 \pi / \Lambda$ is the frequency of the twist, $n_s$ the refractive index of the substrate, $R$ is the radius of the circular ring, and $\lambda$ is the wavelength of the propagating field \cite{castro2016,Parto2017}. We note that this model only considers standing wave modes in each waveguide. 
 \revised{
-When the twist parameter $\phi = 0$, the model reduces to the discrete nonlinear Schr\"odinger (DNLS) equation \cite{Kevrekidis2009} on a finite, periodic lattice. Other recent work concerning DNLS lattices includes a result on nonexistence of phase-shift discrete solitons in a model with coupling extended beyond nearest neighbors \cite{penati2018} and the existence and spectral stability of multi-pulse solutions \cite{Parker2020}.
+When the twist parameter $\phi = 0$, the model reduces to the discrete nonlinear Schr\"odinger (DNLS) equation \cite{Kevrekidis2009} on a finite, periodic lattice.
 }
 
 \begin{figure}
@@ -162,12 +162,12 @@ In this paper, we extend these results to the pulsed regime. To do so, we incorp
 \begin{align}\label{eq:cnz}
 &i\partial_z c_n + \partial_t^2 c_n + k\left(e^{i\phi}c_{n-1}+e^{-i\phi}c_{n+1}\right)+|c_n|^2 c_n = 0 && n = 1, \dots, N,
 \end{align}
-where the complex amplitudes, $c_n$, are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. 
+where the complex amplitudes, $c_n$, are now functions of both $z$ and $t$. Using asymptotic analysis, we derive leading order expressions for solutions in which the bulk of the intensity is contained in a single core. Since these results derive from asymptotic series expansions in the coupling parameter, $k$, we consider only the case of weak coupling, i.e. $k < 1$.
+We demonstrate that optical suppression also occurs in this model when the number of cores, $N$, is even, and phase parameter, $\phi$, is given by $\phi=\pi/N$. 
 \revised{
-This is similar to the method employed in studying the stability of discrete solitons \cite{pelinovsky2005a} and discrete vortices \cite{pelinovsky2005b} in nonlinear Schr\"odinger lattices.   
+Asymptotic methods have an extensive history as a tool for the analysis of lattice dynamical systems. In a set of pioneering works on the stability of discrete solitons \cite{pelinovsky2005a} and discrete vortices \cite{pelinovsky2005b} in DNLS, the first and second order terms in an asymptotic expansion of the excited sites in the lattice were used to obtain approximations for the eigenvalues of the linearized stability problem (see, for example, \cite[Section 4]{pelinovsky2005a}). While our work builds upon this general method, i.e. we substitute an asymptotic series in the coupling parameter $k$ into the lattice system, and then solve the resulting equations at each order of $k$, there are several key differences. First, the complex amplitudes $c_n$ in \cref{eq:cnz} are functions of $t$ (as well as $z$), thus the standing wave equation \cref{eq:standingwave} is a set of coupled ordinary differential equations rather than a set of coupled algebraic equations. We are able to simplify these equations using symmetries in the problem, which are a consequence of the circular geometry.
+In addition, we use this method to compute the first nonzero term in the asymptotic expansion at every site in the finite lattice, which allows us to obtain a leading order expression for the entire solution in the case where the bulk of the optical intensity is localized to a single site. In particular, since the opposite site in the ring will have the least optical intensity, we can use the asymptotic expansion for this opposite site to demonstrate optical suppression when $\phi=\pi/N$.
 }
-Since these results derive from power series expansions in the coupling parameter, $k$, we consider only the case of weak coupling, i.e. $k < 1$.
-We demonstrate that optical suppression also occurs in this model when the number of cores $N$ is even, and phase parameter $\phi$ is given by $\phi=\pi/N$. 
 
 The paper is organized as follows. In \cref{sec:model}, we continue our discussion of the mathematical model \cref{eq:cnz} we are studying, %% JZ in particular its Hamiltonian structure, 
 and derive equations for standing wave solutions. In \cref{sec:asymp}, we compute the leading order terms in asymptotic expansions of standing wave solutions where the bulk of the intensity is contained in a single waveguide. Details of the computations are deferred to \cref{app:asymp}. In \cref{sec:numerics}, we present numerical results which validate our asymptotic solutions. In \cref{sec:stability}, we investigate the stability of these standing wave solutions, using both spectral computations and evolution simulations, and we end with a brief concluding section which highlights directions for future research.
@@ -189,7 +189,6 @@ e^{i \phi} & 0 & e^{-i \phi} & & & \\
 e^{-i \phi}& \dots & & e^{i \phi} & 0
 \end{pmatrix}.
 \end{align}
-
 
 \begin{comment} %JZ
 Equation \cref{eq:cnz} has a Hamiltonian given by
@@ -256,15 +255,15 @@ where we have suppressed the dependence on $t$. Dividing by $e^{i \theta_n}$, we
 &+ k\left(a_{n-1}e^{-i[(\theta_n - \theta_{n-1}) - \phi]} + a_{n+1}e^{i[(\theta_{n+1} - \theta_{n}) - \phi]} \right)+a_n^3 - \omega a_n = 0,
 \end{aligned}
 \end{equation}  
-which we can split up into real and imaginary parts to obtain
+which we can split up into real and imaginary parts to obtain \revised{the system of $2N$ coupled, real-valued ordinary differential equations}
 \begin{align}
 &\ddot a_n - a_n (\dot \theta_n)^2 +
  k\left(a_{n-1}\cos[(\theta_n - \theta_{n-1}) - \phi] + a_{n+1}\cos[(\theta_{n+1} - \theta_{n}) - \phi] \right)+a_n^3 - \omega a_n = 0 \label{eq:st2real} \\
 &a_n \ddot\theta_n + 2 \dot a_n \dot \theta_n
-+ k\left(-a_{n-1}\sin[(\theta_n - \theta_{n-1}) - \phi] + a_{n+1}\sin [(\theta_{n+1} - \theta_{n}) - \phi] \right) = 0. \label{eq:st2imag}
++ k\left(-a_{n-1}\sin[(\theta_n - \theta_{n-1}) - \phi] + a_{n+1}\sin [(\theta_{n+1} - \theta_{n}) - \phi] \right) = 0. \label{eq:st2imag} 
 \end{align}
 
-\section{Asymptotic solutions}\label{sec:asymp}
+\section{Asymptotic analysis}\label{sec:asymp}
 
 We use an asymptotic approach to find highly localized solutions. To do so, we assume that the bulk of the energy is concentrated in a single pulse propagating in one core, which we will call the primary node and label $n=0$. Furthermore, we only consider the case where  the number of waveguides, $N$, is even. We call the waveguide directly opposite the primary core the opposite core, which we label $n=N/2$. The remaining nodes in the ring are labeled $\pm n$, for $n = 1, \dots, N/2-1$, where we count clockwise around the ring for positive $n$ and counterclockwise for negative $n$. See \cref{fig:symm6} for the labeling scheme for $N=6$. Numerical parameter continuation experiments suggest that for $N$ even, there exist solutions with the following symmetries (see \cref{fig:symm6} for an illustration when $N=6$):
 \begin{equation}\label{eq:symm}
@@ -295,11 +294,13 @@ a_n(t) &= \mathcal{O}\left(k^n\right) && n = 1, \dots, N/2 \\
 \end{equation}
 Since we wish node 0 to contain the bulk of the intensity, the leading order term for $a_0(t)$ is the NLS soliton $\psi(t)$, and the rest of the terms are of order $k$ or higher. The form of equation \cref{eq:st2} suggests that $a_n = \mathcal{O}(k a_{n-1})$, from which we obtain the ansatz for $a_n$ in \cref{eq:basicseries}. It follows from the ansatz for $\theta_n$ that, for $n = 1, \dots, N/2-1$, we have $\theta_n - \theta_{n-1} - \phi = \mathcal{O}\left(k^{N - 2n}\right)$. This implies that, to leading order, the cosine terms in \cref{eq:st2real} and the sine terms in \cref{eq:st2imag} are 1 and 0, respectively.
 
+\subsection{Main results}
+
 Following the procedure detailed in \cref{app:asymp}, we obtain a solution to \cref{eq:st2} of the form
 \begin{equation}\label{eq:asympsol}
 \begin{aligned}
 a_0 &= \psi + k^2 \widetilde{a}_0 + \mathcal{O}(k^3) \\
-a_n &= k^n \widetilde{a}_n + \mathcal{O}(k^{n+1}) && n = 1, \dots, N/2 \\
+a_n &= k^n \widetilde{a}_n + \mathcal{O}(k^{n+2}) && n = 1, \dots, N/2 \\
 \theta_n &= n \phi + k^{N - 2n} \widetilde{\theta}_n
 + \mathcal{O}(k^{N - 2n+1}) && n = 1, \dots, N/2-1,
 \end{aligned}
@@ -350,9 +351,11 @@ Substituting \cref{eq:tildeanpsi} for $\widetilde{a}_n$ and simplifying, we can 
 \end{equation}
 We can solve for $\widetilde{\theta}_n$ by dividing by $\widetilde{a}_n$, although we note that we have to be careful when doing this since $\widetilde{a}_n(t) \rightarrow 0$ as $t \rightarrow \pm \infty$.
 
-When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$ for all $t$. Thus, as in the case without temporal dispersion, the intensity at the opposite site in the ring is suppressed at this value of the twist parameter $\phi$. 
+\subsection{Optical suppression}
+
+When $\phi = \pi/N$, it follows from \cref{eq:tildeanpsi} that $\widetilde{a}_{N/2}(t) = 0$ for all $t$. Thus, as in the case without temporal dispersion, the intensity at the opposite core $n=N/2$ in the ring is suppressed at this value of the twist parameter $\phi$. 
 \revised{
-It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion for $a_{N/2}$, from which we can conclude that $a_{N/2} = \mathcal{O}(k^{N/2+1})$. By examining higher order terms in the asymptotic expansion, we can actually obtain the stronger result $a_{N/2} = \mathcal{O}(k^{N/2+4})$ when $\phi = \pi/N$ (see \cref{sec:hot}). The intensity at the opposite site may not be completely suppressed due to the presence of higher order terms (of order $\mathcal{O}(k^{N/2+4})$ and higher) in the expansion for $a_{N/2}$ that are much more difficult to compute.
+It is important to note, however, that this choice of $\phi$ only zeros out the leading order term in the asymptotic expansion \cref{eq:asympsol} for $a_{N/2}$, i.e. the term of $\mathcal{O}(k^{N/2})$, which leaves us with $a_{N/2} = \mathcal{O}(k^{N/2+2})$. By examining higher order terms (see \cref{sec:hot}), we can obtain the stronger result that all terms in the asymptotic expansion are zero up to $\mathcal{O}(k^{N/2+3})$, leaving us with $a_{N/2} = \mathcal{O}(k^{N/2+4})$. The intensity at the opposite core may not be completely suppressed due to the presence of these higher order terms in the asymptotic expansion for $a_{N/2}$ that are much more difficult to compute.
 }
 Similarly, it follows from \cref{eq:tildeantnpsi} that $\widetilde{a}_n \widetilde{\theta}_n = 0$ for all $n$ when $\phi = \pi/N$, which zeros out the leading order term in the expansions for $\theta_n$ for all $n$. These findings are confirmed numerically in the next section. We will see that numerical evidence in fact supports complete suppression of the opposite core when $\phi = \pi/N$.
 
@@ -430,7 +433,7 @@ Now that we have constructed solutions of \cref{eq:standingwave}, we show that w
 as in the model without temporal dispersion \cite{parker2021}, this suppression is complete, i.e. the amplitude of node 3 in \cref{fig:m6pi6logamp} lies at the margin of machine precision.    
 }
 In \cref{fig:m6supp}, we show how both the amplitude, $a_3$, of the opposite core and the deviations, $\phi_n - n \phi$, of the phases are suppressed as $\phi$ varies; the cusps at $\phi=\pi/6$ provides further numerical evidence for complete suppression. 
-\revised{\cref{fig:suppN} shows that this suppression at $\phi=\pi/N$ persists for larger values of $N$.
+\revised{\cref{fig:suppN} shows that this suppression at $\phi=\pi/N$ persists for larger values of $N$. In particular, there is a droproff of approximately 15 orders of magnitude between the amplitude $a_{N/2-1}$ and the amplitude $a_{N/2}$ of the opposite core. For all four values of $N$, the amplitude of the opposite core lies at the margin of machine precision.
 }
 These results do not depend on the number of Fourier nodes in the temporal discretization.
 
@@ -490,7 +493,7 @@ These results do not depend on the number of Fourier nodes in the temporal discr
         \includegraphics[width=5cm]{suppressionN.eps}
     \end{subfigure}
     \caption{(a) $\log_{10} \max |a_3(t)|$ vs. $\phi$ for $k=0.1$ and $k=0.25$. (b) $\log_{10} \max_{n,t}{|\theta_n(t) - n \phi|}$ vs. $\phi$ for $k=0.1$ and $k=0.25$.
-    \revised{(c) $\log_{10} \max |c_n(t)|$ vs. lattice site $n$ for varying $N$, with twist parameter $\phi=\pi/N$, $k=0.25$, and $N=128$ Fourier nodes.}}
+    \revised{(c) $\log_{10} \max |c_n(t)|$ vs. lattice site $n$ for varying $N$, with twist parameter $\phi=\pi/N$, $k=0.25$, and 128 Fourier nodes.}}
     \label{fig:m6supp}
 \end{figure}
 
@@ -644,7 +647,12 @@ Numerical evolution experiments using MATLAB's \texttt{ode45} function suggest t
 In this paper, we studied a model of light propagation in a twisted multi-core fiber that includes temporal dispersion. We derived asymptotic expressions for spatiotemporal solutions in which the number of waveguides, $N$, is even, the bulk of the intensity is contained in a single node (the primary core), and the amplitudes and phases of the solution obey certain symmetry relations. These expressions are in very good agreement with results from numerical parameter continuation. Furthermore, the asymptotic analysis shows that for an even number, $N$, of waveguides, there is significant suppression of optical activity in the waveguide opposite the primary core when the twist parameter, $\phi$, and the number of waveguides, $N$, are related by $\phi = \pi/N$. This is the exact same behavior found in the model with no temporal dispersion \cite{parker2021}.
 Numerical computation suggests that there are two critical values, $k_e$ and $k^*$, of $k$, with $0 < k_e < k^*$. The pulse solution exists for $0 < k < k^*$ and is stable for $0 < k < k_e$, at which point an internal eigenmode collides with the eigenvalues at the origin. Both $k_e$ and $k^*$ attain their maximum when $\phi = \pi/N$, which is also the angle for which the essential spectrum boundary, $\alpha$, is furthest from the origin.
 
-Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion. As in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. It could also be interesting to extend the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or to study the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would be to examine the continuum limit, i.e. what happens as $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter, $\phi$, is proportional to $1/N$, and so $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the equations for the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with experimental realizations.
+Future research could include exploring the case with odd $N$, which was considered in the model without temporal dispersion. As in \cite{parker2021}, this would involve a different set of symmetries, and it may be possible that a configuration could be found in which there would be optical suppression of a single site when $\phi = \pi/N$. 
+\revised{
+We could also study multi-pulses, which are solutions in which the energy is concentrated at multiple sites in the ring. These have been well-studied in DNLS \cite{Parker2020}, and we considered them briefly in \cite{parker2021}. Finally, if the distances between neighboring waveguides are small, nonlocal interactions might become significant, suggesting a model with coupling that extends beyond nearest neighbors. We could, for example, incorporate next-to-next-nearest neighbor interactions, as was done with DNLS in \cite{penati2018}.
+}
+
+It could also be interesting to extend the model to more complicated geometries, such as twisted optical fibers comprising multiple concentric rings, or to study the evolution of these solutions in the presence of imperfections in the fiber. Another avenue of exploration would be to examine the continuum limit, i.e. what happens as $N \rightarrow \infty$. Since the fiber radius $R$ is held constant, the ring becomes more ``densely'' packed with waveguides as $N$ increases, and in the limit as $N \rightarrow \infty$, this becomes a continuum on the circle of radius $R$. Furthermore, the twist parameter, $\phi$, is proportional to $1/N$, and so $\phi \rightarrow 0$ as $N \rightarrow \infty$. An interesting question is to what extent the twist is preserved in the equations for the continuum limit. Finally, since these solutions are stable for $k < k_e$, it would be interesting compare these results with experimental realizations.
 
 \vspace{0.5cm}
 % \begin{acknowledgments}
@@ -806,7 +814,7 @@ It is important to note that since $\theta_{N/2} = 0$, the cosine term in \cref{
 \end{equation}
 which is the third equation in \cref{eq:tildean}. Since $\widetilde{a}_{N/2} = \mathcal{O}(1)$, it follows that
 \begin{equation}\label{eq:am2eq}
-a_{N/2} = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{N/2}+1).
+a_{N/2} = 2 k^{N/2} \cos\left( N\phi / 2\right) (\omega - \partial_t^2)^{-1} \widetilde{a}_{n-1} + \mathcal{O}(k^{N/2+1}).
 \end{equation}
 Finally, since we have derived an expression \cref{eq:a11} for $\widetilde{a}_1$, we substitute this into \cref{eq:solvea0ta} to obtain 
 \[
@@ -874,7 +882,7 @@ which is the second equation in \cref{eq:tildeantn}. We can divide by $\widetild
 \subsection{Higher order terms}\label{sec:hot}
 
 \revised{
-We briefly consider the higher order terms in the asymptotic expansion for the amplitudes, $a_n$. We take the power series ansatz
+We briefly consider the higher order terms in the asymptotic expansion for the amplitudes, $a_n$. We take the asymptotic series ansatz
 \begin{align}\label{eq:seriesansatz}
 a_n &= k^n \sum_{j=0}^\infty a_n^{(j)} k^j && n = 0, \dots, \frac{N}{2},
 \end{align}
