@@ -18,26 +18,30 @@ Dallas, TX 75275 \\
 
 \opening{Dear Editor,}
 
-On behalf of my co-authors, Yannan Shen, Alejandro Aceves, and John Zweck, I would like to submit revisions to the article ``Spatiotemporal dynamics in a twisted, circular waveguide array'' for consideration of publication in Studies in Applied Mathematics. We are grateful to the referees for their careful reading of the original manuscript, and their comments and suggestions regarding how we could improve it. All the suggestions for improvement have been systematically taken into careful consideration and incorporated into the revision, as noted below. The portions of the manuscript which have been revised or added are indicated using red text. Given the improvements made in accordance with the requests of the referees, we hope that you will now find the manuscript to be suitable for publication. We will be sincerely looking forward to your editorial decision.
+On behalf of my co-authors, Yannan Shen, Alejandro Aceves, and John Zweck, I would like to submit revisions to the article ``Spatiotemporal dynamics in a twisted, circular waveguide array'' for consideration of publication in Studies in Applied Mathematics. We are grateful to the referees for their careful reading of the original manuscript, and their comments and suggestions regarding how we could improve it. 
+
+In the revision, we place this work in the broader context of asymptotic methods as a tool for the analysis of lattice dynamical systems. In particular, we cite relevant work (references [22] and [23]) concerning asymptotic methods for discrete solitons and discrete vortices in DNLS. While our paper builds on this work, we point out several key differences. First, we consider pulsed solutions (which are time-dependent), rather than simpler, time-independent, standing wave solutions (which we considered in [17]). As a result, we obtain a set of coupled ordinary differential equations, rather than a set of coupled algebraic equations. We simplify these equations using symmetries in the problem, which are a consequence of the circular geometry. We also use this method to compute the first nonzero term in the asymptotic expansion at every single site in the finite lattice, which allows us to obtain a leading order expression for the entire solution that holds for arbitrary, even $N$. We then use this asymptotic expansion to demonstrate optical suppression when $\phi=\pi/N$. Specific improvements in this revision include consideration of higher order terms in the asymptotic expansion (Appendix B.4) and results from numerical simulations involving larger numbers of cores (see Figure 6c).
+
+All the suggestions for improvement have been systematically taken into careful consideration and incorporated into the revision, as noted below. The portions of the manuscript which have been revised or added are indicated using red text. Given the improvements made in accordance with the requests of the referees, we hope that you will now find the manuscript to be suitable for publication. We will be sincerely looking forward to your editorial decision.
 
 Associate editor 2:
 \begin{enumerate}
-    \item \emph{The list of references does not include the pioneering papers where the method picked by the authors was developed: Physica D, 212, 1-19 (2005); Physica D, 212, 20-53 (2005)} These two references are now cited in the introduction. In addition, we briefly describe how the method in this work both build on and extends these methods.
+    \item \emph{The list of references does not include the pioneering papers where the method picked by the authors was developed: Physica D, 212, 1-19 (2005); Physica D, 212, 20-53 (2005).} These two references ([22] and [23]) are now cited in the introduction. In addition, we briefly describe how the method in this work both builds on and extends these methods.
     \vspace{4mm}
 
-    \item \emph{The recent developments are not cited: Phys. D 370 (2018), 1–13;  Phys. D 408 (2020), 132414, 21 pp} We mention that the model without temporal dispersion reduces to DNLS on a finite lattice when twist parameter $\phi = 0$. In the conclusions section, we cite these recent developments as inspirations for future research.
+    \item \emph{The recent developments are not cited: Phys. D 370 (2018), 1–13;  Phys. D 408 (2020), 132414, 21 pp} We mention that the model without temporal dispersion reduces to DNLS on a finite lattice when twist parameter $\phi = 0$. In the conclusions section, we suggest two avenues for future research which incorporate ideas from parallel problems considered in these references into our model: multi-pulse solutions (inspired by [18]), and interactions beyond nearest neighbors (inspired by [24]).
     \vspace{4mm}
 \end{enumerate}
 
 Reviewer 1:
 \begin{enumerate}
-    \item \emph{Did the authors try to calculate terms other than the leading one of $\tilde{a}_{N/2}$, in order to support the numerical finding that the intensity in this node is completely suppressed?} We now include a discussion of higher order terms in the asymptotic expansion, from which we obtain the supression result to a few more orders of magnitude. Although it may be possible to continue the asymptotic analysis to higher orders, the terms involved become increasingly more unwieldy, as we discuss briefly in Appendix B.4.
+    \item \emph{Did the authors try to calculate terms other than the leading one of $\tilde{a}_{N/2}$, in order to support the numerical finding that the intensity in this node is completely suppressed?} We now include a discussion of higher order terms in the asymptotic expansion, from which we obtain the suppression result to a few more orders of magnitude. Although it may be possible to continue the asymptotic analysis to higher orders, the terms involved become increasingly more unwieldy, as we discuss briefly in Appendix B.4.
     \vspace{4mm}
 
     \item \emph{In equation (15) how is $\tilde{a}_0$ calculated? perhaps I am missing something.} We have moved the equation for $\tilde{a}_0$ up for clarity. It is now equation (16). 
     \vspace{4mm}
 
-    \item \emph{In figure 4 do the lines with $\phi\neq0.5$ possess a maximum or do the tend to infinity?}$k$ reaches a maximum at this point. This is stated more clearly in the text.
+    \item \emph{In figure 4 do the lines with $\phi\neq0.5$ possess a maximum or do the tend to infinity?} $k$ reaches a maximum at this point. This is stated more clearly in the text.
     \vspace{4mm}
 
     \item \emph{In Figure 5 (e) the authors could mention that the line for node 3 lies at the margin of the numerical calculations error.} We now mention this in the text in reference to this figure.
@@ -46,7 +50,7 @@ Reviewer 1:
 
 Reviewer 2:
 \begin{enumerate}
-    \item \emph{Regarding the particular choice of the number of $N = 6$ oscillators, I think that some further justification should be given for this choice. While it is written that a consideration of large number of N makes a potentially, non-tractable increase of the computational efforts required regarding the numerical codes, I think a second example for a number N of oscillators which can be handled by the codes would be useful.} We now show the suppression effect occurs for $N=12,18,24$ (Figure 6c).
+    \item \emph{Regarding the particular choice of the number of $N = 6$ oscillators, I think that some further justification should be given for this choice. While it is written that a consideration of large number of $N$ makes a potentially, non-tractable increase of the computational efforts required regarding the numerical codes, I think a second example for a number N of oscillators which can be handled by the codes would be useful.} We now show the suppression effect occurs for $N=12,18,24$ (Figure 6c). We also note that the asymptotic analysis holds for arbitrary, even $N$.
 \end{enumerate}
 
 \closing{Sincerely,}
